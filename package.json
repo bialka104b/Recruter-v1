@@ -1,0 +1,16 @@
+{
+  "name": "praktyki_3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon index.js"
+  },
+  "author": "marta_jamroz_kulig",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "ws": "^1.1.1"
+  }
+}

@@ -1,0 +1,55 @@
+<div class="page-header">
+    {{!-- title i content to moje zmienne z metody res.tender z pliku index.js --}}
+
+    <h2>{{title}}</h2>
+    <p>{{content}}</p>
+    <form action="" class="generator">
+        <label for="">Wybierz płeć:
+            <select name="gender" id="" class="gender">
+                <option value="female">Kobieta</option>
+                <option value="male">Mężczyzna</option>
+            </select>
+        </label>
+        <label for="">Wybierz ilość osób:
+            <input class="ileOsob" type="number" name="results" value="10" min="0">
+        </label>
+        <input type="submit" value="Pobierz" class="pobierz">
+    </form>
+</div>
+<div class="resultDiv">
+
+</div>
+<script type="text/javascript">
+    getUsers = (e) => {
+        e.preventDefault();
+        const ileOsob = document.querySelector(".ileOsob").value;
+        const plec = document.querySelector('[name = "gender"]').value;
+        const apiUrl = `https://randomuser.me/api/?results=${ileOsob}&gender=${plec}`; //adres api
+        fetch(apiUrl)
+            .then(response => {
+                if (response.status !== 200) {
+                    throw Error("To nie jest odpowiedź 200");
+                } else {
+                    return response.json();
+                }
+            })
+            .then(json => pokazUzytkownika(json.results))
+            .catch(err => console.log(err))
+    }
+
+    const pokazUzytkownika = (tablicaResults) => {
+        const resultsDiv = document.querySelector(".resultDiv");
+        resultsDiv.innerHTML = '';//czyszczenie przy każdym szukaniu
+        tablicaResults.forEach((user) => {
+            const item = document.createElement('div');//tworzymy sobie uzytkownika ktorego bedziemy dodawać
+            item.className = 'user';
+            item.innerHTML = `
+                <p class="user_name">${user.name.title} ${user.name.first} ${user.name.last}</p>
+                <img class="foto" src=${user.picture.medium}>
+            `;
+            resultsDiv.appendChild(item);
+            console.log(user);
+        })
+    }
+    document.querySelector(".generator").addEventListener("submit", getUsers);
+</script>
