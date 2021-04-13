@@ -20,6 +20,7 @@ app.get("/", function (req, res) {
   res.render("home", {
     title: "tytuł strony",
     content: "kotent strony",
+    pathCss:'/css/main.css'
   });
 });
 

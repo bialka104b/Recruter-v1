@@ -16,7 +16,26 @@
         <input type="submit" value="Pobierz" class="pobierz">
     </form>
 </div>
-<div class="resultDiv">
+<div class="nameColumnResult row">
+    <div class="col-12">
+        <div class="row">
+            <div class="col-sm-1 foto">Zdjęcie</div>
+            <div class="col-sm-1">Nazwa</div>
+            <div class="col-sm-1 email">E-mail</div>
+            <div class="col-sm-1">Telefon</div>
+            <div class="col-sm-1">Specjalność</div>
+            <div class="col-sm-1">Technologia</div>
+            <div class="col-sm-1">Doświadczenie</div>
+            <div class="col-sm-1">Angielski</div>
+            <div class="col-sm-1">Data kontaktu</div>
+            <div class="col-sm-1">CV</div>
+            <div class="col-sm-1">Wiadomości</div>
+            <div class="col-sm-1">edytuj/usuń</div>
+        </div>
+    </div>
+
+</div>
+<div class="resultDiv row">
 
 </div>
 <script type="text/javascript">
@@ -42,10 +61,40 @@
         resultsDiv.innerHTML = '';//czyszczenie przy każdym szukaniu
         tablicaResults.forEach((user) => {
             const item = document.createElement('div');//tworzymy sobie uzytkownika ktorego bedziemy dodawać
-            item.className = 'user';
+            item.className = 'user col-12';
             item.innerHTML = `
-                <p class="user_name">${user.name.title} ${user.name.first} ${user.name.last}</p>
-                <img class="foto" src=${user.picture.medium}>
+                <div class="row">
+                    <div class="col-sm-2 foto">
+                        <img class="" src=${user.picture.medium}>
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="user_name">${user.name.title} ${user.name.first} ${user.name.last}</p>
+                        <p class="specjalist">Specjalność:</p>
+                        <p class="user_email">Email: ${user.email}</p>
+                        <p class="phone">Telefon: ${user.phone}</p>
+                    </div>
+                    <div class="col-sm-2">
+                        <p class="technology">technology</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p class="experience">doświadczenie</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <p class="language">język</p>
+                    </div>
+                    <div class="col-sm-3">
+                        <p class="date">Data kontaktu: 
+                            <input type="date" name="date" value="">
+                        </p>
+                        <p class="message">Wiadomość</p>
+                    </div>
+                    <div class="col-sm-1">
+                        <button class="edit">edit</button><br>
+                        <button class="del">usun</button><br>
+                        <button class="upload">dodaj plik CV</button>
+                        <button class="save">zapisz</button>
+                    </div>
+                </div>
             `;
             resultsDiv.appendChild(item);
             console.log(user);

@@ -1,0 +1,44 @@
+// reset css
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+//.nameColumnResult
+.nameColumnResult{
+    margin: 0;
+    .row {
+        margin: 0;
+    }
+    .foto {
+        width:72px;
+        padding: 0;
+    }
+}
+
+//.resultDiv
+.resultDiv {
+    margin: 0;
+    .row {
+        margin: 0;
+    }
+}
+.user {
+    background-color: green;
+    .foto {
+        //width:72px;
+        //padding: 0;
+        img {
+            width: 100%;
+        }
+    }
+    .email {
+        width:auto;
+    }
+    .user_description {
+        display: inline-block;
+        .user_name {
+            font-size: large;
+        }
+    }
+}

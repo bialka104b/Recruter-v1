@@ -1,0 +1,48 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.nameColumnResult {
+  margin: 0;
+}
+
+.nameColumnResult .row {
+  margin: 0;
+}
+
+.nameColumnResult .foto {
+  width: 72px;
+  padding: 0;
+}
+
+.resultDiv {
+  margin: 0;
+}
+
+.resultDiv .row {
+  margin: 0;
+}
+
+.user {
+  background-color: green;
+}
+
+.user .foto img {
+  width: 100%;
+}
+
+.user .email {
+  width: auto;
+}
+
+.user .user_description {
+  display: inline-block;
+}
+
+.user .user_description .user_name {
+  font-size: large;
+}
+/*# sourceMappingURL=main.css.map */
