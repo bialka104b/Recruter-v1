@@ -6,6 +6,8 @@ const multer = require("multer");
 const path = require("path");
 const helpers = require("./helpers");
 const process = require("process");
+const bin = require("binary-encoder"); //do kodowania obiektu do buffer
+
 //var fileupload = require('fileupload').createFileUpload('/uploadDir').middleware;
 const app = express();
 
@@ -54,8 +56,7 @@ const readFileDataDir = fs.readdir(dirname, (err, files) => {
     }
     // var lista = fs.createReadStream(data, {
     //   encoding: "utf8"
-    // });
-    //console.log(data);
+    // })
     //funkcja do zapisywania danych do innego pliku
     function storedata(data, path) {
       try {
@@ -97,12 +98,12 @@ const readFileDataDir = fs.readdir(dirname, (err, files) => {
 
 //obserwowanie pliku Lista.json i zapisywanie danych do pliku baza.json
 //działa tylko po zapisaniu pliku w edytorze
+//FUNKCJA DO PARSOWANIA
+function parsuj(data) {
+  const dane = JSON.parse(data);
+  return dane;
+}
 fs.watch(file("Lista.json"), function (eventType, filename) {
-  //FUNKCJA DO PARSOWANIA
-  function parsuj(data) {
-    const dane = JSON.parse(data);
-    return dane;
-  }
   fs.readFile(file(filename), function (err, data) {
     //JSON.parse()pobiera ciąg JSON i przekształca go w obiekt JavaScript.
     //JSON.stringify()pobiera obiekt JavaScript i przekształca go w ciąg JSON.
@@ -127,20 +128,58 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
           // data = JSON.stringify(jsonText);
           // console.log("data po stringi", jsonText);
           // console.log("typ jsonText", typeof jsonText);
-         
+
+          //odczytuje zawartośc Lista json
           const zmienna = fs.readFileSync(file("Lista.json").toString());
-          console.log("zmienna!!!!!!!!!", zmienna);
           const zmienna1 = zmienna.toString();
-          console.log(zmienna1);
-          const zmienna2 = parsuj(zmienna1);
-          console.log(zmienna2);
-          console.log("lp", zmienna2.lp);//w tym miejscu dostałam sie do obiektów tego jsona
-          fs.writeFile(file("baza.json"), zmienna, "utf-8", (err) => {
-            if (err) console.log(err.message);
-            else {
+          const listaJson = parsuj(zmienna1);
+          console.log("listaJson: ", listaJson);
+          //console.log("listaJson.lp", listaJson.lp); //w tym miejscu dostałam sie do obiektów tego jsona
+
+          //odczytajmy jeszcze dane z pliku baza.json aby połaczyć dane z obu plików
+          const bazaJson = fs.readFileSync(file("baza.json").toString());
+          const bazaJson1 = bazaJson.toString();
+          const bazaJsonObject = parsuj(bazaJson1);
+          console.log("bazaJsonObject", bazaJsonObject);
+
+          //tworze nazwy pusty obiekt ktory trafi docelowo do pliku baza.json
+          let polaczonyBazaILista = {};
+          
+          //następuje tutaj zamiana obiektu bazaJsonObiekt na tablice
+          let arr = [];
+          for (let key in bazaJsonObject) {//petle te iteruja od 0
+            console.log("ile wynosi to key bazaJSONOBJECT? ", key);
+            arr.push(bazaJsonObject[key.toString()]);
+            console.log("arr", arr[key]);
+          }
+          polaczonyBazaILista = arr; //przypisuje przetworzona tablice do tego co ma wylądowac w pliku baza.json
+          //console.log("polaczonyBazaILista po petli", polaczonyBazaILista);
+          
+          //następuje tutaj zamiana obiektu listaJson na tablice
+          let arrayZmienna2 = [];
+          for (let key in listaJson) {//petle te iteruja od 0
+            arrayZmienna2.push(listaJson[key.toString()]);
+            console.log("arr zmienna2", arrayZmienna2[key]);
+          }
+          console.log("arrayZmienna2[0]", arrayZmienna2[0]);
+          for (const key in arrayZmienna2) {
+            polaczonyBazaILista.push(arrayZmienna2[key]);
+          }
+          console.log("polaczonyBazaILista po push arrayzmienna2", polaczonyBazaILista);
+
+          //Tutaj mam kodowanie obiektu JS na buffer
+          const moje_dane = JSON.stringify(polaczonyBazaILista);
+          const buf1 = Buffer.from(moje_dane);
+          //console.log("odkodowane", buf1);
+          
+          //tutaj następuje automatyczny zapis do pliku z odkodowanym bufferem,callback słuzy tylko do obsługi błędów
+          fs.writeFile(file("baza.json"), buf1, "utf-8", (err) => {
+            if (err) {
+              console.log("cos poszło nie tak przy zapisywaniu baza.json", err.message);
+            } else {
               console.log("Plik zapisany pomyślnie\n");
-              console.log("Napis ma następującą zawartość:");
-              console.log(parsuj(fs.readFileSync(file("baza.json"), "utf8")));
+              // console.log("Napis ma następującą zawartość:");
+              // console.log(parsuj(fs.readFileSync(file("baza.json"), "utf8")));
             }
           });
         } else {
@@ -161,7 +200,6 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
       //   console.log("mój error", err.message);
       // }
     }
-    //const baza =
 
     // if (!err) {
     //   fs.writeFile(file("baza.json"), data, () => {
@@ -170,7 +208,6 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
     // }
     //file(filename).close();
   });
-  //tutaj pasuje na serwerze zapisać ten plik to na jutro
 });
 //Ze względów bezpieczeństwa będziemy chcieli sprawdzić poprawność plików przed przesłaniem ich na nasze serwery. Wyedytujmy index.js plik i dodajmy obie funkcjonalności:
 app.post("/upload-file", (req, res) => {
@@ -198,12 +235,9 @@ app.post("/upload-file", (req, res) => {
       <p width="500">${req.file.originalname}</p>
       <hr />
       <a class="back_home" href="./">&#9194; Powróć do strony głównej</a>`);
-    //console.log(req.body);
   });
 });
-// module.exports = {
-//   app: 'app'
-// }
+
 
 app.get("/", function (req, res) {
   res.render("home", {
