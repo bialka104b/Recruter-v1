@@ -1,2 +1,0 @@
-Lp.	Zdjêcie	Imiê i nazwisko	Email	Numer telefonu	Specjalnoœæ	technologie	Doœwiadczenie (w latach)	Poziom angielskiego	Ostatni kontakt	CV	Notatki / Wiadomoœci
-1	nowe	vvv bbb	vvv@mail.pl	222	Nowa	Html	5	B2	10.04.2021		notatka

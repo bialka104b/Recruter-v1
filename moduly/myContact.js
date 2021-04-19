@@ -22,6 +22,6 @@ exports.profileRequestContact = https.request(options, function(res) {
 
   res.on('end', () => {
     const profileData = JSON.parse(data);
-    console.log(JSON.stringify(profileData, 0, 2));
+    //console.log(JSON.stringify(profileData, 0, 2));
   });
 });

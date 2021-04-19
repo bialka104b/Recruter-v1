@@ -29,7 +29,7 @@ const jjj = (data, path) => {
 }
 const json = '{"name":"Skip","age":2222222,"favoriteFood":"Steak"}'
 const hhh = JSON.parse(JSON.stringify(path1));
-console.log('jaki typ',typeof(path1));
+console.log('jaki typ',typeof(hhh));
 console.log('parse', hhh);
 // https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id=78iwh10gzmnfxw&redirect_uri=https://www.linkedin.com/company/76865959/admin/&scope=r_liteprofile%20r_emailaddress%20w_member_social
 

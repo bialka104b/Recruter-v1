@@ -16,35 +16,11 @@
         <input type="submit" value="Pobierz" class="pobierz">
     </form>
 
-    <form method="POST" action="/upload-profile-pic" enctype="multipart/form-data">
+    <form method="POST" action="/upload-file" enctype="multipart/form-data">
         <label for="file">Dodaj plik .json</label>
-        <input id="file" type="file" name="profile_pic">
-        <input type="submit" name="btn_upload_profile_pic" value="Upload" >
+        <input id="file" type="file" name="my_file_upload">
+        <input type="submit" name="btn_my_file_upload" value="zapisz" >
     </form>
-    
-    <script type="text/javascript">
-        //{{!-- function zmienna() {
-        //    jQuery.get('#file', function (data) {
-        //        alert(data);
-        //        console.log("działa");
-        //    });
-        //} --}}
-        const fff = () => {
-            var fff = document.getElementById("file");
-            return fff;
-        }
-        function czytaj(fff) {
-            var output = "";
-            var reader = new FileReader();
-
-            reader.readAsText = function() {
-
-                output = reader.result;
-                console.log(output);
-            };
-        }
-        
-    </script>
 </div>
 
 <div class="nameColumnResult row">

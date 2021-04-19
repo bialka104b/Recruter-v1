@@ -1,0 +1,16 @@
+{
+    "lp": 1,
+    "zdjecie": "nowe",
+    "imię_i_nazwisko": "vvv bbb",
+    "email": "vvv@mail.pl",
+    "numer_telefonu": 222,
+    "specjalność": "Nowa",
+    "technologie": "Html",
+    "doswiadczenie_(w_latach)": 5,
+    "poziom_angielskiego": "B2",
+    "ostatni_kontakt": "10.04.2021",
+    "CV": "",
+    "notatki": {
+        " wiadomości": "notatka"
+    }
+}

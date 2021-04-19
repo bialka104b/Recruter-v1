@@ -21,10 +21,10 @@ exports.profileRequest = https.request(optionsMe, function(res) {
   res.on('end', () => {
     const profileData = JSON.parse(data);
     
-    console.log(profileData);
+    //console.log(profileData);
     profileData.localizedLastName = "Zmodyfikowany";//modyfikowanie istniejącej wartosci
     profileData.kkk = "nowa wartosc k";//dodawanie nowego obiektu do obiektu javascript
-    console.log(JSON.stringify(profileData, 0, 2));
+    //console.log(JSON.stringify(profileData, 0, 2));
   });
 });
 
