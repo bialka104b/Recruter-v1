@@ -1,3 +1,4 @@
+//FIREBASE SOBIE RACZEJ ODINSTALUJ
 const { json } = require("express");
 const fs = require("fs");
 const express = require("express");
@@ -6,11 +7,37 @@ const multer = require("multer");
 const path = require("path");
 const helpers = require("./helpers");
 const process = require("process");
-const bin = require("binary-encoder"); //do kodowania obiektu do buffer
+const mongo = require("mongodb"); //import biblioteki mongo
+const client = new mongo.MongoClient("mongodb://localhost:27017", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+}); //bez tych opcji w klamerkach nie zadziała
+//połączenie z bazą MONGODB
+client.connect((err) => {
+  if (err) {
+    console.log("błąd polaczenia database");
+  } else {
+    console.log("polaczenie udane z bazą");
+    const db = client.db("test"); //pobieram nazwe bazy danych
+    const cars = db.collection("cars"); // nazwa naszej kolekcji
+    //...tu sobie coś kodzimy
+    cars.insertOne({ brand: "Samochód", model: "HDHDHDHHDHD" });
+    console.log(
+      cars.find({}).toArray((err, data) => {
+        if (err) {
+          console.log("wyskoczyl błąd przy szukaniu");
+        } else {
+          console.log("Klienci: ", data);
+        }
+      }),
+    );
+    //zamknij baze
+    client.close(); //zamknij baze
+  }
+});
 
-//var fileupload = require('fileupload').createFileUpload('/uploadDir').middleware;
+//inicjalizacja biblioteki expres.js
 const app = express();
-
 app.engine("handlebars", handle_bars({ defaultLayout: "main" })); //głównym plikiem w którym jest szablon strony bedzie main.handlebars
 app.set("view engine", "handlebars"); //uzywam handlebarsów
 
@@ -144,20 +171,22 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
 
           //tworze nazwy pusty obiekt ktory trafi docelowo do pliku baza.json
           let polaczonyBazaILista = {};
-          
+
           //następuje tutaj zamiana obiektu bazaJsonObiekt na tablice
           let arr = [];
-          for (let key in bazaJsonObject) {//petle te iteruja od 0
+          for (let key in bazaJsonObject) {
+            //petle te iteruja od 0
             console.log("ile wynosi to key bazaJSONOBJECT? ", key);
             arr.push(bazaJsonObject[key.toString()]);
             console.log("arr", arr[key]);
           }
           polaczonyBazaILista = arr; //przypisuje przetworzona tablice do tego co ma wylądowac w pliku baza.json
           //console.log("polaczonyBazaILista po petli", polaczonyBazaILista);
-          
+
           //następuje tutaj zamiana obiektu listaJson na tablice
           let arrayZmienna2 = [];
-          for (let key in listaJson) {//petle te iteruja od 0
+          for (let key in listaJson) {
+            //petle te iteruja od 0
             arrayZmienna2.push(listaJson[key.toString()]);
             console.log("arr zmienna2", arrayZmienna2[key]);
           }
@@ -171,7 +200,7 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
           const moje_dane = JSON.stringify(polaczonyBazaILista);
           const buf1 = Buffer.from(moje_dane);
           //console.log("odkodowane", buf1);
-          
+
           //tutaj następuje automatyczny zapis do pliku z odkodowanym bufferem,callback słuzy tylko do obsługi błędów
           fs.writeFile(file("baza.json"), buf1, "utf-8", (err) => {
             if (err) {
@@ -237,7 +266,6 @@ app.post("/upload-file", (req, res) => {
       <a class="back_home" href="./">&#9194; Powróć do strony głównej</a>`);
   });
 });
-
 
 app.get("/", function (req, res) {
   res.render("home", {
