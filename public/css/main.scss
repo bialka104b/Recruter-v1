@@ -1,44 +1,95 @@
 // reset css
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
+//zmienne
+$bialy: #fff;
+$ciemno_szary: #333;
+$zielony: #00963f;
+$niebieski: #018bd3;
+$czerwony: red;
+$czcionka_lato: "Lato", sans-serif;
+$czcionka_releway: "Raleway", sans-serif;
+
+body {
+  color: $ciemno_szary;
+  font-family: $czcionka_lato;
+}
+
+//.page-header
+.page-header {
+  h2 {
+  }
+  p {
+  }
+  .upload {
+    label {
+      position: absolute;
+      background-color: $zielony;
+      border: 0;
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      &:hover {
+        background-color: #008537;
+      }
+    }
+    #file {
+      width: 300px;
+      padding-left: 27px;
+      height: 32px;
+      border: 0px;
+    }
+    [type="submit"] {
+      margin-top: 5px;
+    }
+  }
+}
+
 //.nameColumnResult
-.nameColumnResult{
+.nameColumnResult {
+  margin: 0;
+  .row {
     margin: 0;
-    .row {
-        margin: 0;
+  }
+  .wiersz1 {
+    .kolumna1 {
+      .dane_osobowe {
+        .opakowanie {
+          display: flex;
+          margin: 5px 0;
+          label {
+            flex-grow: 1;
+            padding-right: 10px;
+          }
+          input {
+            flex-grow: 1;
+            min-width: 150px;
+            max-width: 150px;
+          }
+        }
+      }
     }
-    .foto {
-        width:72px;
-        padding: 0;
-    }
+  }
 }
 
 //.resultDiv
 .resultDiv {
+  margin: 0;
+  .row {
     margin: 0;
-    .row {
-        margin: 0;
-    }
+  }
 }
 .user {
-    background-color: green;
-    .foto {
-        //width:72px;
-        //padding: 0;
-        img {
-            width: 100%;
-        }
+  background-color: $zielony;
+  .email {
+    width: auto;
+  }
+  .user_description {
+    display: inline-block;
+    .user_name {
+      font-size: large;
     }
-    .email {
-        width:auto;
-    }
-    .user_description {
-        display: inline-block;
-        .user_name {
-            font-size: large;
-        }
-    }
+  }
 }

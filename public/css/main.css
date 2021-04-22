@@ -5,6 +5,34 @@
   padding: 0;
 }
 
+body {
+  color: #333;
+  font-family: "Lato", sans-serif;
+}
+
+.page-header .upload label {
+  position: absolute;
+  background-color: #00963f;
+  border: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.page-header .upload label:hover {
+  background-color: #008537;
+}
+
+.page-header .upload #file {
+  width: 300px;
+  padding-left: 27px;
+  height: 32px;
+  border: 0px;
+}
+
+.page-header .upload [type="submit"] {
+  margin-top: 5px;
+}
+
 .nameColumnResult {
   margin: 0;
 }
@@ -13,9 +41,26 @@
   margin: 0;
 }
 
-.nameColumnResult .foto {
-  width: 72px;
-  padding: 0;
+.nameColumnResult .wiersz1 .kolumna1 .dane_osobowe .opakowanie {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 5px 0;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .dane_osobowe .opakowanie label {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  padding-right: 10px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .dane_osobowe .opakowanie input {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  min-width: 150px;
+  max-width: 150px;
 }
 
 .resultDiv {
@@ -27,11 +72,7 @@
 }
 
 .user {
-  background-color: green;
-}
-
-.user .foto img {
-  width: 100%;
+  background-color: #00963f;
 }
 
 .user .email {

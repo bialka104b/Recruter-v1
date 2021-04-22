@@ -3,6 +3,13 @@
 
     <h2>{{title}}</h2>
     <p>{{content}}</p>
+    <div class="nazwiska">
+        <ul>
+            {{#each nazwisko, imie}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </div>
     <form action="" class="generator">
         <label for="">Wybierz płeć:
             <select name="gender" id="" class="gender">
@@ -13,38 +20,108 @@
         <label for="">Wybierz ilość osób:
             <input class="ileOsob" type="number" name="results" value="10" min="0">
         </label>
-        <input type="submit" value="Pobierz" class="pobierz">
+        <input type="submit" value="Pobierz" class="pobierz btn btn-primary">
     </form>
 
-    <form method="POST" action="/upload-file" enctype="multipart/form-data">
-        <label for="file">Dodaj plik .json</label>
-        <input id="file" type="file" name="my_file_upload">
-        <input type="submit" name="btn_my_file_upload" value="zapisz" >
+    <form method="POST" action="/upload-file" enctype="multipart/form-data" class="upload">
+        <label for="file" class="btn btn-primary">Dodaj plik .json</label>
+        <input id="file" type="file" name="my_file_upload" class="btn btn-primary">
+        <input type="submit" name="btn_my_file_upload" value="zapisz" class="btn btn-danger">
     </form>
 </div>
 
 <div class="nameColumnResult row">
-    <div class="col-12">
-        <div class="row">
-            <div class="col-sm-1 foto">Zdjęcie</div>
-            <div class="col-sm-1">Nazwa</div>
-            <div class="col-sm-1 email">E-mail</div>
-            <div class="col-sm-1">Telefon</div>
-            <div class="col-sm-1">Specjalność</div>
-            <div class="col-sm-1">Technologia</div>
-            <div class="col-sm-1">Doświadczenie</div>
-            <div class="col-sm-1">Angielski</div>
-            <div class="col-sm-1">Data kontaktu</div>
-            <div class="col-sm-1">CV</div>
-            <div class="col-sm-1">Wiadomości</div>
-            <div class="col-sm-1">edytuj/usuń</div>
+    <div class="col-12 wiersz1">
+        <div class="row kolumna1">
+            <form action="/wyslijimie" method="GET">
+                <div class="col-sm-3 dane_osobowe">
+                    <div class="opakowanie">
+                        <label for="imie">Wybierz imię:</label>
+                        <input type="text" name="imie" id="imie">
+                    </div>
+                    <div class="opakowanie">
+                        <label for="nazwisko">Wybierz nazwisko:</label>
+                        <input type="text" name="nazwisko" id="nazwisko">
+                    </div>
+                    <div class="opakowanie">
+                        <label for="specjalnosc">Wybierz Specjalność:</label>
+                        <input type="text" name="specjalnosc" id="specjalnosc">
+                    </div>
+                    <div class="opakowanie">
+                        <label for="email">Wybierz E-mail:</label>
+                        <input type="email" name="email" id="email">
+                    </div>
+                    <div class="opakowanie">
+                        <label for="telefon">Wybierz telefon:</label>
+                        <input type="text" name="telefon" id="telefon">
+                    </div>
+                </div>
+                <input type="submit" name="pobierz_imie" value="pobierz" class="btn btn-danger">
+            </form>
+            <div class="col-sm-2 technologie_doswiadczenie">
+                <label for="technologie" class="technologie"> Wybirz technologię:<br>
+                    {{!-- tu trzeba obsłuzyć jeszcze form="pobierz" --}}
+                    <select name="technologie" id="technologie" form="pobierz">
+                        <option value="html">HTML</option>
+                        <option value="Css">CSS</option>
+                        <option value="Sass/Scss/Less">Sass / Scss / Less </option>
+                        <option value="React">React.js</option>
+                        <option value="Vue">Vue.js</option>
+                        <option value="Node">Node.js</option>
+                        <option value="Bootstrap">Bootstrap</option>
+                        <option value="PHP">PHP</option>
+                        <option value="C++">C++</option>
+                        <option value="C#">C#</option>
+                    </select>
+                </label>
+                <label for="doswiadczenie" class="doswiadczenie"> Wybirz doświadczenie w latach:<br>
+                    {{!-- tu trzeba obsłuzyć jeszcze form="pobierz" --}}
+                    <select name="doswiadczenie" id="doswiadczenie" form="pobierz">
+                        <option value="1-3">1 do 3 lata</option>
+                        <option value="4-6">4 do 6 lat</option>
+                        <option value="> 7">więcej niż 6 lat</option>
+                    </select>
+                </label>
+            </div>
+            <div class="col-sm-3 jezyki">Wybierz języki obce:<br>
+                <input type="checkbox" id="angielski" name="angielski" value="angielski">
+                <label for="angielski">Angielski</label><br>
+                <input type="checkbox" id="niemiecki" name="niemiecki" value="niemiecki">
+                <label for="niemiecki">Niemiecki</label><br>
+                <input type="checkbox" id="hiszpanski" name="hiszpanski" value="hiszpanski">
+                <label for="hiszpanski">Hiszpański</label><br>
+                <input type="checkbox" id="rosyjski" name="rosyjski" value="rosyjski">
+                <label for="rosyjski">rosyjski</label><br>
+                <input type="checkbox" id="francuski" name="francuski" value="francuski">
+                <label for="francuski">francuski</label><br>
+                <input type="checkbox" id="ukrainski" name="ukrainski" value="ukrainski">
+                <label for="ukrainski">ukrainski</label><br>
+                <input type="checkbox" id="polski" name="polski" value="polski">
+                <label for="polski">polski</label><br><br>
+            </div>
+            <div class="col-sm-2 dataKontaktu_cv">
+                <label for="data_kontaktu">Data ostatniego kontaktu</label>
+                <input type="date" name="data_kontaktu" id="data_kontaktu">
+                <label for="cv">Wgraj plik CV</label>
+                <input type="file" name="cv" id="cv">
+            </div>
+            <div class="col-sm-2 wiadomosci">
+                <label for="wiadomosci">Treść wiadomości:</label>
+                <textarea name="" id="wiadomosci" cols="30" rows="10" placeholder="Jeszcze nie kontaktowałeś się z kandydatem"></textarea>
+            </div>
+            {{!-- <div class="col-sm-1 przyciski">
+                <button>Edytuj</button>
+                <button>Usuń</button>
+                <button>Porównaj z innym</button>
+            </div> --}}
         </div>
     </div>
-
 </div>
+
 <div class="resultDiv row">
-
+    
 </div>
+
 <script type="text/javascript">
     getUsers = (e) => {
         e.preventDefault();
@@ -71,9 +148,6 @@
             item.className = 'user col-12';
             item.innerHTML = `
                 <div class="row">
-                    <div class="col-sm-2 foto">
-                        <img class="" src=${user.picture.medium}>
-                    </div>
                     <div class="col-sm-2">
                         <p class="user_name">${user.name.title} ${user.name.first} ${user.name.last}</p>
                         <p class="specjalist">Specjalność:</p>

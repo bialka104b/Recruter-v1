@@ -12,29 +12,6 @@ const client = new mongo.MongoClient("mongodb://localhost:27017", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }); //bez tych opcji w klamerkach nie zadziała
-//połączenie z bazą MONGODB
-client.connect((err) => {
-  if (err) {
-    console.log("błąd polaczenia database");
-  } else {
-    console.log("polaczenie udane z bazą");
-    const db = client.db("test"); //pobieram nazwe bazy danych
-    const cars = db.collection("cars"); // nazwa naszej kolekcji
-    //...tu sobie coś kodzimy
-    cars.insertOne({ brand: "Samochód", model: "HDHDHDHHDHD" });
-    console.log(
-      cars.find({}).toArray((err, data) => {
-        if (err) {
-          console.log("wyskoczyl błąd przy szukaniu");
-        } else {
-          console.log("Klienci: ", data);
-        }
-      }),
-    );
-    //zamknij baze
-    client.close(); //zamknij baze
-  }
-});
 
 //inicjalizacja biblioteki expres.js
 const app = express();
@@ -57,8 +34,6 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, `upload/`);
   },
-
-  // By default, multer removes file extensions so let's add them back
   filename: function (req, file, cb) {
     //tutaj ustawiam nowa nazwe pliku wraz z rozszerzeniem, nazwa będzie Lista.js
     //cb(null, file.originalname + path.extname(file.originalname));//tu by była taka sama jak przy wgrywaniu
@@ -238,6 +213,129 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
     //file(filename).close();
   });
 });
+
+//21.04 metoda post do obsłużenia formularza Wybierz imię
+const url = require("url");
+var qs = require("querystring");
+
+app.get("/wyslijimie", (req, res) => {
+  // if (err) {
+  //   console.log("błąd polaczenia database");
+  // } else {
+  //   console.log("polaczenie udane z bazą");
+  //   const db = client.db("test"); //pobieram nazwe bazy danych
+  //   const cars = db.collection("cars"); // nazwa naszej kolekcji
+  //   //...tu sobie coś kodzimy
+  //   let model = Math.random() * 100;
+  //   cars.insertOne({ brand: "Samochód", model: model }, (err) => {
+  //     if(!err) {
+  //       client.close();
+  //     }
+  //   });
+
+  //zamknij baze po 3 sekundach aby zdążyły wykonać się operacje
+  //mongo nie zezwala na wiele połączeń więc jeśli kilka razy chce sie łączyć
+  // setTimeout(function () {
+  //   client.close();
+  // }, 1000);
+  // }
+
+  //połączenie sie z baza mongo db
+  client.connect((err) => {
+    if (err) {
+      console.log("błąd polaczenia database");
+      client.close();
+    } else {
+      const db = client.db("test"); //pobieram nazwe bazy danych
+      const kandydaci = db.collection("kandydaci"); // nazwa naszej kolekcji
+      const imie = req.query.imie;
+      const nazwisko = req.query.nazwisko ? req.query.nazwisko : null;
+      console.log("polaczenie udane z bazą");
+      // function szukajOsoby(connectErr, client) {
+      //   assert.equal(null, connectErr);
+      //   const coll = client.db('test').collection('kandydaci');
+      //   coll.find(filter, (cmdErr, result) => {
+      //     assert.equal(null, cmdErr);
+      //   });
+      //   client.close();
+      // };
+      kandydaci.find({ $or: [{ Imię: imie }, { Nazwisko: nazwisko }] }).toArray((err, data) => {
+        if (err) console.log("błąd", err.message);
+        else {
+          let wyslij = [];
+          console.log("moje dane", data);
+          wyslij = data;
+          let noweNazwisko = [];
+          for (const key in data) {
+            console.log(data[key]);
+            noweNazwisko.push(Object.values(data[key])[2]);
+            console.log("noweNazwisko", noweNazwisko);
+          }
+
+          console.log("noweNazwisko", noweNazwisko);
+          // const output = noweNazwisko.reduce((carry, item) => {
+          //     if(item == 0) {
+          //       carry[item[0]] = item[1];
+          //     }
+          //     carry[item[0]] = item[1];
+          //     return carry;
+          // });
+          // console.log("noweNazwisko", output);
+          res.render("home", {
+            imie: imie,
+            nazwisko: noweNazwisko,
+            title: "tytuł strony",
+            content: "kotent strony",
+            pathCss: "/css/main.css",
+          });
+          // setTimeout(function () {
+          //   client.close();
+          // }, 3000);
+        }
+      });
+
+      //res.send(`${wyslij._idObject('607f4780074123cb79e10533')}`);//tutaj mamy imie
+      // setTimeout(function () {
+
+      //     client.close();
+      // }, 3000);
+    }
+  });
+
+  //console.log("moje dane", wyslij);
+  //console.log(url.parse(req.url).query);
+});
+
+// var onRequest = function (req, res) {
+//   var data = '';
+//   res.writeHead(200, {'Content-Type': 'text/html'});
+//   if (req.method === "GET") {
+//       res.end(
+//           getResponse(
+//               getRoute(req),
+//               getQueryParams(req)
+//           )
+//       );
+//   } else if (req.method === "POST") {
+//       //obsługa post-a
+//       req.setEncoding('utf-8');
+//       req.on('data', function (_data) {
+//           data += _data;
+//       });
+//       req.on('end', function() {
+//           data = qs.parse(data);
+//           res.end(
+//               //nasza odpowiedź
+//               getResponse(
+//                   getRoute(req),
+//                   data
+//               )
+//           );
+
+//       });
+//       console.log("data z geta", data)
+//   }
+// }
 //Ze względów bezpieczeństwa będziemy chcieli sprawdzić poprawność plików przed przesłaniem ich na nasze serwery. Wyedytujmy index.js plik i dodajmy obie funkcjonalności:
 app.post("/upload-file", (req, res) => {
   // 'my_file_upload' is the name of our file input field in the HTML form
@@ -269,6 +367,7 @@ app.post("/upload-file", (req, res) => {
 
 app.get("/", function (req, res) {
   res.render("home", {
+    //imie : imie,
     title: "tytuł strony",
     content: "kotent strony",
     pathCss: "/css/main.css",
