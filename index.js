@@ -259,31 +259,29 @@ app.get("/wyslijimie", (req, res) => {
       //   });
       //   client.close();
       // };
-      kandydaci.find({ $or: [{ Imię: imie }, { Nazwisko: nazwisko }] }).toArray((err, data) => {
+      kandydaci.find({ $or: [{ Imie: imie }, { Nazwisko: nazwisko }] }).toArray((err, data) => {
         if (err) console.log("błąd", err.message);
         else {
-          let wyslij = [];
           console.log("moje dane", data);
-          wyslij = data;
+          let imie = [];
+          for (const key in data) {
+            console.log(data[key]);
+            imie.push(Object.values(data[key]));
+            console.log("noweImie", imie);
+          }
+
+          
           let noweNazwisko = [];
           for (const key in data) {
             console.log(data[key]);
             noweNazwisko.push(Object.values(data[key])[2]);
-            console.log("noweNazwisko", noweNazwisko);
+            //console.log("noweNazwisko", noweNazwisko);
           }
 
           console.log("noweNazwisko", noweNazwisko);
-          // const output = noweNazwisko.reduce((carry, item) => {
-          //     if(item == 0) {
-          //       carry[item[0]] = item[1];
-          //     }
-          //     carry[item[0]] = item[1];
-          //     return carry;
-          // });
-          // console.log("noweNazwisko", output);
           res.render("home", {
             imie: imie,
-            nazwisko: noweNazwisko,
+            nazwisko: data,
             title: "tytuł strony",
             content: "kotent strony",
             pathCss: "/css/main.css",

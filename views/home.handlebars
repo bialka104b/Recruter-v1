@@ -5,8 +5,11 @@
     <p>{{content}}</p>
     <div class="nazwiska">
         <ul>
-            {{#each nazwisko, imie}}
-                <li>{{this}}</li>
+            {{#each nazwisko}}
+               <div>{{Nazwisko}}</div>
+               <div>{{Email}}</div>
+               <div>{{_id}}</div>
+               <div>{{Telefon}}</div>
             {{/each}}
         </ul>
     </div>
