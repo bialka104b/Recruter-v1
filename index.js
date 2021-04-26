@@ -151,9 +151,9 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
           let arr = [];
           for (let key in bazaJsonObject) {
             //petle te iteruja od 0
-            console.log("ile wynosi to key bazaJSONOBJECT? ", key);
+            //console.log("ile wynosi to key bazaJSONOBJECT? ", key);
             arr.push(bazaJsonObject[key.toString()]);
-            console.log("arr", arr[key]);
+            //console.log("arr", arr[key]);
           }
           polaczonyBazaILista = arr; //przypisuje przetworzona tablice do tego co ma wylądowac w pliku baza.json
           //console.log("polaczonyBazaILista po petli", polaczonyBazaILista);
@@ -246,10 +246,27 @@ app.get("/wyslijimie", (req, res) => {
       console.log("błąd polaczenia database");
       client.close();
     } else {
-      const db = client.db("test"); //pobieram nazwe bazy danych
+      const db = client.db("test"); //pobieram nazwe bazy danych test
+      const dbSpecjalista = "";
+      
       const kandydaci = db.collection("kandydaci"); // nazwa naszej kolekcji
       const imie = req.query.imie;
-      const nazwisko = req.query.nazwisko ? req.query.nazwisko : null;
+      const nazwisko = req.query.nazwisko;
+      const email = req.query.email;
+      const miejscowosc = req.query.miejscowosc;
+      const telefon = (req.query.telefon).toLocaleString();
+      const specjalnosc = req.query.specjalnosc; // narazie brak pola w bazie danych
+      const technologie = req.query.technologie;
+      const doswiadczenie = req.query.doswiadczenie;
+      
+      const angielski = req.query.angielski.valueOf();
+      //const francuski = req.query.francuski.valueOf();
+      //const niemiecki = req.query.niemiecki.valueOf();
+      //const hiszpański = req.query.hiszpanski.valueOf(checked);
+
+      //TU SKOŃCZYŁAM
+      
+      console.log("jezyk to", angielski );
       console.log("polaczenie udane z bazą");
       // function szukajOsoby(connectErr, client) {
       //   assert.equal(null, connectErr);
@@ -259,49 +276,285 @@ app.get("/wyslijimie", (req, res) => {
       //   });
       //   client.close();
       // };
-      kandydaci.find({ $or: [{ Imie: imie }, { Nazwisko: nazwisko }] }).toArray((err, data) => {
-        if (err) console.log("błąd", err.message);
-        else {
-          console.log("moje dane", data);
-          let imie = [];
-          for (const key in data) {
-            console.log(data[key]);
-            imie.push(Object.values(data[key]));
-            console.log("noweImie", imie);
-          }
+      
+      //SZUKANIE PO ZAWIERANIU SIE SŁOWA
+      // const miejscowosc1 = kandydaci.find( { Technologie: {$regex:"HTML"}} ).toArray((err, dataFromMongo) => {
+      //   console.log(dataFromMongo);
+      // });
+      //console.log("RESULT_________________", miejscowosc1);
 
-          
-          let noweNazwisko = [];
-          for (const key in data) {
-            console.log(data[key]);
-            noweNazwisko.push(Object.values(data[key])[2]);
-            //console.log("noweNazwisko", noweNazwisko);
-          }
-
-          console.log("noweNazwisko", noweNazwisko);
-          res.render("home", {
-            imie: imie,
-            nazwisko: data,
+      //FUNKCJA POTRZEBNA DO RENDEROWANIA INFORMACJI Z BAZY DANYCH NA STRONE
+      function findInMongoDb(params) {
+        kandydaci.find(params).toArray((err, dataFromMongo) => {
+          //POD PARAMETREM dataFromMongo DOSTAJE MÓJ OBIEKT TABLICOWY Z DANYMI
+          //OBIEKT DO RENDEROWANIA
+          const objectRender = {
+            person: dataFromMongo,
             title: "tytuł strony",
             content: "kotent strony",
             pathCss: "/css/main.css",
-          });
-          // setTimeout(function () {
-          //   client.close();
-          // }, 3000);
+          }
+          //JEŚLI JEST ERROR TO WYŚWIETL MI GO
+          if (err) console.log("błąd", err.message);
+          //JEŚLI NIEMA ERRORA TO WYRENDERUJ DANE
+          else {
+            res.render("home", objectRender);
+          }
+        });
+      }
+      
+      //TU MAMY PRZYPADKI GDZIE POLE IMIE JEST WPROWADZONE
+      if(imie != ""){
+        //NAZWISKO PUSTE
+        if(nazwisko == "") {
+          //100 
+          if(imie != "" && nazwisko == "" && email == "" && miejscowosc == "" && telefon == "" && specjalnosc == ""){
+
+            findInMongoDb({Imie:{$regex: imie}, Angielski:{$regex:angielski}});
+          }
+          if(imie != "" && nazwisko == "" && email == "" && miejscowosc == "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Specjalnosc:specjalnosc, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko == "" && email == "" && miejscowosc == "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Telefon:telefon});
+          }
+          if(imie != "" && nazwisko == "" && email == "" && miejscowosc == "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko == "" && email == "" && miejscowosc != "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Miejscowosc:miejscowosc});
+          }
+          if(imie != "" && nazwisko == "" && email == "" && miejscowosc != "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Miejscowosc:miejscowosc, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko == "" && email == "" && miejscowosc != "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Miejscowosc:miejscowosc, Telefon:telefon});
+          }
+          if(imie != "" && nazwisko == "" && email == "" && miejscowosc != "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Miejscowosc:miejscowosc, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+          //101
+          if(imie != "" && nazwisko == "" && email != "" && miejscowosc == "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Email:email});
+          }
+          if(imie != "" && nazwisko == "" && email != "" && miejscowosc == "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Email:email, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko == "" && email != "" && miejscowosc == "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Email:email, Telefon:telefon});
+          }
+          if(imie != "" && nazwisko == "" && email != "" && miejscowosc == "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Email:email, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko == "" && email != "" && miejscowosc != "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Email:email, Miejscowosc:miejscowosc});
+          }
+          if(imie != "" && nazwisko == "" && email != "" && miejscowosc != "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Email:email, Miejscowosc:miejscowosc, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko == "" && email != "" && miejscowosc != "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Email:email, Miejscowosc:miejscowosc, Telefon:telefon});
+          }
+          if(imie != "" && nazwisko == "" && email != "" && miejscowosc != "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Email:email, Miejscowosc:miejscowosc, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
         }
-      });
+        //NAZWISKO WPROWADZONE
+        if(nazwisko != ""){
+          //110
+          if(imie != "" && nazwisko != "" && email == "" && miejscowosc == "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko});
+          }
+          if(imie != "" && nazwisko != "" && email == "" && miejscowosc == "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko != "" && email == "" && miejscowosc == "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Telefon:telefon});
+          }
+          if(imie != "" && nazwisko != "" && email == "" && miejscowosc == "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko != "" && email == "" && miejscowosc != "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Miejscowosc:miejscowosc});
+          }
+          if(imie != "" && nazwisko != "" && email == "" && miejscowosc != "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Miejscowosc:miejscowosc, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko != "" && email == "" && miejscowosc != "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Miejscowosc:miejscowosc, Telefon:telefon});
+          }
+          if(imie != "" && nazwisko != "" && email == "" && miejscowosc != "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Miejscowosc:miejscowosc, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+          //111
+          if(imie != "" && nazwisko != "" && email != "" && miejscowosc == "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Email:email});
+          }
+          if(imie != "" && nazwisko != "" && email != "" && miejscowosc == "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Email:email, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko != "" && email != "" && miejscowosc == "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Email:email, Telefon:telefon});
+          }
+          if(imie != "" && nazwisko != "" && email != "" && miejscowosc == "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Email:email, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko != "" && email != "" && miejscowosc != "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Email:email, Miejscowosc:miejscowosc});
+          }
+          if(imie != "" && nazwisko != "" && email != "" && miejscowosc != "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Email:email, Miejscowosc:miejscowosc, Specjalnosc:specjalnosc});
+          }
+          if(imie != "" && nazwisko != "" && email != "" && miejscowosc != "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Email:email, Miejscowosc:miejscowosc, Telefon:telefon});
+          }
+          if(imie != "" && nazwisko != "" && email != "" && miejscowosc != "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Email:email, Miejscowosc:miejscowosc, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+        }
+      }
+      
+      //TU MAMY POLE IMIE PUSTE
+      if(imie == "") {
+        //NAZWISKO PUSTE
+        if(nazwisko == "") {
+          ///000
+          if(imie == "" && nazwisko == "" && email == "" && miejscowosc == "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({});
+          }
+          if(imie == "" && nazwisko == "" && email == "" && miejscowosc == "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Specjalnosc:specjalnosc, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko == "" && email == "" && miejscowosc == "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Telefon:telefon});
+          }
+          if(imie == "" && nazwisko == "" && email == "" && miejscowosc == "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko == "" && email == "" && miejscowosc != "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Miejscowosc:miejscowosc});
+          }
+          if(imie == "" && nazwisko == "" && email == "" && miejscowosc != "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Miejscowosc:miejscowosc, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko == "" && email == "" && miejscowosc != "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Miejscowosc:miejscowosc, Telefon:telefon});
+          }
+          if(imie == "" && nazwisko == "" && email == "" && miejscowosc != "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Miejscowosc:miejscowosc, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+          //001
+          if(imie == "" && nazwisko == "" && email != "" && miejscowosc == "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Email:email});
+          }
+          if(imie == "" && nazwisko == "" && email != "" && miejscowosc == "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Email:email, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko == "" && email != "" && miejscowosc == "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Email:email, Telefon:telefon});
+          }
+          if(imie == "" && nazwisko == "" && email != "" && miejscowosc == "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Email:email, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko == "" && email != "" && miejscowosc != "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Email:email, Miejscowosc:miejscowosc});
+          }
+          if(imie == "" && nazwisko == "" && email != "" && miejscowosc != "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Email:email, Miejscowosc:miejscowosc, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko == "" && email != "" && miejscowosc != "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Email:email, Miejscowosc:miejscowosc, Telefon:telefon});
+          }
+          if(imie == "" && nazwisko == "" && email != "" && miejscowosc != "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Email:email, Miejscowosc:miejscowosc, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+        }
+        //NAZWISKO WPROWADZONE
+        if(nazwisko != ""){
+          //010
+          if(imie == "" && nazwisko != "" && email == "" && miejscowosc == "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko});
+          }
+          if(imie == "" && nazwisko != "" && email == "" && miejscowosc == "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko != "" && email == "" && miejscowosc == "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Telefon:telefon});
+          }
+          if(imie == "" && nazwisko != "" && email == "" && miejscowosc == "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko != "" && email == "" && miejscowosc != "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Miejscowosc:miejscowosc});
+          }
+          if(imie == "" && nazwisko != "" && email == "" && miejscowosc != "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Miejscowosc:miejscowosc, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko != "" && email == "" && miejscowosc != "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Miejscowosc:miejscowosc, Telefon:telefon});
+          }
+          if(imie == "" && nazwisko != "" && email == "" && miejscowosc != "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Imie:imie, Nazwisko:nazwisko, Miejscowosc:miejscowosc, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+
+          //011
+          if(imie == "" && nazwisko != "" && email != "" && miejscowosc == "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Nazwisko:nazwisko, Email:email});
+          }
+          if(imie == "" && nazwisko != "" && email != "" && miejscowosc == "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Nazwisko:nazwisko, Email:email, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko != "" && email != "" && miejscowosc == "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Nazwisko:nazwisko, Email:email, Telefon:telefon});
+          }
+          if(imie == "" && nazwisko != "" && email != "" && miejscowosc == "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Nazwisko:nazwisko, Email:email, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko != "" && email != "" && miejscowosc != "" && telefon == "" && specjalnosc == ""){
+            findInMongoDb({Nazwisko:nazwisko, Email:email, Miejscowosc:miejscowosc});
+          }
+          if(imie == "" && nazwisko != "" && email != "" && miejscowosc != "" && telefon == "" && specjalnosc != ""){
+            findInMongoDb({Nazwisko:nazwisko, Email:email, Miejscowosc:miejscowosc, Specjalnosc:specjalnosc});
+          }
+          if(imie == "" && nazwisko != "" && email != "" && miejscowosc != "" && telefon != "" && specjalnosc == ""){
+            findInMongoDb({Nazwisko:nazwisko, Email:email, Miejscowosc:miejscowosc, Telefon:telefon});
+          }
+          if(imie == "" && nazwisko != "" && email != "" && miejscowosc != "" && telefon != "" && specjalnosc != ""){
+            findInMongoDb({Nazwisko:nazwisko, Email:email, Miejscowosc:miejscowosc, Telefon:telefon, Specjalnosc:specjalnosc});
+          }
+        }
+      }
+      
+      
+
+      // kandydaci.find({ $and: [
+      //   {$or: [{Imie: this}, {Imie : imie} ] },
+      //   //{$or: [ {Nazwisko: nazwisko}, null ] }, 
+      //   // { Specjalnosc: specjalnosc}
+      //   //{$or: [ {Email: email}, null ]},
+      //   // {$or: [ {Telefon: telefon}, {Telefon: {$ne:''}} ]},
+      //   // { Miejscowosc: {$regex:miejscowosc}},
+      //   { Angielski: angielski}
+      // ]}).toArray((err, data) => {
+      //   if (err) console.log("błąd", err.message);
+      //   else {
+      //     console.log("moje dane", data);
+      //     // let noweNazwisko = [];
+      //     // for (const key in data) {
+      //     //   console.log(data[key]);
+      //     //   noweNazwisko.push(Object.values(data[key])[2]);
+      //     //   //console.log("noweNazwisko", noweNazwisko);
+      //     // }
+      //   }
+      // });
 
       //res.send(`${wyslij._idObject('607f4780074123cb79e10533')}`);//tutaj mamy imie
       // setTimeout(function () {
 
       //     client.close();
       // }, 3000);
-    }
+  }
   });
-
-  //console.log("moje dane", wyslij);
-  //console.log(url.parse(req.url).query);
 });
 
 // var onRequest = function (req, res) {

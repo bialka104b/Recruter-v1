@@ -4,14 +4,26 @@
     <h2>{{title}}</h2>
     <p>{{content}}</p>
     <div class="nazwiska">
-        <ul>
-            {{#each nazwisko}}
-               <div>{{Nazwisko}}</div>
-               <div>{{Email}}</div>
-               <div>{{_id}}</div>
-               <div>{{Telefon}}</div>
-            {{/each}}
-        </ul>
+        {{#each person}}
+        <div>{{Imie}}</div>
+        <div>{{Nazwisko}}</div>
+        <div>{{Email}}</div>
+        <div>{{Telefon}}</div>
+        <div>{{Miejscowosc}}</div>
+        <div>{{Angielski}}</div>
+        <div>{{Polski}}</div>
+        <div>{{Rosyjski}}</div>
+        <div>{{Niemiecki}}</div>
+        <div>{{Ukrainski}}</div>
+        <div>{{Francuski}}</div>
+        <div>{{Hiszpanski}}</div>
+        <div>{{wiek}}</div>
+        <div>{{Relokacja}}</div>
+        <div>{{Uczelnia}}</div>
+        <div>{{Rok_studiow}}</div>
+        <div>{{Wydzial_Kierunek}}</div>
+        <div>{{Praktyki_staze}}</div>
+        {{/each}}
     </div>
     <form action="" class="generator">
         <label for="">Wybierz płeć:
@@ -56,52 +68,58 @@
                     </div>
                     <div class="opakowanie">
                         <label for="telefon">Wybierz telefon:</label>
-                        <input type="text" name="telefon" id="telefon">
+                        <input type="number" name="telefon" id="telefon">
                     </div>
+                    <div class="opakowanie">
+                        <label for="miejscowosc">Wybierz miejscowość:</label>
+                        <input type="text" name="miejscowosc" id="miejscowosc">
+                    </div>
+                </div>
+                <div class="col-sm-2 technologie_doswiadczenie">
+                    <label for="technologie" class="technologie"> Wybirz technologię:<br>
+                        {{!-- tu trzeba obsłuzyć jeszcze form="pobierz" --}}
+                        <select name="technologie" id="technologie">
+                            <option value="html">HTML</option>
+                            <option value="Css">CSS</option>
+                            <option value="Sass/Scss/Less">Sass / Scss / Less </option>
+                            <option value="React">React.js</option>
+                            <option value="Vue">Vue.js</option>
+                            <option value="Node">Node.js</option>
+                            <option value="Bootstrap">Bootstrap</option>
+                            <option value="PHP">PHP</option>
+                            <option value="C++">C++</option>
+                            <option value="C#">C#</option>
+                        </select>
+                    </label>
+                    <label for="doswiadczenie" class="doswiadczenie"> Wybirz doświadczenie w latach:<br>
+                        {{!-- tu trzeba obsłuzyć jeszcze form="pobierz" --}}
+                        <select name="doswiadczenie" id="doswiadczenie">
+                            <option value="1-3">1 do 3 lata</option>
+                            <option value="4-6">4 do 6 lat</option>
+                            <option value="> 7">więcej niż 6 lat</option>
+                        </select>
+                    </label>
+                </div>
+                <div class="col-sm-3 jezyki">Wybierz języki obce:<br>
+                    <input type="checkbox" id="angielski" name="angielski" value="angielski" checked="checked">
+                    <label for="angielski">Angielski</label><br>
+                    <input type="checkbox" id="niemiecki" name="jezyk" value="niemiecki">
+                    <label for="niemiecki">Niemiecki</label><br>
+                    <input type="checkbox" id="hiszpanski" name="jezyk" value="hiszpanski">
+                    <label for="hiszpanski">Hiszpański</label><br>
+                    <input type="checkbox" id="rosyjski" name="jezyk" value="true">
+                    <label for="rosyjski">rosyjski</label><br>
+                    <input type="checkbox" id="francuski" name="francuski" value="francuski">
+                    <label for="francuski">francuski</label><br>
+                    <input type="checkbox" id="ukrainski" name="jezyk" value="true">
+                    <label for="ukrainski">ukrainski</label><br>
+                    <input type="checkbox" id="polski" name="jezyk" value="true">
+                    <label for="polski">polski</label><br><br>
                 </div>
                 <input type="submit" name="pobierz_imie" value="pobierz" class="btn btn-danger">
             </form>
-            <div class="col-sm-2 technologie_doswiadczenie">
-                <label for="technologie" class="technologie"> Wybirz technologię:<br>
-                    {{!-- tu trzeba obsłuzyć jeszcze form="pobierz" --}}
-                    <select name="technologie" id="technologie" form="pobierz">
-                        <option value="html">HTML</option>
-                        <option value="Css">CSS</option>
-                        <option value="Sass/Scss/Less">Sass / Scss / Less </option>
-                        <option value="React">React.js</option>
-                        <option value="Vue">Vue.js</option>
-                        <option value="Node">Node.js</option>
-                        <option value="Bootstrap">Bootstrap</option>
-                        <option value="PHP">PHP</option>
-                        <option value="C++">C++</option>
-                        <option value="C#">C#</option>
-                    </select>
-                </label>
-                <label for="doswiadczenie" class="doswiadczenie"> Wybirz doświadczenie w latach:<br>
-                    {{!-- tu trzeba obsłuzyć jeszcze form="pobierz" --}}
-                    <select name="doswiadczenie" id="doswiadczenie" form="pobierz">
-                        <option value="1-3">1 do 3 lata</option>
-                        <option value="4-6">4 do 6 lat</option>
-                        <option value="> 7">więcej niż 6 lat</option>
-                    </select>
-                </label>
-            </div>
-            <div class="col-sm-3 jezyki">Wybierz języki obce:<br>
-                <input type="checkbox" id="angielski" name="angielski" value="angielski">
-                <label for="angielski">Angielski</label><br>
-                <input type="checkbox" id="niemiecki" name="niemiecki" value="niemiecki">
-                <label for="niemiecki">Niemiecki</label><br>
-                <input type="checkbox" id="hiszpanski" name="hiszpanski" value="hiszpanski">
-                <label for="hiszpanski">Hiszpański</label><br>
-                <input type="checkbox" id="rosyjski" name="rosyjski" value="rosyjski">
-                <label for="rosyjski">rosyjski</label><br>
-                <input type="checkbox" id="francuski" name="francuski" value="francuski">
-                <label for="francuski">francuski</label><br>
-                <input type="checkbox" id="ukrainski" name="ukrainski" value="ukrainski">
-                <label for="ukrainski">ukrainski</label><br>
-                <input type="checkbox" id="polski" name="polski" value="polski">
-                <label for="polski">polski</label><br><br>
-            </div>
+
+
             <div class="col-sm-2 dataKontaktu_cv">
                 <label for="data_kontaktu">Data ostatniego kontaktu</label>
                 <input type="date" name="data_kontaktu" id="data_kontaktu">
@@ -110,7 +128,8 @@
             </div>
             <div class="col-sm-2 wiadomosci">
                 <label for="wiadomosci">Treść wiadomości:</label>
-                <textarea name="" id="wiadomosci" cols="30" rows="10" placeholder="Jeszcze nie kontaktowałeś się z kandydatem"></textarea>
+                <textarea name="" id="wiadomosci" cols="30" rows="10"
+                    placeholder="Jeszcze nie kontaktowałeś się z kandydatem"></textarea>
             </div>
             {{!-- <div class="col-sm-1 przyciski">
                 <button>Edytuj</button>
@@ -122,7 +141,7 @@
 </div>
 
 <div class="resultDiv row">
-    
+
 </div>
 
 <script type="text/javascript">
