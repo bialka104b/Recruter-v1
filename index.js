@@ -219,20 +219,6 @@ const url = require("url");
 var qs = require("querystring");
 
 app.get("/wyslijimie", (req, res) => {
-  // if (err) {
-  //   console.log("błąd polaczenia database");
-  // } else {
-  //   console.log("polaczenie udane z bazą");
-  //   const db = client.db("test"); //pobieram nazwe bazy danych
-  //   const cars = db.collection("cars"); // nazwa naszej kolekcji
-  //   //...tu sobie coś kodzimy
-  //   let model = Math.random() * 100;
-  //   cars.insertOne({ brand: "Samochód", model: model }, (err) => {
-  //     if(!err) {
-  //       client.close();
-  //     }
-  //   });
-
   //zamknij baze po 3 sekundach aby zdążyły wykonać się operacje
   //mongo nie zezwala na wiele połączeń więc jeśli kilka razy chce sie łączyć
   // setTimeout(function () {
@@ -247,35 +233,46 @@ app.get("/wyslijimie", (req, res) => {
       client.close();
     } else {
       const db = client.db("test"); //pobieram nazwe bazy danych test
-
       const kandydaci = db.collection("kandydaci"); // nazwa naszej kolekcji
-      const imie = req.query.imie;
-      const nazwisko = req.query.nazwisko;
-      const email = req.query.email;
-      const miejscowosc = req.query.miejscowosc;
-      const telefon = req.query.telefon;
-      const specjalnosc = req.query.specjalnosc; // narazie brak pola w bazie danych
-      const technologie = req.query.technologie;
-      const doswiadczenie = req.query.doswiadczenie;
 
-      //ZMIENNE DO CHECKBOX JĘZYKI OBCE
-      const angielskiLevel = req.query.angielskiLevel.toLocaleUpperCase();
-      const angielski = sprawdzCzyJezykZaznaczony(req.query.angielski, angielskiLevel).trim();//trim obcina biale znaki na poczatku i koncu
+      //FUNKCJA KTÓRA ZAMIENIA PIERWSZĄ LITERE NA DUŻĄ, PRZYJMUJE WARTOSC STRING
+      //const capitalize = require("./moduly/capitalizeFunction");
+      const capitalize = (text) => {
+        const words = [];
+        for (let word of text.split(" ")) {
+          words.push(word[0].toUpperCase() + word.slice(1));
+        }
+        return words.join(" ");
+      };
+      console.log("capitalize funkcja", capitalize("angielski b1, niemiecki")); //result Angielski B1, Niemiecki
 
-      const niemieckiLevel = req.query.niemieckiLevel.toLocaleUpperCase();
-      const niemiecki = sprawdzCzyJezykZaznaczony(req.query.niemiecki, niemieckiLevel).trim();//trim obcina biale znaki na poczatku i koncu
-
-      const jezykLevel = req.query.jezykLevel;
-      const pozostalejezyki = sprawdzCzyJezykZaznaczony(req.query.pozostalejezyki, jezykLevel).replace("p ", '');//tutaj musiałam obciąc 2 znaki
+      //const imie = req.query.imie;
+      //const email = req.query.email;
+      //const telefon = req.query.telefon;
       
-      //FUNKCJA KTÓRA ZAMIENIA PIERWSZĄ LITERE NA DUŻĄ
-      let titleCase = (str) => str.split(" ").map((str) => str = str.charAt(0).toUpperCase() + str.substring(1).toLowerCase()).join(" ");
-      console.log("title case", titleCase("angielski"));//RESULT "Angielski"
+      const technologie = req.query.technologie;
+      const specjalnosc = req.query.specjalnosc; // narazie brak pola w bazie danych
+      const nazwisko = req.query.nazwisko;
+      const miejscowosc = req.query.miejscowosc;
+      //const doswiadczenie = req.query.doswiadczenie;
+      console.log("co zawiera technologie teraz",technologie);
+      
+      //ZMIENNE DO CHECKBOX JĘZYKI OBCE
+      const angielskiLevel = req.query.angielskiLevel;
+      let angielski = sprawdzCzyJezykZaznaczony(req.query.Angielski, angielskiLevel);//trim obcina biale znaki na poczatku i koncu
+      if (angielski != false) {
+        angielski = capitalize(angielski.trim());
+      }
+      console.log("co zawiera angielski teraz",angielski);
 
-
-
-      console.log("co zawiera angielski teraz", angielski);
+      const niemieckiLevel = req.query.niemieckiLevel;
+      let niemiecki = sprawdzCzyJezykZaznaczony(req.query.Niemiecki, niemieckiLevel);//trim obcina biale znaki na poczatku i koncu
+      if (niemiecki != false) {
+        niemiecki = capitalize(niemiecki.trim());
+      }
       console.log("co zawiera niemiecki teraz", niemiecki);
+
+      let pozostalejezyki = req.query.Pozostale_Jezyki;
       console.log("co zawiera pozostale teraz", pozostalejezyki);
 
       //FUNKCJA SPRAWDZA CZY JEZYKI SĄ ZAZNACZONE CZY NIE
@@ -285,16 +282,12 @@ app.get("/wyslijimie", (req, res) => {
           console.log("zaznaczone true", result);
           return result;
         } else {
-          console.log("zaznaczone false", false);
-          return "";
+          console.log("zaznaczone false", false, "pusty string");
+          return false;
         }
       }
 
-      
       console.log("polaczenie udane z bazą");
-
-      
-      //console.log("RESULT_________________", miejscowosc1);
 
       //FUNKCJA POTRZEBNA DO RENDEROWANIA INFORMACJI Z BAZY DANYCH NA STRONE
       function findInMongoDb(params) {

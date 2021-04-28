@@ -20,10 +20,10 @@ body {
 
 //.page-header
 .page-header {
-  h2 {
-  }
-  p {
-  }
+  // h2 {
+  // }
+  // p {
+  // }
   .upload {
     label {
       position: absolute;
@@ -70,6 +70,19 @@ body {
           }
         }
       }
+    }
+    .kolumna2 {
+      .persons {
+        height:500px;
+        border: 1px dotted $zielony;
+        .linkedin {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+      }
+      
     }
   }
 }

@@ -4,28 +4,7 @@
     <h2>{{title}}</h2>
     <p>{{content}}</p>
     {{!-- RENDEROWANIE Z BAZY --}}
-    <div class="nazwiska">
-        {{#each person}}
-        <div>{{Imie}}</div>
-        <div>{{Nazwisko}}</div>
-        <div>{{Email}}</div>
-        <div>{{Telefon}}</div>
-        <div>{{Miejscowosc}}</div>
-        <div>{{Angielski}}</div>
-        <div>{{Polski}}</div>
-        <div>{{Rosyjski}}</div>
-        <div>{{Niemiecki}}</div>
-        <div>{{Ukrainski}}</div>
-        <div>{{Francuski}}</div>
-        <div>{{Hiszpanski}}</div>
-        <div>{{wiek}}</div>
-        <div>{{Relokacja}}</div>
-        <div>{{Uczelnia}}</div>
-        <div>{{Rok_studiow}}</div>
-        <div>{{Wydzial_Kierunek}}</div>
-        <div>{{Praktyki_staze}}</div>
-        {{/each}}
-    </div>
+
     <form action="" class="generator">
         <label for="">Wybierz płeć:
             <select name="gender" id="" class="gender">
@@ -52,10 +31,6 @@
         <div class="row kolumna1">
             <form action="/wyslijimie" method="GET">
                 <div class="col-sm-3 dane_osobowe">
-                    {{!-- <div class="opakowanie">
-                        <label for="imie">Wybierz imię:</label>
-                        <input type="text" name="imie" id="imie">
-                    </div> --}}
                     <div class="opakowanie">
                         <label for="nazwisko">Wybierz nazwisko:</label>
                         <input type="text" name="nazwisko" id="nazwisko">
@@ -64,14 +39,6 @@
                         <label for="specjalnosc">Wybierz Specjalność:</label>
                         <input type="text" name="specjalnosc" id="specjalnosc">
                     </div>
-                    {{!-- <div class="opakowanie">
-                        <label for="email">Wybierz E-mail:</label>
-                        <input type="email" name="email" id="email">
-                    </div> --}}
-                    {{!-- <div class="opakowanie">
-                        <label for="telefon">Wybierz telefon:</label>
-                        <input type="number" name="telefon" id="telefon">
-                    </div> --}}
                     <div class="opakowanie">
                         <label for="miejscowosc">Wybierz miejscowość:</label>
                         <input type="text" name="miejscowosc" id="miejscowosc">
@@ -83,15 +50,26 @@
                         <select name="technologie" id="technologie">
                             <option value="">Wszystkie</option>
                             <option value="html">HTML</option>
-                            <option value="Css">CSS</option>
-                            <option value="Sass/Scss/Less">Sass / Scss / Less </option>
-                            <option value="React">React.js</option>
-                            <option value="Vue">Vue.js</option>
-                            <option value="Node">Node.js</option>
+                            <option value="css">CSS</option>
+                            <option value="sass">Sass</option>
+                            <option value="SCSS">Scss</option>
+                            <option value="LESS">Less</option>
+                            <option value=".NET">.NET</option>
+                            <option value="REACT">React.js</option>
+                            <option value="VUE">Vue.js</option>
+                            <option value="NODE">Node.js</option>
                             <option value="Bootstrap">Bootstrap</option>
                             <option value="PHP">PHP</option>
                             <option value="C++">C++</option>
                             <option value="C#">C#</option>
+                            <option value="JAVA">JAVA</option>
+                            <option value="SQL">SQL, MySQL, PlSQL, SQL Server</option>
+                            <option value="jQuery">jQuery</option>
+                            <option value="XML">XML</option>
+                            <option value="Git">Git</option>
+                            <option value="Python">Python</option>
+                            <option value="RWD">Responsive Web Design</option>
+                            <option value=""></option>
                         </select>
                     </label>
                     <label for="doswiadczenie" class="doswiadczenie"> Wybirz doświadczenie w latach:<br>
@@ -104,19 +82,22 @@
                     </label>
                 </div>
                 <div class="col-sm-3 jezyki">Wybierz języki obce:<br>
-                    <input type="checkbox" id="angielski" name="angielski" value="angielski" defaultChecked="false">
+                    <input type="checkbox" id="angielski" name="Angielski" value="angielski" defaultChecked="false">
                     <label for="angielski">Angielski</label>
                     <input type="text" name="angielskiLevel" id="angielskiLevel" style="width:50px">
                     <br>
 
-                    <input type="checkbox" id="niemiecki" name="niemiecki" value="niemiecki" defaultChecked="false">
+                    <input type="checkbox" id="niemiecki" name="Niemiecki" value="niemiecki" defaultChecked="false">
                     <label for="niemiecki">Niemiecki</label>
                     <input type="text" name="niemieckiLevel" id="niemieckiLevel" style="width:50px">
                     <br>
 
-                    <input type="checkbox" id="pozostalejezyki" name="pozostalejezyki" value="p" defaultChecked="false">
-                    <label for="pozostalejezyki" title="Przykład: 'Niemiecki B1'">Wpisz inny język</label>
-                    <input type="text" name="jezykLevel" id="jezykLevel" style="width:100px">
+                    {{!-- <input type="checkbox" id="pozostalejezyki" name="Pozostale_Jezyki" value="p"
+                        defaultChecked="false"> --}}
+                    <label for="pozostalejezyki" title="Przykład: 'Rosyjski B1 lub Rosyjski'">Wpisz inny język: </label>
+                    <input type="text" id="pozostalejezyki" name="Pozostale_Jezyki" style="width:100px">
+
+                    {{!-- <input type="text" name="jezykLevel" id="jezykLevel" style="width:100px"> --}}
                     <br>
                 </div>
                 <input type="submit" name="pobierz_imie" value="pobierz" class="btn btn-danger">
@@ -139,6 +120,34 @@
                 <button>Usuń</button>
                 <button>Porównaj z innym</button>
             </div> --}}
+        </div>
+        <div class="row kolumna2">
+            {{#each person}}
+            <div class="persons col-sm-4">
+                <div>Imię: {{Imie}}</div>
+                <div>Nazwisko: {{Nazwisko}}</div>
+                <div>Email: {{Email}}</div>
+                <div>Telefon: {{Telefon}}</div>
+                <div>Miejscowosc {{Miejscowosc}}</div>
+                <div>Angielski: {{Angielski}}</div>
+                <div>Niemiecki: {{Niemiecki}}</div>
+                <div>Inne języki: {{Pozostale_Jezyki}}</div>
+                <div>Wiek: {{Wiek}}</div>
+                <div>Relokacja: {{Relokacja}}</div>
+                <div>Współpraca z firmami: {{Firmy_Wspolpraca}}</div>
+                <div>Doświadczenie: {{Doswiadczenie}} lat</div>
+                <div>Widełki: {{Widelki}}</div>
+                <div>Technologie: {{Technologie}}</div>
+                <div>Komentarze: {{Komentarze}}</div>
+                <div class="linkedin">Linkedin/Github/Goldenline: <a href="{{Link_Do_Profilu}}">{{Link_Do_Profilu}}</a></div>
+                <div>Specjalność: {{Specjalnosc}}</div>
+                <div>Data ostatniego kontaktu: {{Data_kontaktu}}</div>
+                <div>Status: {{Status_Zainteresowany}}</div>
+                <div>Rozmowa techniczna: {{Rozmowa_techniczna}}</div>
+                <div>Rozmowa nietechniczna: {{Rozmowa_nietechniczna}}</div>
+                <br><br><br><br>
+            </div>
+            {{/each}}
         </div>
     </div>
 </div>

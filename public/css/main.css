@@ -63,6 +63,17 @@ body {
   max-width: 150px;
 }
 
+.nameColumnResult .wiersz1 .kolumna2 .persons {
+  height: 500px;
+  border: 1px dotted #00963f;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons .linkedin {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .resultDiv {
   margin: 0;
 }
