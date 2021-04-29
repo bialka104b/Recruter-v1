@@ -10,6 +10,10 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.page-header h1 {
+  text-align: center;
+}
+
 .page-header .upload label {
   position: absolute;
   background-color: #00963f;
@@ -64,14 +68,80 @@ body {
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons {
+  color: white;
   height: 500px;
-  border: 1px dotted #00963f;
+  border: 3px dotted white;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
 
-.nameColumnResult .wiersz1 .kolumna2 .persons .linkedin {
+.nameColumnResult .wiersz1 .kolumna2 .persons .info.linkedin {
   white-space: nowrap;
   overflow: hidden;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons .info.linkedin p {
+  height: 100%;
+  display: inline-block;
+  margin: 0 0 auto;
+  max-width: 200px;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons .info.linkedin p a {
   text-overflow: ellipsis;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons .info:not(.linkedin) p {
+  margin: 0 0 auto;
+  float: right;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons .name {
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.black {
+  background-color: #333;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.black p {
+  color: red;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.black .linkedin a {
+  color: red;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.green {
+  background-color: #00963f;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.green .info p {
+  color: #333;
+  font-weight: bold;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.green .linkedin a {
+  color: #333;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.white {
+  background-color: #fff;
+  color: #333;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.white .info p {
+  color: #00963f;
+  font-weight: bold;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.white .linkedin a {
+  color: red;
 }
 
 .resultDiv {

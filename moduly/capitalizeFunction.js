@@ -7,4 +7,4 @@ const capitalize = (text) => {
     return words.join(" ");
 };
 
-//module.exports = capitalize;
+module.exports = capitalize;

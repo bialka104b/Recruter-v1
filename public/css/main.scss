@@ -20,10 +20,9 @@ body {
 
 //.page-header
 .page-header {
-  // h2 {
-  // }
-  // p {
-  // }
+  h1 {
+    text-align: center;
+  }
   .upload {
     label {
       position: absolute;
@@ -73,16 +72,83 @@ body {
     }
     .kolumna2 {
       .persons {
+        color: white;
         height:500px;
-        border: 1px dotted $zielony;
-        .linkedin {
+        border: 3px dotted white;
+        padding-top: 20px;
+        padding-bottom: 10px;
+        
+        .info.linkedin {
           white-space: nowrap;
+          
           overflow: hidden;
-          text-overflow: ellipsis;
+          p{
+            height: 100%;
+            display:inline-block;
+            
+            margin: 0 0 auto;
+            
+          
+            max-width: 200px;
+            a {
+              text-overflow: ellipsis;
+              text-decoration: none;
+              //display: block;
+              height:100%;
+              width:100%;
+            }
+          }
         }
-
+        .info:not(.linkedin) {
+          p {
+            margin: 0 0 auto;
+            float: right;
+          }
+        }
+        .name {
+          font-size: 20px;
+          text-align: center;
+          text-transform: uppercase;
+        }
       }
-      
+      .persons.black {
+        background-color: $ciemno_szary;
+        p {color: $czerwony;}
+        .linkedin {
+          a {
+            color:red;
+          }
+        }
+      }
+      .persons.green {
+        background-color: $zielony;
+        .info{
+          p {
+            color: $ciemno_szary;
+            font-weight: bold;
+          }
+        }
+        .linkedin {
+          a {
+            color: $ciemno_szary;
+          }
+        }
+      }
+      .persons.white {
+        background-color: $bialy;
+        color: $ciemno_szary;
+        .info{
+          p {
+            color: $zielony;
+            font-weight: bold;
+          }
+        }
+        .linkedin {
+          a {
+            color: $czerwony;
+          }
+        }
+      }
     }
   }
 }
