@@ -1,3 +1,8 @@
+:root {
+  --gradient:  linear-gradient(to top left, #00963f 20%, #018bd3 80%) !important;
+  --gradientGreen:  linear-gradient(to top left, rgb(51, 51, 51) 20%, #018bd3 80%) !important;
+}
+
 .nameColumnResult h1, .nameColumnResult h4, .nameColumnResult h3 {
   text-align: center;
 }
@@ -14,17 +19,65 @@
   margin: 0 auto;
   width: 70%;
   float: none;
-  border: 3px dotted white;
+  border: 5px dotted white;
 }
 
 #editUser .persons form .opakowanie {
   text-align: center;
+  padding: 20px 10px;
+}
+
+#editUser .persons form .opakowanie label {
+  font-size: large;
 }
 
 #editUser .persons form .opakowanie input {
   display: block;
-  color: red;
+  color: #018bd3;
   margin: 0 auto;
   width: 50%;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  outline: 0;
+  border: 3px solid;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  border-image-source: var(--gradient) !important;
+  -webkit-transition: all .3s ease !important;
+  transition: all .3s ease !important;
+}
+
+#editUser .persons form .opakowanie input:hover, #editUser .persons form .opakowanie input:focus {
+  -webkit-box-shadow: 0px 0px 7px #666 !important;
+          box-shadow: 0px 0px 7px #666 !important;
+  background-clip: text !important;
+  -webkit-background-clip: none !important;
+  -webkit-text-fill-color: #fafafa !important;
+  border: 7px solid #fff !important;
+}
+
+#editUser .persons form button {
+  border: 5px solid;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  border-image-source: var(--gradient) !important;
+  text-decoration: none;
+  -webkit-transition: all 0s ease;
+  transition: all 0s ease;
+}
+
+#editUser .persons form button:hover {
+  background: var(--gradient) !important;
+  background-clip: none !important;
+  -webkit-background-clip: none !important;
+  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: #222 1px 0 10px;
+          box-shadow: #222 1px 0 10px;
 }
 /*# sourceMappingURL=editUser.css.map */

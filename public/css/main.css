@@ -1,3 +1,14 @@
+@charset "UTF-8";
+:root {
+  --gradient:  linear-gradient(to top left, #00963f 20%, #018bd3 80%) !important;
+  --gradientGreen:  linear-gradient(to top left, rgb(51, 51, 51) 20%, #018bd3 80%) !important;
+}
+
+:root {
+  --gradient:  linear-gradient(to top left, #00963f 20%, #018bd3 80%) !important;
+  --gradientGreen:  linear-gradient(to top left, rgb(51, 51, 51) 20%, #018bd3 80%) !important;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -6,7 +17,7 @@
 }
 
 body {
-  color: #333;
+  color: #333333;
   font-family: "Lato", sans-serif;
 }
 
@@ -69,7 +80,7 @@ body {
 
 .nameColumnResult .wiersz1 .kolumna2 .persons {
   color: white;
-  height: 500px;
+  height: 550px;
   border: 3px dotted white;
   padding-top: 20px;
   padding-bottom: 10px;
@@ -105,8 +116,111 @@ body {
   text-transform: uppercase;
 }
 
+.nameColumnResult .wiersz1 .kolumna2 form {
+  max-width: 50%;
+  display: inline-block;
+  padding: 0;
+  /* checkbox */
+  /* gdy zaznaczony */
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form button {
+  border: 5px solid;
+  margin-left: 50px;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  border-image-source: var(--gradient) !important;
+  text-decoration: none;
+  -webkit-transition: all 0s ease;
+  transition: all 0s ease;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form button:hover {
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: none !important;
+  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: #222 1px 0 10px;
+          box-shadow: #222 1px 0 10px;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form .btn:focus-within {
+  outline: 0 !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form input.id {
+  height: 41.8px;
+  display: block;
+  width: 200px;
+  outline: 0;
+  border: 5px solid;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  border-image-source: var(--gradient) !important;
+  -webkit-transition: all .3s ease !important;
+  transition: all .3s ease !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form [type="checkbox"] {
+  height: 41.8px;
+  width: 41.8px;
+  background: blue;
+  margin: 0;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form label {
+  margin: 0;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox], .nameColumnResult .wiersz1 .kolumna2 form input[type=radio] {
+  display: none;
+  /* ukrywamy nasz input */
+  height: 41.8px;
+  width: 41.8px;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox] + label, .nameColumnResult .wiersz1 .kolumna2 form input[type=radio] + label {
+  position: relative;
+  padding-left: 23px;
+  /* margines wewnętrzny - trzeba zrobić trochę miejsca dla naszego pola */
+  display: block;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox] + label:before, .nameColumnResult .wiersz1 .kolumna2 form input[type=radio] + label:before {
+  position: absolute;
+  content: "";
+  display: block;
+  /* koniecznie element blokowy, aby móc nadać odpowiednie wymiary */
+  width: 41.8px;
+  height: 41.8px;
+  top: 0;
+  /* ustalamy pozycje */
+  left: 0;
+  cursor: pointer;
+  /* dodamy jeszcze odpowiedni kursor */
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  -webkit-transition: all 0 ease;
+  border-image-slice: 1;
+  background: rgba(0, 0, 0, 0) !important;
+  border: 3px solid var(--gradient);
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox] + label:before {
+  border: 4px solid #018bd3;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox]:checked + label:before, .nameColumnResult .wiersz1 .kolumna2 form input[type=radio]:checked + label:before {
+  background: var(--gradient) !important;
+  border: 0px solid #018bd3;
+}
+
 .nameColumnResult .wiersz1 .kolumna2 .persons.black {
-  background-color: #333;
+  background-color: #333333;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons.black p {
@@ -121,18 +235,44 @@ body {
   background-color: #00963f;
 }
 
+.nameColumnResult .wiersz1 .kolumna2 .persons.green form button {
+  background: var(--gradientGreen) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  border-image-source: var(--gradientGreen) !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.green form button:hover {
+  background: var(--gradientGreen) !important;
+  background-clip: text !important;
+  -webkit-background-clip: none !important;
+  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: #222 1px 0 10px;
+          box-shadow: #222 1px 0 10px;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.green form input.id {
+  border-image-slice: 1;
+  background: var(--gradientGreen) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  border-image-source: var(--gradientGreen) !important;
+  -webkit-transition: all .3s ease !important;
+  transition: all .3s ease !important;
+}
+
 .nameColumnResult .wiersz1 .kolumna2 .persons.green .info p {
-  color: #333;
+  color: #333333;
   font-weight: bold;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons.green .linkedin a {
-  color: #333;
+  color: #333333;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons.white {
   background-color: #fff;
-  color: #333;
+  color: #333333;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons.white .info p {

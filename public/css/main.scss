@@ -1,6 +1,6 @@
 // IMPORT ZMIENNYCH
 @import "_variable.scss";
-
+@import "_mixin.scss";
 // reset css
 * {
   box-sizing: border-box;
@@ -68,11 +68,10 @@ body {
     .kolumna2 {
       .persons {
         color: white;
-        height:500px;
+        height:550px;
         border: 3px dotted white;
         padding-top: 20px;
         padding-bottom: 10px;
-        
         .info.linkedin {
           white-space: nowrap;
           
@@ -103,6 +102,52 @@ body {
           text-transform: uppercase;
         }
       }
+      form { 
+        max-width: 50%;
+        display: inline-block;
+        padding: 0;
+        // text-align: center;
+        button {
+          border: 5px solid;
+          // margin-top: -35px;
+          margin-left:50px;
+          border-image-slice: 1;
+          background: var(--gradient) !important;
+          background-clip: text !important;
+          -webkit-background-clip: text !important;
+          //-webkit-text-fill-color: transparent !important;
+          border-image-source:  var(--gradient) !important; 
+          text-decoration: none;
+          transition: all 0s ease;
+          &:hover {
+            background: var(--gradient) !important;
+            background-clip: text !important;
+            -webkit-background-clip: none !important;
+            -webkit-text-fill-color: #fff !important;
+            box-shadow: #222 1px 0 10px;
+          }
+        }
+        .btn:focus-within {
+          outline: 0!important;
+        }
+        input.id {
+          height:41.8px;
+          display:block;
+          width:200px;
+          outline: 0;
+          border: 5px solid;
+          border-image-slice: 1;
+          background: var(--gradient) !important;
+          background-clip: text !important;
+          -webkit-background-clip: text !important;
+          border-image-source:  var(--gradient) !important;
+          transition: all .3s ease !important;
+        }
+        [type="checkbox"] {
+          @include checkbox;
+        }
+        @include checkbox1;
+      }
       .persons.black {
         background-color: $ciemno_szary;
         p {color: $czerwony;}
@@ -113,6 +158,29 @@ body {
         }
       }
       .persons.green {
+        form {
+          button {
+            background: var(--gradientGreen) !important;
+            background-clip: text !important;
+            -webkit-background-clip: text !important;
+            border-image-source:  var(--gradientGreen) !important;
+            &:hover {
+              background: var(--gradientGreen) !important;
+              background-clip: text !important;
+              -webkit-background-clip: none !important;
+              -webkit-text-fill-color: #fff !important;
+              box-shadow: #222 1px 0 10px;
+            }
+          }
+          input.id {
+            border-image-slice: 1;
+            background: var(--gradientGreen) !important;
+            background-clip: text !important;
+            -webkit-background-clip: text !important;
+            border-image-source:  var(--gradientGreen) !important;
+            transition: all .3s ease !important;
+          }
+        }
         background-color: $zielony;
         .info{
           p {
@@ -141,6 +209,7 @@ body {
           }
         }
       }
+      
     }
   }
 }

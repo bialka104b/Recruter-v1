@@ -1,7 +1,14 @@
 $bialy: #fff;
-$ciemno_szary: #333;
-$zielony: #00963f;
-$niebieski: #018bd3;
-$czerwony: red;
+$ciemno_szary: rgb(51, 51, 51);
+$zielony: rgb(0, 150, 63);
+$niebieski: rgb(1, 139, 211);
+$niebieski_przezroczysty: rgba(1, 139, 211, 0.5);
+$czerwony: rgb(255, 0, 0);
 $czcionka_lato: "Lato", sans-serif;
 $czcionka_releway: "Raleway", sans-serif;
+
+:root {
+    --gradient:  linear-gradient(to top left, #00963f 20%, #018bd3 80%) !important;
+    //--gradientGreen:  linear-gradient(to top, rgb(51, 51, 51) 30%, #018bd3 80%) !important;
+    --gradientGreen:  linear-gradient(to top left, rgb(51, 51, 51) 20%, #018bd3 80%) !important;
+}

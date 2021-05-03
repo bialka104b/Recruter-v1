@@ -2382,7 +2382,9 @@ app.post("/upload-file", (req, res) => {
 });
 
 app.get("/editUser", (req, res) => {
-  const id = req.query._id;
+  //const id = req.query._id;
+  const id = req.query.editUser;
+  console.log("Id klienta index /editUser", id);
   client.connect((err) => {
     if (err) {
       console.log("błąd polaczenia database");
@@ -2397,8 +2399,8 @@ app.get("/editUser", (req, res) => {
         //JEŚLI NIEMA ERRORA TO WYRENDERUJ DANE
         else {
           console.log("wszystko ok /editUser", dataFromMongo);
-          res.render("editUser", {
-            id : id,
+          res.render("editUser", {//nazwa handlebarsa ktory ma byc wyrenderowany
+            id : dataFromMongo._id,
             person : dataFromMongo,
             title: "POMOCNIK REKRUTERA",
             content: "kotent strony",
@@ -2406,8 +2408,6 @@ app.get("/editUser", (req, res) => {
             pathCss: "/css/main.css",
             pathCss2: "/css/editUser.css"
           });
-          client.close();
-          console.log("zamknieto baze /editUser");
         }
       }
     )};
@@ -2416,6 +2416,26 @@ app.get("/editUser", (req, res) => {
   const saveDatabase = require('./Routes/saveDatabase');
   app.use('/saveDatabase',saveDatabase);
 });
+
+//Usuwanie wybranego kandydata z bazy
+const deleteDatabase = require('./Routes/deleteDatabase');
+app.use('/deleteUser',deleteDatabase);
+
+//Dodawanie nowego kandydata do bazy
+app.post("/addedToDatabase", (req, res) => {//nazwa actiona i ścieżki
+  // TU TRZEBA DODAĆ MIENNE JAKIE BĘDĄ RENDEROWANE
+  res.render("addedUser", {//nazwa handlebarsa ktory ma byc wyrenderowany
+    // person : dataFromMongo,
+    title: "POMOCNIK REKRUTERA",
+    content: "kotent strony",
+    copywright: "by Marta Jamróz Kulig",
+    pathCss: "/css/main.css",
+    pathCss2: "/css/editUser.css"
+  });
+  const addUserToDatabase = require('./Routes/addedToDatabase');
+  app.use('/addedUser',addUserToDatabase);
+});
+
 
 app.get("/", function (req, res) {
   res.render("home", {

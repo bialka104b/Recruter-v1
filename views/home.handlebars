@@ -105,26 +105,15 @@
                     {{!-- <input type="text" name="jezykLevel" id="jezykLevel" style="width:100px"> --}}
                     <br>
                 </div>
+                <div class="col-sm-2 dataKontaktu_cv">
+                    <label for="cv">Wgraj plik CV</label>
+                    <input type="file" name="cv" id="cv">
+                </div>
                 <input type="submit" name="pobierz_imie" value="pobierz" class="btn btn-danger">
             </form>
-
-
-            <div class="col-sm-2 dataKontaktu_cv">
-                <label for="data_kontaktu">Data ostatniego kontaktu</label>
-                <input type="date" name="data_kontaktu" id="data_kontaktu">
-                <label for="cv">Wgraj plik CV</label>
-                <input type="file" name="cv" id="cv">
-            </div>
-            <div class="col-sm-2 wiadomosci">
-                <label for="wiadomosci">Treść wiadomości:</label>
-                <textarea name="" id="wiadomosci" cols="30" rows="10"
-                    placeholder="Jeszcze nie kontaktowałeś się z kandydatem"></textarea>
-            </div>
-            {{!-- <div class="col-sm-1 przyciski">
-                <button>Edytuj</button>
-                <button>Usuń</button>
-                <button>Porównaj z innym</button>
-            </div> --}}
+            <form action="/addedToDatabase" method="post">
+                <button type="submit">Dodaj</button>
+            </form>
         </div>
         <div class="row kolumna2" id="kolumna2">
             {{#each person}}
@@ -149,14 +138,18 @@
                 <div class="info">STATUS: {{Status_Zainteresowany}}</div>
                 <div class="info">Rozmowa techniczna: {{Rozmowa_techniczna}}</div>
                 <div class="info">Rozmowa nietechniczna: {{Rozmowa_nietechniczna}}</div>
-                <form action="/editUser" method="get">
-                    <input type="text" class="" id="{{_id}}" name="_id" value="{{_id}}">
-                    
-                    <button type="submit">Edytuj</button>
+                <form class="col-md-6 colForm" action="/editUser" method="get">
+                    <input type="checkbox" id="{{_id}}" name="editUser" value="{{_id}}" defaultChecked="true">
+                    <label for="{{_id}}"></label>
+                    <button type="submit" class="btn btn-outline-secondary">Edytuj</button>
+                </form>
+                <form class="col-md-6 colForm" action="/deleteUser" method="get">
+                    <input type="checkbox" id="{{_id}}1" name="deleteUser" value="{{_id}}" defaultChecked="true">
+                    <label for="{{_id}}1"></label>
+                    <button type="submit" class="btn btn-outline-secondary">Usuń z bazy</button>
                 </form>
                 
-                <button>Usuń z bazy</button>
-                <button>Wgraj Cv</button>
+                {{!-- <button>Wgraj Cv</button> --}}
             </div>
             {{/each}}
         </div>

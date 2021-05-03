@@ -6,12 +6,13 @@ const client = new mongo.MongoClient("mongodb://localhost:27017", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }); //bez tych opcji w klamerkach nie zadziała
-
+client.close();
+console.log("Połączonie zakończone z bazą /saveDatabase rzed kolejnym connect");
 // WYSYŁANIE UPDATE DO BAZY DANYCH
 app.get('/', function (req, res) {
     const id = req.query.idk;
-    // const imie = req
     console.log("savedatabase id klienta",id);
+    
     client.connect( (err) => {
         if (err) {
           console.log("błąd polaczenia /saveDatabase");
@@ -71,11 +72,6 @@ app.get('/', function (req, res) {
             (error, res) => {
                 if(!error) {
                     console.log("wszystko ok", error);
-                    console.log("komentarze", komentarze);
-                    setTimeout(() => {
-                        client.close();
-                        console.log("zamknieto baze /saveDatabase");
-                    }, 5000);
                 } else {
                     client.close();
                     console.log("zamknieto baze /saveDatabase byl error");
@@ -89,7 +85,7 @@ app.get('/', function (req, res) {
             <a class="back_home" href="../">&#9194; Powróć do strony głównej</a>
           </div>
           `);
-          res.end();
+          //res.end();
         }
     });
 });

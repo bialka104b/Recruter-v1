@@ -4,3 +4,6 @@ notatki.txt
 zapisdanych/my.json
 korki.js
 firebase_node62027.json
+public/css/*.css.map
+public/css/main.css.map
+public/css/editUser.css.map

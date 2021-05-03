@@ -1,113 +1,108 @@
-{{!-- TO BEDZIE RENDEROWANE DO PODSTRONY /editUser --}}
-
 <div class="nameColumnResult row">
     <h1>{{title}}</h1>
-    <h4>Tutaj możesz edytować dane Kandydata o id={{person._id}} &#128515;</h4>
+    <h4>Tutaj możesz dodać dane nowego Kandydata &#128515;</h4>
     <div class="col-12 wiersz1">
         <div class="row kolumna2" id="editUser">
             <div class="persons black col-12 col-md-12">
-                <form action="/saveDatabase" method="get">
+                <form action="/addedUser" method="get">
                     <button type="submit" class="btn btn-outline-secondary">Zapisz</button>
                     <h3>Wprowadź nowe dane aby zaktualizować kandydata:</h3>
                     <span>Domyślnie są wpisane dotychczasowe dane</span>
-                    {{#each person}}
                     <div class="opakowanie">
                         <label for="imieSave">Wpisz imię:</label>
-                        <input type="text" name="imieSave" id="imieSave" value="{{Imie}}">
+                        <input type="text" name="imieSave" id="imieSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="nazwiskoSave">Wpisz nazwisko:</label>
-                        <input type="text" name="nazwiskoSave" id="nazwiskoSave" value="{{Nazwisko}}">
+                        <input type="text" name="nazwiskoSave" id="nazwiskoSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="emailSave">Wpisz email:</label>
-                        <input type="text" name="emailSave" id="emailSave" value="{{Email}}">
+                        <input type="text" name="emailSave" id="emailSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="telefonSave">Wpisz telefon:</label>
-                        <input type="text" name="telefonSave" id="telefonSave" value="{{Telefon}}">
+                        <input type="text" name="telefonSave" id="telefonSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="miejscowoscSave">Wpisz miejscowosc:</label>
-                        <input type="text" name="miejscowoscSave" id="miejscowoscSave" value="{{Miejscowosc}}">
+                        <input type="text" name="miejscowoscSave" id="miejscowoscSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="angielskiSave">Wpisz angielski w formacie "Angielski B1":</label>
-                        <input type="text" name="angielskiSave" id="angielskiSave" value="{{Angielski}}">
+                        <input type="text" name="angielskiSave" id="angielskiSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="niemieckiSave">Wpisz niemiecki w formacie "Niemiecki B1":</label>
-                        <input type="text" name="niemieckiSave" id="niemieckiSave" value="{{Niemiecki}}">
+                        <input type="text" name="niemieckiSave" id="niemieckiSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="pozostalejezykiSave">Wpisz pozostałe języki w formacie "Hiszpański B1, Rosyjski
                             B2":</label>
                         <input type="text" name="pozostalejezykiSave" id="pozostalejezykiSave"
-                            value="{{Pozostale_Jezyki}}">
+                            value="">
                     </div>
                     <div class="opakowanie">
                         <label for="wiekSave">Wpisz wiek w postaci liczby całkowitej:</label>
-                        <input type="number" name="wiekSave" id="wiekSave" value="{{Wiek}}">
+                        <input type="number" name="wiekSave" id="wiekSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="relokacjaSave">Wpisz zainteresowanie relokacją "tak"/"nie":</label>
-                        <input type="text" name="relokacjaSave" id="relokacjaSave" value="{{Relokacja}}">
+                        <input type="text" name="relokacjaSave" id="relokacjaSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="firmyWspolpracaSave">Dopisz firmy z jakimi kandydat współpracował":</label>
                         <input type="text" name="firmyWspolpracaSave" id="firmyWspolpracaSave"
-                            value="{{Firmy_Wspolpraca}}">
+                            value="">
                     </div>
                     <div class="opakowanie">
                         <label for="doswiadczenieSave">Doświadczenie kandydata:</label>
-                        <input type="text" name="doswiadczenieSave" id="doswiadczenieSave" value="{{Doswiadczenie}}">
+                        <input type="text" name="doswiadczenieSave" id="doswiadczenieSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="widelkiSave">Widełki kandydata:</label>
-                        <input type="text" name="widelkiSave" id="widelkiSave" value="{{Widelki}}">
+                        <input type="text" name="widelkiSave" id="widelkiSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="technologieSave">Dopisz technologie - nie kasuj tego co jest wpisane jeśli nie jest
                             to
                             konieczne":</label>
-                        <input type="text" name="technologieSave" id="technologieSave" value="{{Technologie}}">
+                        <input type="text" name="technologieSave" id="technologieSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="specjalnoscSave">Wpisz specjalność kandydata np "FulStack Developer"</label>
-                        <input type="text" name="specjalnoscSave" id="specjalnoscSave" value="{{Specjalnosc}}">
+                        <input type="text" name="specjalnoscSave" id="specjalnoscSave" value="">
                     </div>
                     <div class="opakowanie">
-                        <label for="dataKontaktuSave">Wprowadź ostatnią date kontaktu:{{Data_kontaktu}}</label>
+                        <label for="dataKontaktuSave">Wprowadź ostatnią date kontaktu:</label>
                         <input type="date" name="dataKontaktuSave" id="dataKontaktuSave">
                     </div>
                     <div class="opakowanie">
                         <label for="komentarzeSave">Dopisz komentarz:</label>
-                        <input type="text" name="komentarzeSave" id="komentarzeSave" value="{{Komentarze}}">
+                        <input type="text" name="komentarzeSave" id="komentarzeSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="linkDoProfiluSave">Wprowadź link linkedin</label>
-                        <input type="text" name="linkDoProfiluSave" id="linkDoProfiluSave" value="{{Link_Do_Profilu}}">
+                        <input type="text" name="linkDoProfiluSave" id="linkDoProfiluSave" value="">
                     </div>
                     <div class="opakowanie">
                         <label for="rozmowaTechnicznaSave">Rozmowa techniczna - wynik</label>
                         <input type="text" name="rozmowaTechnicznaSave" id="rozmowaTechnicznaSave"
-                            value="{{Rozmowa_techniczna}}">
+                            value="">
                     </div>
                     <div class="opakowanie">
                         <label for="rozmowaNietechnicznaSave">Rozmowa nietechiczna wynik</label>
                         <input type="text" name="rozmowaNietechnicznaSave" id="rozmowaNietechnicznaSave"
-                            value="{{Rozmowa_nietechniczna}}">
+                            value="">
                     </div>
                     <div class="opakowanie">
                         <label for="idk">ID KANDYDATA</label>
-                        <input type="text" name="idk" id="idk" value="{{_id}}">
+                        <input type="text" name="idk" id="idk" value="">
                     </div>
-                    {{/each}}
-                    
                     <button type="submit" class="btn btn-outline-secondary">Zapisz</button>
                 </form>
+                <a class="back_home" href="../">&#9194; Powróć do strony głównej</a>
             </div>
-            <a class="back_home" href="../">&#9194; Powróć do strony głównej</a>
         </div>
     </div>
 </div>
