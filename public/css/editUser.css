@@ -1,0 +1,30 @@
+.nameColumnResult h1, .nameColumnResult h4, .nameColumnResult h3 {
+  text-align: center;
+}
+
+.nameColumnResult .wiersz1 #editUser .persons {
+  height: auto;
+}
+
+#editUser {
+  margin: 0;
+}
+
+#editUser .persons {
+  margin: 0 auto;
+  width: 70%;
+  float: none;
+  border: 3px dotted white;
+}
+
+#editUser .persons form .opakowanie {
+  text-align: center;
+}
+
+#editUser .persons form .opakowanie input {
+  display: block;
+  color: red;
+  margin: 0 auto;
+  width: 50%;
+}
+/*# sourceMappingURL=editUser.css.map */

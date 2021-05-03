@@ -1,7 +1,12 @@
 <div class="page-header">
     {{!-- title i content to moje zmienne z metody res.tender z pliku index.js --}}
 
-    <h2>{{title}}</h2>
+    <h1>{{title}}</h1>
+    <div>
+        <button>
+            <a href="">Legenda i najważniejsze informacje</a>
+        </button>
+    </div>
     <p>{{content}}</p>
     {{!-- RENDEROWANIE Z BAZY --}}
 
@@ -121,31 +126,37 @@
                 <button>Porównaj z innym</button>
             </div> --}}
         </div>
-        <div class="row kolumna2">
+        <div class="row kolumna2" id="kolumna2">
             {{#each person}}
             <div class="persons col-sm-4">
-                <div>Imię: {{Imie}}</div>
-                <div>Nazwisko: {{Nazwisko}}</div>
-                <div>Email: {{Email}}</div>
-                <div>Telefon: {{Telefon}}</div>
-                <div>Miejscowosc {{Miejscowosc}}</div>
-                <div>Angielski: {{Angielski}}</div>
-                <div>Niemiecki: {{Niemiecki}}</div>
-                <div>Inne języki: {{Pozostale_Jezyki}}</div>
-                <div>Wiek: {{Wiek}}</div>
-                <div>Relokacja: {{Relokacja}}</div>
-                <div>Współpraca z firmami: {{Firmy_Wspolpraca}}</div>
-                <div>Doświadczenie: {{Doswiadczenie}} lat</div>
-                <div>Widełki: {{Widelki}}</div>
-                <div>Technologie: {{Technologie}}</div>
-                <div>Komentarze: {{Komentarze}}</div>
-                <div class="linkedin">Linkedin/Github/Goldenline: <a href="{{Link_Do_Profilu}}">{{Link_Do_Profilu}}</a></div>
-                <div>Specjalność: {{Specjalnosc}}</div>
-                <div>Data ostatniego kontaktu: {{Data_kontaktu}}</div>
-                <div>Status: {{Status_Zainteresowany}}</div>
-                <div>Rozmowa techniczna: {{Rozmowa_techniczna}}</div>
-                <div>Rozmowa nietechniczna: {{Rozmowa_nietechniczna}}</div>
-                <br><br><br><br>
+                <div class="info name">{{Imie}} {{Nazwisko}}</div>
+                <div class="info">EMAIL: <p>{{Email}}</p></div>
+                <div class="info">TELEFON: <p>{{Telefon}}</p></div>
+                <div class="info">MIEJSCOWOŚĆ: <p>{{Miejscowosc}}</p></div>
+                <div class="info">ANGIELSKI: <p>{{Angielski}}</p></div>
+                <div class="info">NIEMIECKI: <p>{{Niemiecki}}</p></div>
+                <div class="info">INNE JĘZYKI: <p>{{Pozostale_Jezyki}}</p></div>
+                <div class="info">WIEK: <p>{{Wiek}}</p></div>
+                <div class="info">RELOKACJA: <p>{{Relokacja}}</p></div>
+                <div class="info">WSPÓŁPRACA Z FIRMAMI: <p>{{Firmy_Wspolpraca}}</p></div>
+                <div class="info">DOŚWIADCZENIE: <p>{{Doswiadczenie}} lat</p></div>
+                <div class="info">WIDEŁKI: <p>{{Widelki}}</p></div>
+                <div class="info">TECHNOLOGIE: <p>{{Technologie}}</p></div>
+                <div class="info">KOMENTARZE: <p>{{Komentarze}}</p></div>
+                <div class="info linkedin">LINKEDIN: <p><a href="{{Link_Do_Profilu}}">{{Link_Do_Profilu}}</a></p></div>
+                <div class="info">SPECJALNOŚĆ: <p>{{Specjalnosc}}</p></div>
+                <div class="info">OSTATNI KONTAKT: <p>{{Data_kontaktu}}</p></div>
+                <div class="info">STATUS: {{Status_Zainteresowany}}</div>
+                <div class="info">Rozmowa techniczna: {{Rozmowa_techniczna}}</div>
+                <div class="info">Rozmowa nietechniczna: {{Rozmowa_nietechniczna}}</div>
+                <form action="/editUser" method="get">
+                    <input type="text" class="" id="{{_id}}" name="_id" value="{{_id}}">
+                    
+                    <button type="submit">Edytuj</button>
+                </form>
+                
+                <button>Usuń z bazy</button>
+                <button>Wgraj Cv</button>
             </div>
             {{/each}}
         </div>
@@ -155,7 +166,25 @@
 <div class="resultDiv row">
 
 </div>
+<script>
+    //SKRYPT DODAJE ODPOWIEDNIE KLASY DO STYLÓW CSS
+    document.addEventListener("DOMContentLoaded", function(event) { 
+        var parentDOM = document.getElementById("kolumna2");
+        var persons = parentDOM.getElementsByClassName("persons");
 
+        for (const key in persons) {
+            if (Object.hasOwnProperty.call(persons, key)) {
+                if(key%4 == 0){
+                    persons[key].classList.add("black");
+                } else if(key%2 == 1) {
+                    persons[key].classList.add("white");
+                } else {
+                    persons[key].classList.add("green");
+                }
+            }
+        }
+    });
+</script>
 <script type="text/javascript">
     getUsers = (e) => {
         e.preventDefault();

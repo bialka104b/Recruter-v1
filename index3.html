@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="" class="generator">
+        <label for="">Wybierz płeć:
+            <select name="gender" id="" class="gender">
+                <option value="female">Kobieta</option>
+                <option value="male">Mężczyzna</option>
+            </select>
+        </label>
+        <label for="">Wybierz ilość osób:
+            <input class="ileOsob" type="number" name="results" value="10" min="0">
+        </label>
+        <input type="submit" value="Pobierz" class="pobierz btn btn-primary">
+    </form>
+
+    <div class="resultDiv row">
+
+    </div>
+
+    <script type="text/javascript">
+        getUsers = (e) => {
+            e.preventDefault();
+            const ileOsob = document.querySelector(".ileOsob").value;
+            const plec = document.querySelector('[name = "gender"]').value;
+            const apiUrl = `https://randomuser.me/api/?results=${ileOsob}&gender=${plec}`; //adres api
+            fetch(apiUrl)
+                .then(response => {
+                    if (response.status !== 200) {
+                        throw Error("To nie jest odpowiedź 200");
+                    } else {
+                        return response.json();
+                    }
+                })
+                .then(json => pokazUzytkownika(json.results))
+                .catch(err => console.log(err))
+        }
+
+        const pokazUzytkownika = (tablicaResults) => {
+            const resultsDiv = document.querySelector(".resultDiv");
+            resultsDiv.innerHTML = '';//czyszczenie przy każdym szukaniu
+            tablicaResults.forEach((user) => {
+                const item = document.createElement('div');//tworzymy sobie uzytkownika ktorego bedziemy dodawać
+                item.className = 'user col-12';
+                item.innerHTML = `
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <p class="user_name">${user.name.title} ${user.name.first} ${user.name.last}</p>
+                            <p class="specjalist">Specjalność:</p>
+                            <p class="user_email">Email: ${user.email}</p>
+                            <p class="phone">Telefon: ${user.phone}</p>
+                        </div>
+                        <div class="col-sm-2">
+                            <p class="technology">technology</p>
+                        </div>
+                        <div class="col-sm-1">
+                            <p class="experience">doświadczenie</p>
+                        </div>
+                        <div class="col-sm-1">
+                            <p class="language">język</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <p class="date">Data kontaktu: 
+                                <input type="date" name="date" value="">
+                            </p>
+                            <p class="message">Wiadomość</p>
+                        </div>
+                        <div class="col-sm-1">
+                            <button class="edit">edit</button><br>
+                            <button class="del">usun</button><br>
+                            <button class="upload">dodaj plik CV</button>
+                            <button class="save">zapisz</button>
+                        </div>
+                    </div>
+                `;
+                resultsDiv.appendChild(item);
+                console.log(user);
+            })
+        }
+        document.querySelector(".generator").addEventListener("submit", getUsers);
+    </script>
+</body>
+
+</html>

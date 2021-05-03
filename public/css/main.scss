@@ -1,17 +1,12 @@
+// IMPORT ZMIENNYCH
+@import "_variable.scss";
+
 // reset css
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-//zmienne
-$bialy: #fff;
-$ciemno_szary: #333;
-$zielony: #00963f;
-$niebieski: #018bd3;
-$czerwony: red;
-$czcionka_lato: "Lato", sans-serif;
-$czcionka_releway: "Raleway", sans-serif;
 
 body {
   color: $ciemno_szary;
@@ -85,10 +80,7 @@ body {
           p{
             height: 100%;
             display:inline-block;
-            
             margin: 0 0 auto;
-            
-          
             max-width: 200px;
             a {
               text-overflow: ellipsis;

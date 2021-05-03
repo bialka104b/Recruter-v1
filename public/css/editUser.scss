@@ -1,0 +1,40 @@
+// IMPORT ZMIENNYCH
+@import "_variable.scss";
+
+
+.nameColumnResult {
+    h1, h4, h3 {
+        text-align: center;
+    }
+    .wiersz1 {
+        #editUser {
+            .persons {
+                height: auto;
+            }
+        }
+    } 
+}
+#editUser {
+    margin: 0;
+    // width: 100%;
+    .persons {
+        margin: 0 auto;
+        width:70%;
+        float: none;
+        //background-color: black;
+        border: 3px dotted white;
+        form {
+            .opakowanie {
+                text-align: center;
+                input {
+                    display: block;
+                    color: $czerwony;
+                    margin: 0 auto;
+                    width:50%;
+                }
+                
+            }
+            
+        }
+    }
+}

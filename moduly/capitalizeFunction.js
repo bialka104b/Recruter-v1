@@ -6,5 +6,5 @@ const capitalize = (text) => {
     }
     return words.join(" ");
 };
-
+//console.log("capitalize funkcja", capitalize("angielski b1, niemiecki")); //result Angielski B1, Niemiecki
 module.exports = capitalize;
