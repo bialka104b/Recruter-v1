@@ -4,11 +4,6 @@
   --gradientGreen:  linear-gradient(to top left, rgb(51, 51, 51) 20%, #018bd3 80%) !important;
 }
 
-:root {
-  --gradient:  linear-gradient(to top left, #00963f 20%, #018bd3 80%) !important;
-  --gradientGreen:  linear-gradient(to top left, rgb(51, 51, 51) 20%, #018bd3 80%) !important;
-}
-
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -19,6 +14,7 @@
 body {
   color: #333333;
   font-family: "Lato", sans-serif;
+  background-image: url("../Images/large_leather/large_leather/large_leather.png");
 }
 
 .page-header h1 {
@@ -56,26 +52,205 @@ body {
   margin: 0;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 .dane_osobowe .opakowanie {
+.nameColumnResult .wiersz1 .kolumna1 form button {
+  border: 5px solid;
+  margin-left: 50px;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  border-image-source: var(--gradient) !important;
+  text-decoration: none;
+  -webkit-transition: all 0s ease;
+  transition: all 0s ease;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form button:hover {
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: none !important;
+  -webkit-text-fill-color: #fff !important;
+  -webkit-box-shadow: #222 1px 0 10px;
+          box-shadow: #222 1px 0 10px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin: 5px 0;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 .dane_osobowe .opakowanie label {
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie label {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   padding-right: 10px;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 .dane_osobowe .opakowanie input {
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
   min-width: 150px;
   max-width: 150px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie label {
+  font-size: large;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  outline: 0;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: var(--gradient) !important;
+  background-color: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: #018bd3 !important;
+  -webkit-transition: all 0.2s ease !important;
+  transition: all 0.2s ease !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input {
+  -webkit-transition: all 0s ease !important;
+  transition: all 0s ease !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input:hover, .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input:focus, .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input:focus-within {
+  font-weight: bold;
+  -webkit-box-shadow: 0px 0px 7px #666 !important;
+          box-shadow: 0px 0px 7px #666 !important;
+  background-clip: text !important;
+  -webkit-background-clip: none !important;
+  border: 5px solid;
+  border-image-slice: 1;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie_doswiadczenie {
+  color: black;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki {
+  /* checkbox */
+  /* gdy zaznaczony */
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki label {
+  margin: 0;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki input[type=checkbox] {
+  display: none;
+  /* ukrywamy nasz input */
+  height: 41.8px;
+  width: 41.8px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki input[type=checkbox] + label {
+  position: relative;
+  padding-left: 23px;
+  /* margines wewnętrzny - trzeba zrobić trochę miejsca dla naszego pola */
+  display: block;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki input[type=checkbox] + label:before {
+  position: absolute;
+  content: "";
+  display: block;
+  /* koniecznie element blokowy, aby móc nadać odpowiednie wymiary */
+  width: 41.8px;
+  height: 41.8px;
+  top: 0;
+  /* ustalamy pozycje */
+  left: 0;
+  cursor: pointer;
+  /* dodamy jeszcze odpowiedni kursor */
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+  -webkit-transition: all 0 ease;
+  border-image-slice: 1;
+  background: rgba(0, 0, 0, 0) !important;
+  border: 3px solid var(--gradient);
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki input[type=checkbox] + label:before {
+  border: 4px solid #018bd3;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki input[type=checkbox]:checked + label:before {
+  background: var(--gradient) !important;
+  border: 0px solid #018bd3;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki label {
+  font-size: large;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki input {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  outline: 0;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: var(--gradient) !important;
+  background-color: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: #018bd3 !important;
+  -webkit-transition: all 0.2s ease !important;
+  transition: all 0.2s ease !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki .block {
+  display: block;
+  height: 41.8px;
+  margin-bottom: 10px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki .block .w-50 {
+  width: 36%;
+  float: left;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input[type="checkbox"] + label {
+  padding-left: 55px;
+  height: 41.8px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input[type="text"] {
+  height: 41.8px;
+  display: inline-block;
+  width: 100px !important;
+  -webkit-transition: all 0s ease !important;
+  transition: all 0s ease !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input:hover, .nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input:focus, .nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input:focus-within {
+  font-weight: bold;
+  -webkit-box-shadow: 0px 0px 7px #666 !important;
+          box-shadow: 0px 0px 7px #666 !important;
+  background-clip: text !important;
+  -webkit-background-clip: none !important;
+  border: 5px solid;
+  border-image-slice: 1;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki label {
+  display: table-cell !important;
+  vertical-align: middle;
+  height: 41.8px;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons {
@@ -117,9 +292,10 @@ body {
 }
 
 .nameColumnResult .wiersz1 .kolumna2 form {
-  max-width: 50%;
-  display: inline-block;
-  padding: 0;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
   /* checkbox */
   /* gdy zaznaczony */
 }
@@ -144,6 +320,12 @@ body {
   -webkit-text-fill-color: #fff !important;
   -webkit-box-shadow: #222 1px 0 10px;
           box-shadow: #222 1px 0 10px;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form button.saveButton {
+  margin-left: 0;
+  width: 100px;
+  display: inline-block;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 form .btn:focus-within {
@@ -176,21 +358,21 @@ body {
   margin: 0;
 }
 
-.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox], .nameColumnResult .wiersz1 .kolumna2 form input[type=radio] {
+.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox] {
   display: none;
   /* ukrywamy nasz input */
   height: 41.8px;
   width: 41.8px;
 }
 
-.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox] + label, .nameColumnResult .wiersz1 .kolumna2 form input[type=radio] + label {
+.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox] + label {
   position: relative;
   padding-left: 23px;
   /* margines wewnętrzny - trzeba zrobić trochę miejsca dla naszego pola */
   display: block;
 }
 
-.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox] + label:before, .nameColumnResult .wiersz1 .kolumna2 form input[type=radio] + label:before {
+.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox] + label:before {
   position: absolute;
   content: "";
   display: block;
@@ -214,9 +396,15 @@ body {
   border: 4px solid #018bd3;
 }
 
-.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox]:checked + label:before, .nameColumnResult .wiersz1 .kolumna2 form input[type=radio]:checked + label:before {
+.nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox]:checked + label:before {
   background: var(--gradient) !important;
   border: 0px solid #018bd3;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form.colForm {
+  width: auto;
+  text-align: inherit;
+  padding: 0 20px 0 0;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons.black {

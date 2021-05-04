@@ -1,0 +1,25 @@
+@mixin inputs {
+  label {
+    font-size: large;
+  }
+  input {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    height: 50px;
+    text-align: center;
+    font-size: medium;
+    outline: 0;
+
+    border: 3px solid;
+    border-image-slice: 1;
+    border-image-source: var(--gradient) !important;
+
+    background-color: var(--gradient) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: $niebieski !important; //niebieski
+
+    transition: all 0.2s ease !important;
+  }
+}

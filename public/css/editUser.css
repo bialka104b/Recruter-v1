@@ -33,7 +33,6 @@
 
 #editUser .persons form .opakowanie input {
   display: block;
-  color: #018bd3;
   margin: 0 auto;
   width: 50%;
   height: 50px;
@@ -42,19 +41,20 @@
   outline: 0;
   border: 3px solid;
   border-image-slice: 1;
-  background: var(--gradient) !important;
+  border-image-source: var(--gradient) !important;
+  background-color: var(--gradient) !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
-  border-image-source: var(--gradient) !important;
-  -webkit-transition: all .3s ease !important;
-  transition: all .3s ease !important;
+  -webkit-text-fill-color: #018bd3 !important;
+  -webkit-transition: all 0.2s ease !important;
+  transition: all 0.2s ease !important;
 }
 
-#editUser .persons form .opakowanie input:hover, #editUser .persons form .opakowanie input:focus {
+#editUser .persons form .opakowanie input:hover,
+#editUser .persons form .opakowanie input:focus {
   -webkit-box-shadow: 0px 0px 7px #666 !important;
           box-shadow: 0px 0px 7px #666 !important;
   background-clip: text !important;
-  -webkit-background-clip: none !important;
   -webkit-text-fill-color: #fafafa !important;
   border: 7px solid #fff !important;
 }

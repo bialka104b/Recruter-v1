@@ -35,7 +35,7 @@
     <div class="col-12 wiersz1">
         <div class="row kolumna1">
             <form action="/wyslijimie" method="GET">
-                <div class="col-sm-3 dane_osobowe">
+                <div class="col-sm-4 dane_osobowe">
                     <div class="opakowanie">
                         <label for="nazwisko">Wybierz nazwisko:</label>
                         <input type="text" name="nazwisko" id="nazwisko">
@@ -49,7 +49,7 @@
                         <input type="text" name="miejscowosc" id="miejscowosc">
                     </div>
                 </div>
-                <div class="col-sm-2 technologie_doswiadczenie">
+                <div class="col-sm-3 technologie_doswiadczenie">
                     <label for="technologie" class="technologie"> Wybirz technologię:<br>
                         {{!-- tu trzeba obsłuzyć jeszcze form="pobierz" --}}
                         <select name="technologie" id="technologie">
@@ -86,33 +86,39 @@
                         </select>
                     </label>
                 </div>
-                <div class="col-sm-3 jezyki">Wybierz języki obce:<br>
-                    <input type="checkbox" id="angielski" name="Angielski" value="angielski" defaultChecked="false">
-                    <label for="angielski">Angielski</label>
-                    <input type="text" name="angielskiLevel" id="angielskiLevel" style="width:50px">
-                    <br>
-
-                    <input type="checkbox" id="niemiecki" name="Niemiecki" value="niemiecki" defaultChecked="false">
-                    <label for="niemiecki">Niemiecki</label>
-                    <input type="text" name="niemieckiLevel" id="niemieckiLevel" style="width:50px">
-                    <br>
-
-                    {{!-- <input type="checkbox" id="pozostalejezyki" name="Pozostale_Jezyki" value="p"
-                        defaultChecked="false"> --}}
-                    <label for="pozostalejezyki" title="Przykład: 'Rosyjski B1 lub Rosyjski'">Wpisz inny język: </label>
-                    <input type="text" id="pozostalejezyki" name="Pozostale_Jezyki" style="width:100px">
-
-                    {{!-- <input type="text" name="jezykLevel" id="jezykLevel" style="width:100px"> --}}
-                    <br>
+                <div class="col-sm-5 jezyki">Wybierz języki obce:<br>
+                    <div class="block">
+                        <div class="w-50">
+                            <input type="checkbox" id="angielski" name="Angielski" value="angielski" defaultChecked="false">
+                            <label for="angielski">Angielski</label>
+                        </div>
+                        <div class="w-50">
+                            <input type="text" name="angielskiLevel" id="angielskiLevel" style="width:50px">
+                        </div>
+                    </div>
+                    <div class="block">
+                        <div class="w-50">
+                            <input type="checkbox" id="niemiecki" name="Niemiecki" value="niemiecki" defaultChecked="false">
+                            <label for="niemiecki">Niemiecki</label>
+                        </div>
+                        <div class="w-50">
+                            <input type="text" name="niemieckiLevel" id="niemieckiLevel" style="width:50px">
+                        </div>
+                    </div>
+                    
+                    <div class="block">
+                        <div class="w-50">
+                            <label for="pozostalejezyki" title="Przykład: 'Rosyjski B1 lub Rosyjski'">Wpisz inny język: </label>
+                        </div>
+                        <div class="w-50">
+                            <input type="text" id="pozostalejezyki" name="Pozostale_Jezyki" style="width:100px">
+                        </div>
+                    </div>
                 </div>
-                <div class="col-sm-2 dataKontaktu_cv">
-                    <label for="cv">Wgraj plik CV</label>
-                    <input type="file" name="cv" id="cv">
-                </div>
-                <input type="submit" name="pobierz_imie" value="pobierz" class="btn btn-danger">
+                <button type="submit" name="pobierz_imie" class="btn btn-outline-danger">Pobierz</button>
             </form>
             <form action="/addedToDatabase" method="post">
-                <button type="submit">Dodaj</button>
+                <button type="submit"class="btn btn-putline-danger">Dodaj</button>
             </form>
         </div>
         <div class="row kolumna2" id="kolumna2">
@@ -156,9 +162,8 @@
     </div>
 </div>
 
-<div class="resultDiv row">
+<div class="resultDiv row"></div>
 
-</div>
 <script>
     //SKRYPT DODAJE ODPOWIEDNIE KLASY DO STYLÓW CSS
     document.addEventListener("DOMContentLoaded", function(event) { 

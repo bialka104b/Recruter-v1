@@ -264,7 +264,8 @@ app.get("/wyslijimie", (req, res) => {
       //FUNKCJA POTRZEBNA DO RENDEROWANIA INFORMACJI Z BAZY DANYCH NA STRONE
       
       function findInMongoDb(params) {
-        kandydaci.find(params).toArray((err, dataFromMongo) => {
+        //tablica posortowana będzie od A do Z po nazwiskach
+        kandydaci.find(params).sort({Nazwisko: 1}).toArray((err, dataFromMongo) => {
           //POD PARAMETREM dataFromMongo DOSTAJE MÓJ OBIEKT TABLICOWY Z DANYMI
           //OBIEKT DO RENDEROWANIA
           const objectRender = {
@@ -2423,7 +2424,7 @@ app.use('/deleteUser',deleteDatabase);
 
 //Dodawanie nowego kandydata do bazy
 app.post("/addedToDatabase", (req, res) => {//nazwa actiona i ścieżki
-  // TU TRZEBA DODAĆ MIENNE JAKIE BĘDĄ RENDEROWANE
+  
   res.render("addedUser", {//nazwa handlebarsa ktory ma byc wyrenderowany
     // person : dataFromMongo,
     title: "POMOCNIK REKRUTERA",

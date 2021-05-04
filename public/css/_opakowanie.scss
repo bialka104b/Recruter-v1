@@ -1,0 +1,13 @@
+@mixin opakowanie {
+    display: flex;
+    margin: 5px 0;
+    label {
+        flex-grow: 1;
+        padding-right: 10px;
+    }
+    input {
+        flex-grow: 1;
+        min-width: 150px;
+        max-width: 150px;
+    }
+}

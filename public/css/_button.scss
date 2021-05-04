@@ -1,0 +1,25 @@
+
+@mixin button {
+    border: 5px solid;
+    margin-left:50px;
+    border-image-slice: 1;
+    background: var(--gradient) !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    border-image-source:  var(--gradient) !important; 
+    text-decoration: none;
+    transition: all 0s ease;
+    &:hover {
+        background: var(--gradient) !important;
+        background-clip: text !important;
+        -webkit-background-clip: none !important;
+        -webkit-text-fill-color: #fff !important;
+        box-shadow: #222 1px 0 10px;
+    }
+}
+
+@mixin saveButton {
+    margin-left: 0;
+    width: 100px;
+    display: inline-block;
+}
