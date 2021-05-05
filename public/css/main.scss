@@ -1,14 +1,13 @@
 // IMPORT ZMIENNYCH
 @import "_variable.scss";
 @import "_kolumna1.scss";
-
 @import "_button.scss";
-@import "_opakowanie.scss";
+// @import "_opakowanie.scss";
 @import "_mixin.scss";
 @import "_input.scss";
 @import "_persons.scss";
-
-
+@import "_labelTableCell";
+@import "_webkitScrollbar";
 @import "_inputHoverFocus.scss";
 
 // reset css
@@ -66,8 +65,19 @@ body {
         }
         .dane_osobowe {
             .opakowanie {
-              @include opakowanie;
+              margin-bottom: 15px;
               @include inputs;
+              .block {
+                display:block;
+                height:50px;
+                .w-50 {
+                  width: 50%;
+                  float: left;
+                  input {
+                    width: 80%
+                  }
+                }
+              }
               input {
                 transition: all 0s ease !important;
               }
@@ -79,10 +89,41 @@ body {
                 border: 5px solid;
                 border-image-slice: 1;
               }
+              label {
+                @include labelTableCell;
+                height: 50px;
+              }
             }
         }
-        .technologie_doswiadczenie {
+        .technologie {
           color:black;
+          @include inputs;
+          select#technologie{
+            font-weight: bold;
+            margin: 0;
+            width:100%;
+            height: 50px;
+            padding: 0 0 0 20px;
+            &.options[selectedIndex] {
+              border-radius: unset!important;
+            }
+            &:focus {
+              border-radius: unset!important;
+            }
+            option {
+              border: 0;
+              background-color: $ciemno_szary;
+              outline:0;
+              color: $niebieski;
+              font-weight: bold;
+            }
+          }
+          @include webkitScrollbar;
+          .pobierz {
+            margin: 15px 0 0 0;
+            height: 50px;
+            width: -webkit-fill-available;
+          }
         }
         .jezyki {
           @include checkbox1;
@@ -92,8 +133,9 @@ body {
             height:41.8px;
             margin-bottom: 10px;
             .w-50 {
-              width: 36%;
+              width: 50%;
               float: left;
+
             }
             input[type="checkbox"] + label {
               padding-left: 55px;
@@ -102,7 +144,7 @@ body {
             input[type="text"] {
               height:41.8px;
               display:  inline-block;
-              width: 100px !important;
+              width: 100% !important;
               transition: all 0s ease !important;
             }
             input:hover, input:focus, input:focus-within {
@@ -115,12 +157,13 @@ body {
             }
           }
           label {
-            display: table-cell !important;
-            vertical-align: middle;
-            height: 41.8px;
+            @include labelTableCell;
           }
         }
       }
+      // .colDodajKandydata {
+      //   //margin-top: -50px;
+      // }
     }
     .kolumna2 {
       .persons {
@@ -132,10 +175,10 @@ body {
         margin: 0 auto;
         text-align: center;
         button {
-          @include button;//import _button.sscss
+          @include button;
         }
         button.saveButton {
-          @include saveButton;//import _button.sscss
+          @include saveButton;
         }
         .btn:focus-within {
           outline: 0!important;

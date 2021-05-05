@@ -75,32 +75,14 @@ body {
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin: 5px 0;
-}
-
-.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie label {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  padding-right: 10px;
-}
-
-.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  min-width: 150px;
-  max-width: 150px;
+  margin-bottom: 15px;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie label {
   font-size: large;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input {
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input, .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie select {
   display: block;
   margin: 0 auto;
   width: 50%;
@@ -119,6 +101,20 @@ body {
   transition: all 0.2s ease !important;
 }
 
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie .block {
+  display: block;
+  height: 50px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie .block .w-50 {
+  width: 50%;
+  float: left;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie .block .w-50 input {
+  width: 80%;
+}
+
 .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input {
   -webkit-transition: all 0s ease !important;
   transition: all 0s ease !important;
@@ -134,8 +130,86 @@ body {
   border-image-slice: 1;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 form .technologie_doswiadczenie {
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie label {
+  display: table-cell !important;
+  vertical-align: middle;
+  height: 41.8px;
+  height: 50px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie {
   color: black;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie label {
+  font-size: large;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie input, .nameColumnResult .wiersz1 .kolumna1 form .technologie select {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  outline: 0;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: var(--gradient) !important;
+  background-color: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: #018bd3 !important;
+  -webkit-transition: all 0.2s ease !important;
+  transition: all 0.2s ease !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie select#technologie {
+  font-weight: bold;
+  margin: 0;
+  width: 100%;
+  height: 50px;
+  padding: 0 0 0 20px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie select#technologie.options[selectedIndex] {
+  border-radius: unset !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie select#technologie:focus {
+  border-radius: unset !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie select#technologie option {
+  border: 0;
+  background-color: #333333;
+  outline: 0;
+  color: #018bd3;
+  font-weight: bold;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie ::-webkit-scrollbar {
+  width: 15px;
+  background-color: #333333;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie ::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(1, 139, 211, 0.8);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie .pobierz {
+  margin: 15px 0 0 0;
+  height: 50px;
+  width: -webkit-fill-available;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .jezyki {
@@ -179,6 +253,7 @@ body {
   border-image-slice: 1;
   background: rgba(0, 0, 0, 0) !important;
   border: 3px solid var(--gradient);
+  border-radius: 87% 0% 87% 25%;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .jezyki input[type=checkbox] + label:before {
@@ -194,7 +269,7 @@ body {
   font-size: large;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 form .jezyki input {
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki input, .nameColumnResult .wiersz1 .kolumna1 form .jezyki select {
   display: block;
   margin: 0 auto;
   width: 50%;
@@ -220,7 +295,7 @@ body {
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .jezyki .block .w-50 {
-  width: 36%;
+  width: 50%;
   float: left;
 }
 
@@ -232,7 +307,7 @@ body {
 .nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input[type="text"] {
   height: 41.8px;
   display: inline-block;
-  width: 100px !important;
+  width: 100% !important;
   -webkit-transition: all 0s ease !important;
   transition: all 0s ease !important;
 }
@@ -390,6 +465,7 @@ body {
   border-image-slice: 1;
   background: rgba(0, 0, 0, 0) !important;
   border: 3px solid var(--gradient);
+  border-radius: 87% 0% 87% 25%;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox] + label:before {

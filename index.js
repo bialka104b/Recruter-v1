@@ -219,8 +219,10 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
 const url = require("url");
 var qs = require("querystring");
 
+
 app.get("/wyslijimie", (req, res) => {
   //połączenie sie z baza mongo db
+
   client.connect((err) => {
     if (err) {
       console.log("błąd polaczenia database");
@@ -246,7 +248,6 @@ app.get("/wyslijimie", (req, res) => {
       if (angielski != false) {
         angielski = capitalize(angielski.trim());
       }
-      //console.log("co zawiera angielski teraz", angielski);
 
       //NIEMIECKI
       const niemieckiLevel = req.query.niemieckiLevel;
@@ -254,7 +255,6 @@ app.get("/wyslijimie", (req, res) => {
       if (niemiecki != false) {
         niemiecki = capitalize(niemiecki.trim());
       }
-      //console.log("co zawiera niemiecki teraz", niemiecki);
 
       //INNE JĘZYKI
       let pozostalejezyki = req.query.Pozostale_Jezyki;
@@ -269,6 +269,12 @@ app.get("/wyslijimie", (req, res) => {
           //POD PARAMETREM dataFromMongo DOSTAJE MÓJ OBIEKT TABLICOWY Z DANYMI
           //OBIEKT DO RENDEROWANIA
           const objectRender = {
+            script: () => {
+              var myTrigger = function(ready){
+                FreshUrl.waitsFor(function(){ return window.myLib; }).then(ready)
+              };
+              var _freshenUrlAfter = ['googleAnalytics', myTrigger];
+            },
             person: dataFromMongo,
             title: "POMOCNIK REKRUTERA",
             content: "kotent strony",
@@ -2420,13 +2426,12 @@ app.get("/editUser", (req, res) => {
 
 //Usuwanie wybranego kandydata z bazy
 const deleteDatabase = require('./Routes/deleteDatabase');
+const { nextTick } = require("process");
 app.use('/deleteUser',deleteDatabase);
 
 //Dodawanie nowego kandydata do bazy
 app.post("/addedToDatabase", (req, res) => {//nazwa actiona i ścieżki
-  
   res.render("addedUser", {//nazwa handlebarsa ktory ma byc wyrenderowany
-    // person : dataFromMongo,
     title: "POMOCNIK REKRUTERA",
     content: "kotent strony",
     copywright: "by Marta Jamróz Kulig",
@@ -2439,12 +2444,23 @@ app.post("/addedToDatabase", (req, res) => {//nazwa actiona i ścieżki
 
 
 app.get("/", function (req, res) {
-  res.render("home", {
+  
+  res.render("login", {
     title: "POMOCNIK REKRUTERA",
     content: "kotent strony",
     copywright: "by Marta Jamróz Kulig",
     pathCss: "/css/main.css",
+    pathCss2: "/css/login.css"
   });
+  const downloadData = require('./Routes/downloadData.js');
+  app.use('/downloadData',downloadData);
+  // res.render("home", {
+  //   title: "POMOCNIK REKRUTERA",
+  //   content: "kotent strony",
+  //   copywright: "by Marta Jamróz Kulig",
+  //   pathCss: "/css/main.css",
+  // });
+  
 });
 
 app.listen(process.env.PORT || 8080, function () {

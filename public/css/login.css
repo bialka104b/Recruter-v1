@@ -3,35 +3,39 @@
   --gradientGreen:  linear-gradient(to top left, rgb(51, 51, 51) 20%, #018bd3 80%) !important;
 }
 
-.nameColumnResult h1, .nameColumnResult h4, .nameColumnResult h3 {
-  text-align: center;
+body {
+  height: 100vh;
 }
 
-.nameColumnResult .wiersz1 #editUser .persons {
-  height: auto;
+.container-fluid {
+  height: 100%;
 }
 
-#editUser {
-  margin: 0;
-}
-
-#editUser .persons {
+#login {
+  height: 100%;
   margin: 0 auto;
-  width: 70%;
-  float: none;
-  border: 5px dotted white;
 }
 
-#editUser .persons form .opakowanie {
+#login > div {
+  padding: 15% 0;
+  height: 100%;
+}
+
+#login > div h1 {
   text-align: center;
-  padding: 20px 10px;
 }
 
-#editUser .persons form .opakowanie label {
+#login > div form {
+  width: 500px;
+  margin: 100px auto;
+  text-align: center;
+}
+
+#login > div form .loginAndPassword label {
   font-size: large;
 }
 
-#editUser .persons form .opakowanie input, #editUser .persons form .opakowanie select {
+#login > div form .loginAndPassword input, #login > div form .loginAndPassword select {
   display: block;
   margin: 0 auto;
   width: 50%;
@@ -50,34 +54,28 @@
   transition: all 0.2s ease !important;
 }
 
-#editUser .persons form .opakowanie input:hover,
-#editUser .persons form .opakowanie input:focus {
-  -webkit-box-shadow: 0px 0px 7px #666 !important;
-          box-shadow: 0px 0px 7px #666 !important;
-  background-clip: text !important;
-  -webkit-text-fill-color: #fafafa !important;
-  border: 7px solid #fff !important;
-}
-
-#editUser .persons form button {
+#login > div form button {
   border: 5px solid;
+  margin-left: 50px;
   border-image-slice: 1;
   background: var(--gradient) !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
   border-image-source: var(--gradient) !important;
   text-decoration: none;
   -webkit-transition: all 0s ease;
   transition: all 0s ease;
+  margin-left: 0;
+  margin-top: 25px;
+  width: 50%;
 }
 
-#editUser .persons form button:hover {
+#login > div form button:hover {
   background: var(--gradient) !important;
-  background-clip: none !important;
+  background-clip: text !important;
   -webkit-background-clip: none !important;
   -webkit-text-fill-color: #fff !important;
   -webkit-box-shadow: #222 1px 0 10px;
           box-shadow: #222 1px 0 10px;
 }
-/*# sourceMappingURL=editUser.css.map */
+/*# sourceMappingURL=login.css.map */
