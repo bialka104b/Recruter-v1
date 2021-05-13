@@ -2,7 +2,7 @@ const express = require("express");
 let app = express.Router();
 
 const mongo = require("mongodb"); //import biblioteki mongo
-const client = new mongo.MongoClient("mongodb://localhost:27017", {
+const client = new mongo.MongoClient("mongodb://51.195.103.100:27017", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }); //bez tych opcji w klamerkach nie zadziała
