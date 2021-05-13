@@ -8,7 +8,8 @@ const path = require("path");
 const helpers = require("./helpers");
 const process = require("process");
 const mongo = require("mongodb"); //import biblioteki mongo
-const client = new mongo.MongoClient("mongodb://localhost:27017", {
+const client = new mongo.MongoClient("mongodb://51.195.103.100:27017", {
+  // mongodb://localhost:27017"
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }); //bez tych opcji w klamerkach nie zadziała
@@ -219,7 +220,6 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
 const url = require("url");
 var qs = require("querystring");
 
-
 app.get("/wyslijimie", (req, res) => {
   //połączenie sie z baza mongo db
 
@@ -237,7 +237,7 @@ app.get("/wyslijimie", (req, res) => {
       const specjalnosc = req.query.specjalnosc; // narazie brak pola w bazie danych
       const nazwisko = req.query.nazwisko;
       const miejscowosc = req.query.miejscowosc;
-      
+
       //FUNKCJA SPRAWDZA CZY JEZYKI SĄ ZAZNACZONE CZY NIE
       const sprawdzCzyJezykZaznaczony = require("./moduly/sprawdzCzyJezykZaznaczony");
 
@@ -262,41 +262,45 @@ app.get("/wyslijimie", (req, res) => {
       console.log("polaczenie udane z bazą strona główna");
 
       //FUNKCJA POTRZEBNA DO RENDEROWANIA INFORMACJI Z BAZY DANYCH NA STRONE
-      
+
       function findInMongoDb(params) {
         //tablica posortowana będzie od A do Z po nazwiskach
-        kandydaci.find(params).sort({Nazwisko: 1}).toArray((err, dataFromMongo) => {
-          //POD PARAMETREM dataFromMongo DOSTAJE MÓJ OBIEKT TABLICOWY Z DANYMI
-          //OBIEKT DO RENDEROWANIA
-          const objectRender = {
-            script: () => {
-              var myTrigger = function(ready){
-                FreshUrl.waitsFor(function(){ return window.myLib; }).then(ready)
-              };
-              var _freshenUrlAfter = ['googleAnalytics', myTrigger];
-            },
-            person: dataFromMongo,
-            title: "POMOCNIK REKRUTERA",
-            content: "kotent strony",
-            pathCss: "/css/main.css",
-          };
-          //JEŚLI JEST ERROR TO WYŚWIETL MI GO
-          if (err) console.log("błąd", err.message);
-          //JEŚLI NIEMA ERRORA TO WYRENDERUJ DANE
-          else {
-            res.render("home", objectRender);
-          }
-        });
+        kandydaci
+          .find(params)
+          .sort({ Nazwisko: 1 })
+          .toArray((err, dataFromMongo) => {
+            //POD PARAMETREM dataFromMongo DOSTAJE MÓJ OBIEKT TABLICOWY Z DANYMI
+            //OBIEKT DO RENDEROWANIA
+            const objectRender = {
+              script: () => {
+                var myTrigger = function (ready) {
+                  FreshUrl.waitsFor(function () {
+                    return window.myLib;
+                  }).then(ready);
+                };
+                var _freshenUrlAfter = ["googleAnalytics", myTrigger];
+              },
+              person: dataFromMongo,
+              title: "POMOCNIK REKRUTERA",
+              content: "kotent strony",
+              pathCss: "/css/main.css",
+            };
+            //JEŚLI JEST ERROR TO WYŚWIETL MI GO
+            if (err) console.log("błąd", err.message);
+            //JEŚLI NIEMA ERRORA TO WYRENDERUJ DANE
+            else {
+              res.render("home", objectRender);
+            }
+          });
       }
-      
+      technologie ? technologie : "";
       //_________________________________________________________________________________________
       //TU MAMY PRZYPADKI GDZIE POLE TECHNOLOGIE JEST WPROWADZONE
-      console.time('poczatek');
+      console.time("poczatek");
       if (technologie != "") {
         //NAZWISKO PUSTE
         if (specjalnosc == "") {
-          
-          if(angielski == ""){
+          if (angielski == "") {
             // 1 000 000  - pierwsza 8
             if (
               technologie != "" &&
@@ -538,8 +542,8 @@ app.get("/wyslijimie", (req, res) => {
               });
             }
           }
-          
-          if(angielski != ""){
+
+          if (angielski != "") {
             // 1 010 000  - trzecia 8
             if (
               technologie != "" &&
@@ -802,7 +806,7 @@ app.get("/wyslijimie", (req, res) => {
           }
         }
 
-        if(specjalnosc != ""){
+        if (specjalnosc != "") {
           // 1 100 000  - piata 8
           if (
             technologie != "" &&
@@ -1340,13 +1344,12 @@ app.get("/wyslijimie", (req, res) => {
           }
         }
       }
-      console.timeEnd('poczatek');
+      console.timeEnd("poczatek");
 
       //_________________________________________________________________________________________
       //TECHNOLOGIE NIE SĄ WPROWADZONE
       if (technologie == "") {
-        
-        if(specjalnosc == "") {
+        if (specjalnosc == "") {
           // 0 000 000  - pierwsza 8
           if (
             technologie == "" &&
@@ -1572,7 +1575,7 @@ app.get("/wyslijimie", (req, res) => {
               Miejscowosc: { $regex: miejscowosc },
             });
           }
-  
+
           // 0 010 000  - trzecia 8
           if (
             technologie == "" &&
@@ -1594,7 +1597,10 @@ app.get("/wyslijimie", (req, res) => {
             nazwisko == "" &&
             miejscowosc != ""
           ) {
-            findInMongoDb({ Angielski: { $regex: angielski }, Miejscowosc: { $regex: miejscowosc } });
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Miejscowosc: { $regex: miejscowosc },
+            });
           }
           if (
             technologie == "" &&
@@ -1682,7 +1688,7 @@ app.get("/wyslijimie", (req, res) => {
               Miejscowosc: { $regex: miejscowosc },
             });
           }
-  
+
           //0 011 000 - czwarta 8
           if (
             technologie == "" &&
@@ -1806,8 +1812,8 @@ app.get("/wyslijimie", (req, res) => {
             });
           }
         }
-        
-        if(specjalnosc != ""){
+
+        if (specjalnosc != "") {
           // 0 100 000  - piata 8
           if (
             technologie == "" &&
@@ -1925,7 +1931,7 @@ app.get("/wyslijimie", (req, res) => {
               Miejscowosc: { $regex: miejscowosc },
             });
           }
-  
+
           //0 101 000 - szosta 8
           if (
             technologie == "" &&
@@ -2052,7 +2058,7 @@ app.get("/wyslijimie", (req, res) => {
               Miejscowosc: { $regex: miejscowosc },
             });
           }
-  
+
           // 0 110 000 - siodma 8
           if (
             technologie == "" &&
@@ -2178,7 +2184,7 @@ app.get("/wyslijimie", (req, res) => {
               Miejscowosc: { $regex: miejscowosc },
             });
           }
-  
+
           //0 111 000 - osma 8
           if (
             technologie == "" &&
@@ -2314,7 +2320,7 @@ app.get("/wyslijimie", (req, res) => {
           }
         }
       }
-      
+
       // kandydaci.find({}).toArray((err, data) => {
       //   if (err) console.log("błąd", err.message);
       //   else {
@@ -2389,7 +2395,6 @@ app.post("/upload-file", (req, res) => {
 });
 
 app.get("/editUser", (req, res) => {
-  //const id = req.query._id;
   const id = req.query.editUser;
   console.log("Id klienta index /editUser", id);
   client.connect((err) => {
@@ -2399,69 +2404,66 @@ app.get("/editUser", (req, res) => {
     } else {
       const db = client.db("test"); //pobieram nazwe bazy danych test
       const kandydaci = db.collection("kandydaci"); // nazwa naszej kolekcji
-      kandydaci.find({_id: mongo.ObjectID(id)}).toArray((err, dataFromMongo) => {
+      kandydaci.find({ _id: mongo.ObjectID(id) }).toArray((err, dataFromMongo) => {
         //POD PARAMETREM dataFromMongo DOSTAJE MÓJ OBIEKT TABLICOWY Z DANYMI
         //JEŚLI JEST ERROR TO WYŚWIETL MI GO
         if (err) console.log("błąd", err.message);
         //JEŚLI NIEMA ERRORA TO WYRENDERUJ DANE
         else {
           console.log("wszystko ok /editUser", dataFromMongo);
-          res.render("editUser", {//nazwa handlebarsa ktory ma byc wyrenderowany
-            id : dataFromMongo._id,
-            person : dataFromMongo,
+          res.render("editUser", {
+            //nazwa handlebarsa ktory ma byc wyrenderowany
+            id: dataFromMongo._id,
+            person: dataFromMongo,
             title: "POMOCNIK REKRUTERA",
             content: "kotent strony",
             copywright: "by Marta Jamróz Kulig",
             pathCss: "/css/main.css",
-            pathCss2: "/css/editUser.css"
+            pathCss2: "/css/editUser.css",
           });
         }
-      }
-    )};
+      });
+    }
   });
   //WYSŁANIE UPDATE DO BAZY DANYCH
-  const saveDatabase = require('./Routes/saveDatabase');
-  app.use('/saveDatabase',saveDatabase);
+  const saveDatabase = require("./Routes/saveDatabase");
+  app.use("/saveDatabase", saveDatabase);
 });
 
 //Usuwanie wybranego kandydata z bazy
-const deleteDatabase = require('./Routes/deleteDatabase');
+const deleteDatabase = require("./Routes/deleteDatabase");
 const { nextTick } = require("process");
-app.use('/deleteUser',deleteDatabase);
+app.use("/deleteUser", deleteDatabase);
 
 //Dodawanie nowego kandydata do bazy
-app.post("/addedToDatabase", (req, res) => {//nazwa actiona i ścieżki
-  res.render("addedUser", {//nazwa handlebarsa ktory ma byc wyrenderowany
+app.post("/addedToDatabase", (req, res) => {
+  //nazwa actiona i ścieżki
+  res.render("addedUser", {
+    //nazwa handlebarsa ktory ma byc wyrenderowany
     title: "POMOCNIK REKRUTERA",
     content: "kotent strony",
     copywright: "by Marta Jamróz Kulig",
     pathCss: "/css/main.css",
-    pathCss2: "/css/editUser.css"
+    pathCss2: "/css/editUser.css",
+    pathCss3: "/css/addedToDatabase.css",
   });
-  const addUserToDatabase = require('./Routes/addedToDatabase');
-  app.use('/addedUser',addUserToDatabase);
+  const addUserToDatabase = require("./Routes/addedToDatabase");
+  app.use("/addedUser", addUserToDatabase);
 });
 
-
+console.time("geter");
 app.get("/", function (req, res) {
-  
   res.render("login", {
     title: "POMOCNIK REKRUTERA",
     content: "kotent strony",
     copywright: "by Marta Jamróz Kulig",
     pathCss: "/css/main.css",
-    pathCss2: "/css/login.css"
+    pathCss2: "/css/login.css",
   });
-  const downloadData = require('./Routes/downloadData.js');
-  app.use('/downloadData',downloadData);
-  // res.render("home", {
-  //   title: "POMOCNIK REKRUTERA",
-  //   content: "kotent strony",
-  //   copywright: "by Marta Jamróz Kulig",
-  //   pathCss: "/css/main.css",
-  // });
-  
+  const downloadData = require("./Routes/downloadData.js");
+  app.use("/downloadData", downloadData);
 });
+console.timeEnd("geter");
 
 app.listen(process.env.PORT || 8080, function () {
   console.log("Serwer został uruchomiony pod adresem http://localhost:8080");
