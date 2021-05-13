@@ -8,8 +8,11 @@
                     <div class="col-md-12">
                         <h3>Wprowadź nowe dane aby zaktualizować kandydata</h3>
                     </div>
-                    <button type="submit" class="btn btn-outline-secondary col-md-12 saveButton">Zapisz</button>
-                    <br class="col-md-12">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-outline-secondary saveButton">Zapisz</button>
+                    </div>
+                    
+                    {{!-- <br class="col-md-12"> --}}
                     <div class="opakowanie col-md-6">
                         <label for="imieAdd">Imię:</label>
                         <input type="text" name="imieAdd" id="imieAdd" value="">
@@ -82,7 +85,6 @@
                         <label for="komentarzeAdd">Dopisz komentarz:</label>
                         <input type="text" name="komentarzeAdd" id="komentarzeAdd" value="">
                     </div>
-
                     <div class="opakowanie col-md-6">
                         <label for="rozmowaTechnicznaAdd">Rozmowa techniczna - wynik</label>
                         <input type="text" name="rozmowaTechnicznaAdd" id="rozmowaTechnicznaAdd" value="">
@@ -94,8 +96,10 @@
                     <br class="col-md-12">
                     <button type="submit" class="btn btn-outline-secondary saveButton">Zapisz</button>
                 </form>
-                <a class="back_home" href="./downloadData">&#9194; Powróć do strony głównej</a>
             </div>
+            <a class="back_home" href="./downloadData">
+                <i class="fa fa-chevron-circle-left" aria-hidden="true"></i>
+            </a>
         </div>
     </div>
 </div>

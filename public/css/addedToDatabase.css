@@ -1,0 +1,31 @@
+:root {
+  --gradient:  linear-gradient(to top left, #00963f 20%, #018bd3 80%) !important;
+  --gradientGreen:  linear-gradient(to top left, rgb(51, 51, 51) 20%, #018bd3 80%) !important;
+}
+
+#editUser .persons form button {
+  height: 50px;
+  color: white;
+  border-radius: 0;
+  font-size: medium;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: none !important;
+  -webkit-box-shadow: #222 1px 0 10px;
+          box-shadow: #222 1px 0 10px;
+  -webkit-transition: all 0s ease;
+  transition: all 0s ease;
+  color: white;
+}
+
+#editUser .persons form button:hover {
+  color: #018bd3;
+  border: 5px solid;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  border-image-source: var(--gradient) !important;
+  text-decoration: none;
+}
+/*# sourceMappingURL=addedToDatabase.css.map */

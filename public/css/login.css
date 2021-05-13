@@ -50,19 +50,20 @@ body {
   background-clip: text !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: #018bd3 !important;
-  -webkit-transition: all 0.2s ease !important;
-  transition: all 0.2s ease !important;
+  -webkit-transition: all 0s ease !important;
+  transition: all 0s ease !important;
 }
 
 #login > div form button {
-  border: 5px solid;
-  margin-left: 50px;
-  border-image-slice: 1;
+  height: 50px;
+  color: white;
+  border-radius: 0;
+  font-size: medium;
   background: var(--gradient) !important;
   background-clip: text !important;
-  -webkit-background-clip: text !important;
-  border-image-source: var(--gradient) !important;
-  text-decoration: none;
+  -webkit-background-clip: none !important;
+  -webkit-box-shadow: #222 1px 0 10px;
+          box-shadow: #222 1px 0 10px;
   -webkit-transition: all 0s ease;
   transition: all 0s ease;
   margin-left: 0;
@@ -71,11 +72,17 @@ body {
 }
 
 #login > div form button:hover {
+  color: #018bd3;
+  border: 5px solid;
+  border-image-slice: 1;
   background: var(--gradient) !important;
   background-clip: text !important;
-  -webkit-background-clip: none !important;
-  -webkit-text-fill-color: #fff !important;
-  -webkit-box-shadow: #222 1px 0 10px;
-          box-shadow: #222 1px 0 10px;
+  -webkit-background-clip: text !important;
+  border-image-source: var(--gradient) !important;
+  text-decoration: none;
+}
+
+#login > div form button:focus {
+  outline: 0;
 }
 /*# sourceMappingURL=login.css.map */

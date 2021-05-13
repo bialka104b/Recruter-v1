@@ -1,0 +1,16 @@
+@import "_variable.scss";
+@import "_button";
+#editUser {
+    
+    .persons {
+        form {
+            button {
+                @include buttonOnWhite;
+                color: white;
+            }
+        }
+        
+    }
+
+
+}

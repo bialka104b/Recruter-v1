@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
   console.log(req.query);
   console.log("wyglada na to że działa deleteUser czy to działa?");
 
-  client.connect((err)=>{
+  client.connect((err) => {
     if (err) {
       console.log("błąd polaczenia /deleteDatabase");
       client.close();
@@ -37,8 +37,8 @@ app.get("/", (req, res) => {
         `<h1>Skasowano dane Kandydata o id=${id} &#128515;</h1>
         <a class="back_home" href="./downloadData">&#9194; Powróć do strony głównej</a>`
       );
-      next();
     }
+    
   });
 });
 

@@ -18,8 +18,38 @@
     }
 }
 
+@mixin buttonOnWhite {
+    // margin-left:50px;
+    height: 50px;
+    color: white;
+    border-radius: 0;
+    font-size: medium;
+    background: var(--gradient) !important;
+    background-clip: text !important;
+    -webkit-background-clip: none !important;
+    //-webkit-text-fill-color: #fff !important;
+    box-shadow: #222 1px 0 10px;
+    transition: all 0s ease;
+    &:hover {
+        color: $niebieski;
+        border: 5px solid;
+        border-image-slice: 1;
+        background: var(--gradient) !important;
+        background-clip: text !important;
+        -webkit-background-clip: text !important;
+        border-image-source:  var(--gradient) !important; 
+        text-decoration: none;
+    }
+}
+
 @mixin saveButton {
     margin-left: 0;
     width: 100px;
     display: inline-block;
+}
+
+@mixin buttonFocus {
+    &:focus {
+        outline: 0;
+    }
 }

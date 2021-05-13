@@ -2,7 +2,6 @@
 @import "_variable.scss";
 @import "_kolumna1.scss";
 @import "_button.scss";
-// @import "_opakowanie.scss";
 @import "_mixin.scss";
 @import "_input.scss";
 @import "_persons.scss";
@@ -20,34 +19,13 @@
 body {
   color: $ciemno_szary;
   font-family: $czcionka_lato;
-  background-image: url("../Images/large_leather/large_leather/large_leather.png");
+  background-image: url("../Images/leaves-pattern/leaves-pattern.png");
 }
 
 //.page-header
 .page-header {
   h1 {
     text-align: center;
-  }
-  .upload {
-    label {
-      position: absolute;
-      background-color: $zielony;
-      border: 0;
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-      &:hover {
-        background-color: #008537;
-      }
-    }
-    #file {
-      width: 300px;
-      padding-left: 27px;
-      height: 32px;
-      border: 0px;
-    }
-    [type="submit"] {
-      margin-top: 5px;
-    }
   }
 }
 
@@ -59,64 +37,78 @@ body {
   }
   .wiersz1 {
     .kolumna1 {
+      margin: 0 0 100px 0;
       form {
         button {
-          @include button;
+          @include buttonOnWhite;
+          @include buttonFocus;
         }
         .dane_osobowe {
-            .opakowanie {
-              margin-bottom: 15px;
-              @include inputs;
-              .block {
-                display:block;
-                height:50px;
-                .w-50 {
-                  width: 50%;
-                  float: left;
-                  input {
-                    width: 80%
-                  }
+          .opakowanie {
+            margin-bottom: 15px;
+            @include inputs;
+            .block {
+              display: block;
+              height: 50px;
+              .w-50 {
+                width: 50%;
+                float: left;
+                input {
+                  width: 80%;
                 }
               }
-              input {
-                transition: all 0s ease !important;
-              }
-              input:hover, input:focus, input:focus-within {
-                font-weight: bold;
-                box-shadow: 0px 0px 7px #666 !important;
-                background-clip: text !important;
-                -webkit-background-clip: none !important;
-                border: 5px solid;
-                border-image-slice: 1;
-              }
-              label {
-                @include labelTableCell;
-                height: 50px;
-              }
             }
+            input {
+              transition: all 0s ease !important;
+            }
+            input:hover,
+            input:focus,
+            input:focus-within {
+              font-weight: bold;
+              box-shadow: 0px 0px 7px #666 !important;
+              background-clip: text !important;
+              -webkit-background-clip: none !important;
+              border: 5px solid;
+              border-image-slice: 1;
+            }
+            label {
+              @include labelTableCell;
+              height: 50px;
+            }
+          }
         }
         .technologie {
-          color:black;
+          color: black;
           @include inputs;
-          select#technologie{
+          select#technologie {
             font-weight: bold;
             margin: 0;
-            width:100%;
+            width: 100%;
             height: 50px;
             padding: 0 0 0 20px;
+
             &.options[selectedIndex] {
-              border-radius: unset!important;
+              border-radius: unset !important;
             }
             &:focus {
-              border-radius: unset!important;
+              border-radius: unset !important;
             }
             option {
               border: 0;
               background-color: $ciemno_szary;
-              outline:0;
+              outline: 0;
               color: $niebieski;
               font-weight: bold;
             }
+            &:focus-within {
+              font-weight: bold;
+              box-shadow: 0px 0px 7px #666 !important;
+              background-clip: text !important;
+              -webkit-background-clip: none !important;
+              border: 5px solid;
+              border-image-slice: 1;
+            }
+            // transition: all 0 ease !important;
           }
           @include webkitScrollbar;
           .pobierz {
@@ -129,25 +121,26 @@ body {
           @include checkbox1;
           @include inputs;
           .block {
-            display:block;
-            height:41.8px;
+            display: block;
+            height: 41.8px;
             margin-bottom: 10px;
             .w-50 {
               width: 50%;
               float: left;
-
             }
             input[type="checkbox"] + label {
               padding-left: 55px;
               height: 41.8px;
             }
             input[type="text"] {
-              height:41.8px;
-              display:  inline-block;
+              height: 41.8px;
+              display: inline-block;
               width: 100% !important;
               transition: all 0s ease !important;
             }
-            input:hover, input:focus, input:focus-within {
+            input:hover,
+            input:focus,
+            input:focus-within {
               font-weight: bold;
               box-shadow: 0px 0px 7px #666 !important;
               background-clip: text !important;
@@ -161,15 +154,92 @@ body {
           }
         }
       }
-      // .colDodajKandydata {
-      //   //margin-top: -50px;
-      // }
+      .colDodajKandydata {
+        form {
+          margin-bottom: 15px;
+          .dodaj {
+            width: 100%;
+          }
+        }
+        .upload {
+          @include inputs;
+          .fileUpload {
+            height: 50px;
+            margin-bottom: 15px;
+          }
+          label {
+            position: absolute;
+            border: 0;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            font-size: medium;
+            height: 50px;
+            line-height: 38px;
+            @include buttonOnWhite;
+            box-shadow: #222 0 0 0;
+            &:hover {
+              line-height: 38px;
+              color: white !important;
+              border: 0px solid !important;
+              border-image-slice: 1;
+              background: var(--gradient) !important;
+              background-clip: text !important;
+              -webkit-background-clip: border-box !important;
+              border-image-source: var(--gradient) !important;
+              text-decoration: none;
+            }
+          }
+          #file {
+            width: 100%;
+            padding-left: 30px;
+            height: 50px;
+            border: 0px;
+            line-height: 38px;
+            margin: 0;
+            border: 3px solid;
+            border-image-slice: 1;
+            border-image-source: var(--gradient) !important;
+            background-color: var(--gradient) !important;
+            background-clip: text !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: $niebieski !important; //niebieski
+            box-shadow: #222 1px 0 10px;
+            transition: all 0s ease !important;
+          }
+          .zapisz {
+            button {
+              border-color: rgba(0, 0, 0, 0);
+              width: 100%;
+            }
+          }
+
+          // [type="submit"] {
+          //   margin-top: 5px;
+          // }
+        }
+      }
     }
     .kolumna2 {
+      .back_home {
+        display: block;
+        position: fixed;
+        top: 20px;
+        i {
+          display: block;
+          color: $niebieski;
+          font-size: 60px;
+        }
+      }
       .persons {
         @include persons;
+        .dane {
+          height: calc(100% - 50px);
+        }
+        .forms {
+          //margin-top: -42px;
+        }
       }
-      form { 
+      form {
         position: relative;
         width: 80%;
         margin: 0 auto;
@@ -179,39 +249,45 @@ body {
         }
         button.saveButton {
           @include saveButton;
+          @include buttonOnWhite;
         }
         .btn:focus-within {
-          outline: 0!important;
+          outline: 0 !important;
         }
         input.id {
-          height:41.8px;
-          display:block;
-          width:200px;
+          height: 41.8px;
+          display: block;
+          width: 200px;
           outline: 0;
           border: 5px solid;
           border-image-slice: 1;
           background: var(--gradient) !important;
           background-clip: text !important;
           -webkit-background-clip: text !important;
-          border-image-source:  var(--gradient) !important;
-          transition: all .3s ease !important;
+          border-image-source: var(--gradient) !important;
+          transition: all 0.3s ease !important;
         }
         [type="checkbox"] {
           @include checkbox;
         }
         @include checkbox1;
       }
-      form.colForm{
-        width:auto;
+      form.colForm {
+        width: auto;
         text-align: inherit;
-        padding:0 20px 0 0;
+        padding: 0 20px 0 0;
       }
       .persons.black {
         background-color: $ciemno_szary;
-        p {color: $czerwony;}
+        p {
+          color: $niebieski;
+        }
         .linkedin {
           a {
-            color:red;
+            color: $niebieski;
+            &:hover {
+              color: $zielony;
+            }
           }
         }
       }
@@ -222,7 +298,7 @@ body {
             background: var(--gradientGreen) !important;
             background-clip: text !important;
             -webkit-background-clip: text !important;
-            border-image-source:  var(--gradientGreen) !important;
+            border-image-source: var(--gradientGreen) !important;
             &:hover {
               background: var(--gradientGreen) !important;
               background-clip: text !important;
@@ -236,12 +312,12 @@ body {
             background: var(--gradientGreen) !important;
             background-clip: text !important;
             -webkit-background-clip: text !important;
-            border-image-source:  var(--gradientGreen) !important;
-            transition: all .3s ease !important;
+            border-image-source: var(--gradientGreen) !important;
+            transition: all 0.3s ease !important;
           }
         }
-        
-        .info{
+
+        .info {
           p {
             color: $ciemno_szary;
             font-weight: bold;
@@ -254,9 +330,9 @@ body {
         }
       }
       .persons.white {
-        background-color: $bialy;
+        background: none;
         color: $ciemno_szary;
-        .info{
+        .info {
           p {
             color: $zielony;
             font-weight: bold;

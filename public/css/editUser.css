@@ -46,8 +46,8 @@
   background-clip: text !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: #018bd3 !important;
-  -webkit-transition: all 0.2s ease !important;
-  transition: all 0.2s ease !important;
+  -webkit-transition: all 0s ease !important;
+  transition: all 0s ease !important;
 }
 
 #editUser .persons form .opakowanie input:hover,
@@ -57,27 +57,5 @@
   background-clip: text !important;
   -webkit-text-fill-color: #fafafa !important;
   border: 7px solid #fff !important;
-}
-
-#editUser .persons form button {
-  border: 5px solid;
-  border-image-slice: 1;
-  background: var(--gradient) !important;
-  background-clip: text !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-  border-image-source: var(--gradient) !important;
-  text-decoration: none;
-  -webkit-transition: all 0s ease;
-  transition: all 0s ease;
-}
-
-#editUser .persons form button:hover {
-  background: var(--gradient) !important;
-  background-clip: none !important;
-  -webkit-background-clip: none !important;
-  -webkit-text-fill-color: #fff !important;
-  -webkit-box-shadow: #222 1px 0 10px;
-          box-shadow: #222 1px 0 10px;
 }
 /*# sourceMappingURL=editUser.css.map */

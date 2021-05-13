@@ -35,7 +35,8 @@
         border-image-slice: 1;
         background: rgba($color: #000000, $alpha: 0) !important;
         border: 3px solid var(--gradient);
-        border-radius: 87% 0% 87% 25%;
+        // border-radius: 87% 0% 87% 25%;
+        border-radius: 87% 0% 0% 0%;
     }
     
     /* checkbox */

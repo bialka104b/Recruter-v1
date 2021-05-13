@@ -28,22 +28,25 @@
                 @include inputsHoverFocus;
             }
             button {
-                border: 5px solid;
-                border-image-slice: 1;
-                background: var(--gradient) !important;
-                background-clip: text !important;
-                -webkit-background-clip: text !important;
-                -webkit-text-fill-color: transparent !important;
-                border-image-source:  var(--gradient) !important; 
-                text-decoration: none;
-                transition: all 0s ease;
-                &:hover {
-                    background: var(--gradient) !important;
-                    background-clip: none !important;
-                    -webkit-background-clip: none !important;
-                    -webkit-text-fill-color: #fff !important;
-                    box-shadow: #222 1px 0 10px;
-                }
+                @include buttonOnWhite;
+                color: white;
+                @include buttonFocus;
+                // border: 5px solid;
+                // border-image-slice: 1;
+                // background: var(--gradient) !important;
+                // background-clip: text !important;
+                // -webkit-background-clip: text !important;
+                // -webkit-text-fill-color: transparent !important;
+                // border-image-source:  var(--gradient) !important; 
+                // text-decoration: none;
+                // transition: all 0s ease;
+                // &:hover {
+                //     background: var(--gradient) !important;
+                //     background-clip: none !important;
+                //     -webkit-background-clip: none !important;
+                //     -webkit-text-fill-color: #fff !important;
+                //     box-shadow: #222 1px 0 10px;
+                // }
             }
         }
     }

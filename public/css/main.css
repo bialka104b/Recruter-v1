@@ -14,34 +14,11 @@
 body {
   color: #333333;
   font-family: "Lato", sans-serif;
-  background-image: url("../Images/large_leather/large_leather/large_leather.png");
+  background-image: url("../Images/leaves-pattern/leaves-pattern.png");
 }
 
 .page-header h1 {
   text-align: center;
-}
-
-.page-header .upload label {
-  position: absolute;
-  background-color: #00963f;
-  border: 0;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.page-header .upload label:hover {
-  background-color: #008537;
-}
-
-.page-header .upload #file {
-  width: 300px;
-  padding-left: 27px;
-  height: 32px;
-  border: 0px;
-}
-
-.page-header .upload [type="submit"] {
-  margin-top: 5px;
 }
 
 .nameColumnResult {
@@ -52,26 +29,37 @@ body {
   margin: 0;
 }
 
+.nameColumnResult .wiersz1 .kolumna1 {
+  margin: 0 0 100px 0;
+}
+
 .nameColumnResult .wiersz1 .kolumna1 form button {
+  height: 50px;
+  color: white;
+  border-radius: 0;
+  font-size: medium;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: none !important;
+  -webkit-box-shadow: #222 1px 0 10px;
+          box-shadow: #222 1px 0 10px;
+  -webkit-transition: all 0s ease;
+  transition: all 0s ease;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form button:hover {
+  color: #018bd3;
   border: 5px solid;
-  margin-left: 50px;
   border-image-slice: 1;
   background: var(--gradient) !important;
   background-clip: text !important;
   -webkit-background-clip: text !important;
   border-image-source: var(--gradient) !important;
   text-decoration: none;
-  -webkit-transition: all 0s ease;
-  transition: all 0s ease;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 form button:hover {
-  background: var(--gradient) !important;
-  background-clip: text !important;
-  -webkit-background-clip: none !important;
-  -webkit-text-fill-color: #fff !important;
-  -webkit-box-shadow: #222 1px 0 10px;
-          box-shadow: #222 1px 0 10px;
+.nameColumnResult .wiersz1 .kolumna1 form button:focus {
+  outline: 0;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie {
@@ -97,8 +85,8 @@ body {
   background-clip: text !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: #018bd3 !important;
-  -webkit-transition: all 0.2s ease !important;
-  transition: all 0.2s ease !important;
+  -webkit-transition: all 0s ease !important;
+  transition: all 0s ease !important;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie .block {
@@ -120,7 +108,9 @@ body {
   transition: all 0s ease !important;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input:hover, .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input:focus, .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input:focus-within {
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input:hover,
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input:focus,
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input:focus-within {
   font-weight: bold;
   -webkit-box-shadow: 0px 0px 7px #666 !important;
           box-shadow: 0px 0px 7px #666 !important;
@@ -160,8 +150,8 @@ body {
   background-clip: text !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: #018bd3 !important;
-  -webkit-transition: all 0.2s ease !important;
-  transition: all 0.2s ease !important;
+  -webkit-transition: all 0s ease !important;
+  transition: all 0s ease !important;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .technologie select#technologie {
@@ -186,6 +176,16 @@ body {
   outline: 0;
   color: #018bd3;
   font-weight: bold;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .technologie select#technologie:focus-within {
+  font-weight: bold;
+  -webkit-box-shadow: 0px 0px 7px #666 !important;
+          box-shadow: 0px 0px 7px #666 !important;
+  background-clip: text !important;
+  -webkit-background-clip: none !important;
+  border: 5px solid;
+  border-image-slice: 1;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .technologie ::-webkit-scrollbar {
@@ -253,7 +253,7 @@ body {
   border-image-slice: 1;
   background: rgba(0, 0, 0, 0) !important;
   border: 3px solid var(--gradient);
-  border-radius: 87% 0% 87% 25%;
+  border-radius: 87% 0% 0% 0%;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .jezyki input[type=checkbox] + label:before {
@@ -284,8 +284,8 @@ body {
   background-clip: text !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: #018bd3 !important;
-  -webkit-transition: all 0.2s ease !important;
-  transition: all 0.2s ease !important;
+  -webkit-transition: all 0s ease !important;
+  transition: all 0s ease !important;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .jezyki .block {
@@ -312,7 +312,9 @@ body {
   transition: all 0s ease !important;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input:hover, .nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input:focus, .nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input:focus-within {
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input:hover,
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input:focus,
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki .block input:focus-within {
   font-weight: bold;
   -webkit-box-shadow: 0px 0px 7px #666 !important;
           box-shadow: 0px 0px 7px #666 !important;
@@ -328,10 +330,129 @@ body {
   height: 41.8px;
 }
 
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata form {
+  margin-bottom: 15px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata form .dodaj {
+  width: 100%;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload label {
+  font-size: large;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload input, .nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload select {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  height: 50px;
+  text-align: center;
+  font-size: medium;
+  outline: 0;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: var(--gradient) !important;
+  background-color: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: #018bd3 !important;
+  -webkit-transition: all 0s ease !important;
+  transition: all 0s ease !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload .fileUpload {
+  height: 50px;
+  margin-bottom: 15px;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload label {
+  position: absolute;
+  border: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  font-size: medium;
+  height: 50px;
+  line-height: 38px;
+  height: 50px;
+  color: white;
+  border-radius: 0;
+  font-size: medium;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: none !important;
+  -webkit-box-shadow: #222 1px 0 10px;
+          box-shadow: #222 1px 0 10px;
+  -webkit-transition: all 0s ease;
+  transition: all 0s ease;
+  -webkit-box-shadow: #222 0 0 0;
+          box-shadow: #222 0 0 0;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload label:hover {
+  color: #018bd3;
+  border: 5px solid;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  border-image-source: var(--gradient) !important;
+  text-decoration: none;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload label:hover {
+  line-height: 38px;
+  color: white !important;
+  border: 0px solid !important;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: border-box !important;
+  border-image-source: var(--gradient) !important;
+  text-decoration: none;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload #file {
+  width: 100%;
+  padding-left: 30px;
+  height: 50px;
+  border: 0px;
+  line-height: 38px;
+  margin: 0;
+  border: 3px solid;
+  border-image-slice: 1;
+  border-image-source: var(--gradient) !important;
+  background-color: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: #018bd3 !important;
+  -webkit-box-shadow: #222 1px 0 10px;
+          box-shadow: #222 1px 0 10px;
+  -webkit-transition: all 0s ease !important;
+  transition: all 0s ease !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload .zapisz button {
+  border-color: rgba(0, 0, 0, 0);
+  width: 100%;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .back_home {
+  display: block;
+  position: fixed;
+  top: 20px;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .back_home i {
+  display: block;
+  color: #018bd3;
+  font-size: 60px;
+}
+
 .nameColumnResult .wiersz1 .kolumna2 .persons {
   color: white;
   height: 550px;
-  border: 3px dotted white;
+  border: 3px dotted rgba(255, 255, 255, 0);
   padding-top: 20px;
   padding-bottom: 10px;
 }
@@ -364,6 +485,10 @@ body {
   font-size: 20px;
   text-align: center;
   text-transform: uppercase;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons .dane {
+  height: calc(100% - 50px);
 }
 
 .nameColumnResult .wiersz1 .kolumna2 form {
@@ -401,6 +526,28 @@ body {
   margin-left: 0;
   width: 100px;
   display: inline-block;
+  height: 50px;
+  color: white;
+  border-radius: 0;
+  font-size: medium;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: none !important;
+  -webkit-box-shadow: #222 1px 0 10px;
+          box-shadow: #222 1px 0 10px;
+  -webkit-transition: all 0s ease;
+  transition: all 0s ease;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 form button.saveButton:hover {
+  color: #018bd3;
+  border: 5px solid;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  border-image-source: var(--gradient) !important;
+  text-decoration: none;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 form .btn:focus-within {
@@ -418,8 +565,8 @@ body {
   background-clip: text !important;
   -webkit-background-clip: text !important;
   border-image-source: var(--gradient) !important;
-  -webkit-transition: all .3s ease !important;
-  transition: all .3s ease !important;
+  -webkit-transition: all 0.3s ease !important;
+  transition: all 0.3s ease !important;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 form [type="checkbox"] {
@@ -465,7 +612,7 @@ body {
   border-image-slice: 1;
   background: rgba(0, 0, 0, 0) !important;
   border: 3px solid var(--gradient);
-  border-radius: 87% 0% 87% 25%;
+  border-radius: 87% 0% 0% 0%;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 form input[type=checkbox] + label:before {
@@ -488,11 +635,15 @@ body {
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons.black p {
-  color: red;
+  color: #018bd3;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons.black .linkedin a {
-  color: red;
+  color: #018bd3;
+}
+
+.nameColumnResult .wiersz1 .kolumna2 .persons.black .linkedin a:hover {
+  color: #00963f;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons.green {
@@ -521,8 +672,8 @@ body {
   background-clip: text !important;
   -webkit-background-clip: text !important;
   border-image-source: var(--gradientGreen) !important;
-  -webkit-transition: all .3s ease !important;
-  transition: all .3s ease !important;
+  -webkit-transition: all 0.3s ease !important;
+  transition: all 0.3s ease !important;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons.green .info p {
@@ -535,7 +686,7 @@ body {
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .persons.white {
-  background-color: #fff;
+  background: none;
   color: #333333;
 }
 

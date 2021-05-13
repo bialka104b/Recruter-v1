@@ -10,7 +10,7 @@
     <p>{{content}}</p>
     {{!-- RENDEROWANIE Z BAZY --}}
 
-    <form action="" class="generator">
+    {{!-- <form action="" class="generator">
         <label for="">Wybierz płeć:
             <select name="gender" id="" class="gender">
                 <option value="female">Kobieta</option>
@@ -21,20 +21,16 @@
             <input class="ileOsob" type="number" name="results" value="10" min="0">
         </label>
         <input type="submit" value="Pobierz" class="pobierz btn btn-primary">
-    </form>
+    </form> --}}
 
     {{!-- UPLOAD Z PLIKÓW --}}
-    <form method="POST" action="/upload-file" enctype="multipart/form-data" class="upload">
-        <label for="file" class="btn btn-primary">Dodaj plik .json</label>
-        <input id="file" type="file" name="my_file_upload" class="btn btn-primary">
-        <input type="submit" name="btn_my_file_upload" value="zapisz" class="btn btn-danger">
-    </form>
+    
 </div>
 
 <div class="nameColumnResult row">
     <div class="col-12 wiersz1">
         <div class="row kolumna1">
-            <div class="col-md-10">
+            <div class="col-md-9">
                 <form class="row" action="/wyslijimie" method="get">
                     <div class="col-sm-5 dane_osobowe">
                         <div class="opakowanie">
@@ -127,61 +123,76 @@
                     </div>
                 </form>
             </div>
-            <div class="col-md-2 colDodajKandydata">
+            <div class="col-md-3 colDodajKandydata">
                 <form class="row" action="/addedToDatabase" method="post">
                     <button type="submit" class="btn btn-putline-danger dodaj">Dodaj kandydata</button>
+                </form>
+                <form method="POST" action="/upload-file" enctype="multipart/form-data" class="upload">
+                    <div class="fileUpload">
+                        <label for="file" class="btn btn-primary">Dodaj plik .json</label>
+                        <input id="file" type="file" name="my_file_upload" class="btn btn-primary">
+                    </div>
+                    <div class="zapisz">
+                        <button type="submit" name="btn_my_file_upload" class="btn btn-danger">Zapisz plik .json</button>
+                    </div>
                 </form>
             </div>
         </div>
         <div class="row kolumna2" id="kolumna2">
             {{#each person}}
             <div class="persons col-sm-4">
-                <div class="info name">{{Imie}} {{Nazwisko}}</div>
-                <div class="info">EMAIL: <p>{{Email}}</p>
+                <div class="dane">
+                    <div class="info name">{{Imie}} {{Nazwisko}}</div>
+                    <div class="info">EMAIL: <p>{{Email}}</p>
+                    </div>
+                    <div class="info">TELEFON: <p>{{Telefon}}</p>
+                    </div>
+                    <div class="info">MIEJSCOWOŚĆ: <p>{{Miejscowosc}}</p>
+                    </div>
+                    <div class="info">ANGIELSKI: <p>{{Angielski}}</p>
+                    </div>
+                    <div class="info">NIEMIECKI: <p>{{Niemiecki}}</p>
+                    </div>
+                    <div class="info">INNE JĘZYKI: <p>{{Pozostale_Jezyki}}</p>
+                    </div>
+                    <div class="info">WIEK: <p>{{Wiek}}</p>
+                    </div>
+                    <div class="info">RELOKACJA: <p>{{Relokacja}}</p>
+                    </div>
+                    <div class="info">WSPÓŁPRACA Z FIRMAMI: <p>{{Firmy_Wspolpraca}}</p>
+                    </div>
+                    <div class="info">DOŚWIADCZENIE: <p>{{Doswiadczenie}} lat</p>
+                    </div>
+                    <div class="info">WIDEŁKI: <p>{{Widelki}}</p>
+                    </div>
+                    <div class="info">TECHNOLOGIE: <p>{{Technologie}}</p>
+                    </div>
+                    <div class="info">KOMENTARZE: <p>{{Komentarze}}</p>
+                    </div>
+                    <div class="info linkedin">LINKEDIN: <p><a href="{{Link_Do_Profilu}}">{{Link_Do_Profilu}}</a></p>
+                    </div>
+                    <div class="info">SPECJALNOŚĆ: <p>{{Specjalnosc}}</p>
+                    </div>
+                    <div class="info">OSTATNI KONTAKT: <p>{{Data_kontaktu}}</p>
+                    </div>
+                    <div class="info">STATUS: {{Status_Zainteresowany}}</div>
+                    <div class="info">Rozmowa techniczna: {{Rozmowa_techniczna}}</div>
+                    <div class="info">Rozmowa nietechniczna: {{Rozmowa_nietechniczna}}</div>
                 </div>
-                <div class="info">TELEFON: <p>{{Telefon}}</p>
+                
+                <div class="row forms">
+                    <form class="col-md-6 colForm" action="/editUser" method="get">
+                        <input type="checkbox" id="{{_id}}" name="editUser" value="{{_id}}" defaultChecked="true">
+                        <label for="{{_id}}"></label>
+                        <button type="submit" class="btn btn-outline-secondary">Edytuj</button>
+                    </form>
+                    <form class="col-md-6 colForm" action="/deleteUser" method="get">
+                        <input type="checkbox" id="{{_id}}1" name="deleteUser" value="{{_id}}" defaultChecked="true">
+                        <label for="{{_id}}1"></label>
+                        <button type="submit" class="btn btn-outline-secondary">Usuń z bazy</button>
+                    </form>
                 </div>
-                <div class="info">MIEJSCOWOŚĆ: <p>{{Miejscowosc}}</p>
-                </div>
-                <div class="info">ANGIELSKI: <p>{{Angielski}}</p>
-                </div>
-                <div class="info">NIEMIECKI: <p>{{Niemiecki}}</p>
-                </div>
-                <div class="info">INNE JĘZYKI: <p>{{Pozostale_Jezyki}}</p>
-                </div>
-                <div class="info">WIEK: <p>{{Wiek}}</p>
-                </div>
-                <div class="info">RELOKACJA: <p>{{Relokacja}}</p>
-                </div>
-                <div class="info">WSPÓŁPRACA Z FIRMAMI: <p>{{Firmy_Wspolpraca}}</p>
-                </div>
-                <div class="info">DOŚWIADCZENIE: <p>{{Doswiadczenie}} lat</p>
-                </div>
-                <div class="info">WIDEŁKI: <p>{{Widelki}}</p>
-                </div>
-                <div class="info">TECHNOLOGIE: <p>{{Technologie}}</p>
-                </div>
-                <div class="info">KOMENTARZE: <p>{{Komentarze}}</p>
-                </div>
-                <div class="info linkedin">LINKEDIN: <p><a href="{{Link_Do_Profilu}}">{{Link_Do_Profilu}}</a></p>
-                </div>
-                <div class="info">SPECJALNOŚĆ: <p>{{Specjalnosc}}</p>
-                </div>
-                <div class="info">OSTATNI KONTAKT: <p>{{Data_kontaktu}}</p>
-                </div>
-                <div class="info">STATUS: {{Status_Zainteresowany}}</div>
-                <div class="info">Rozmowa techniczna: {{Rozmowa_techniczna}}</div>
-                <div class="info">Rozmowa nietechniczna: {{Rozmowa_nietechniczna}}</div>
-                <form class="col-md-6 colForm" action="/editUser" method="get">
-                    <input type="checkbox" id="{{_id}}" name="editUser" value="{{_id}}" defaultChecked="true">
-                    <label for="{{_id}}"></label>
-                    <button type="submit" class="btn btn-outline-secondary">Edytuj</button>
-                </form>
-                <form class="col-md-6 colForm" action="/deleteUser" method="get">
-                    <input type="checkbox" id="{{_id}}1" name="deleteUser" value="{{_id}}" defaultChecked="true">
-                    <label for="{{_id}}1"></label>
-                    <button type="submit" class="btn btn-outline-secondary">Usuń z bazy</button>
-                </form>
+                
 
                 {{!-- <button>Wgraj Cv</button> --}}
             </div>
@@ -197,21 +208,32 @@
     document.addEventListener("DOMContentLoaded", function (event) {
         var parentDOM = document.getElementById("kolumna2");
         var persons = parentDOM.getElementsByClassName("persons");
-
+        var a = 4;
         for (const key in persons) {
+            
             if (Object.hasOwnProperty.call(persons, key)) {
-                if (key % 4 == 0) {
+                
+                {{!-- if (key % 4 == 0) {
                     persons[key].classList.add("black");
+                    
+                }  --}}
+                if(key == a) {
+                    console.log(persons.length);
+                    persons[key].classList.add("green");
+                    a+=6;
                 } else if (key % 2 == 1) {
                     persons[key].classList.add("white");
                 } else {
-                    persons[key].classList.add("green");
+                    persons[key].classList.add("black");
                 }
+                console.log("moje a", a);
             }
         }
     });
 </script>
-<script type="text/javascript">
+{{!-- <script type="text/javascript">
+
+
     getUsers = (e) => {
         e.preventDefault();
         const ileOsob = document.querySelector(".ileOsob").value;
@@ -271,4 +293,4 @@
         })
     }
     document.querySelector(".generator").addEventListener("submit", getUsers);
-</script>
+</script> --}}
