@@ -15,11 +15,11 @@
     } 
 }
 #editUser {
-    margin: 0;
+    margin: 0 auto;
+    width: 70%;
     .persons {
         margin: 0 auto;
-        width:70%;
-        float: none;
+        width:100%;
         border: 5px dotted white;
         form {
             .opakowanie {

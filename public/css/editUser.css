@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Farro&family=Raleway:wght@500&display=swap");
 :root {
   --gradient:  linear-gradient(to top left, #00963f 20%, #018bd3 80%) !important;
   --gradientGreen:  linear-gradient(to top left, rgb(51, 51, 51) 20%, #018bd3 80%) !important;
@@ -12,13 +13,13 @@
 }
 
 #editUser {
-  margin: 0;
+  margin: 0 auto;
+  width: 70%;
 }
 
 #editUser .persons {
   margin: 0 auto;
-  width: 70%;
-  float: none;
+  width: 100%;
   border: 5px dotted white;
 }
 

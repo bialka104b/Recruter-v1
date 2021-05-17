@@ -35,7 +35,7 @@ app.get("/", (req, res) => {
   
       res.send(
         `<h1>Skasowano dane Kandydata o id=${id} &#128515;</h1>
-        <a class="back_home" href="./downloadData">&#9194; Powróć do strony głównej</a>`
+        <a class="back_home" href="./downloadData?login=&password=">&#9194; Powróć do strony głównej</a>`
       );
     }
     

@@ -82,7 +82,7 @@ app.get('/', function (req, res) {
           <div class="row finish">
             <h1>POMOCNIK REKRUTERA</h1>
             <h4>Aktualizacje zakończono pomyślnie</h4>
-            <a class="back_home" href="./downloadData">&#9194; Powróć do strony głównej</a>
+            <a class="back_home" href="../downloadData">&#9194; Powróć do strony głównej</a>
           </div>
           `);
         }

@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Farro&family=Raleway:wght@500&display=swap');
 $bialy: #fff;
 $ciemno_szary: rgb(51, 51, 51);
 $zielony: rgb(0, 150, 63);
@@ -6,6 +7,7 @@ $niebieski_przezroczysty: rgba(1, 139, 211, 0.5);
 $czerwony: rgb(255, 0, 0);
 $czcionka_lato: "Lato", sans-serif;
 $czcionka_releway: "Raleway", sans-serif;
+$czcionka_arial: "Arial" sans-serif;
 
 :root {
     --gradient:  linear-gradient(to top left, #00963f 20%, #018bd3 80%) !important;

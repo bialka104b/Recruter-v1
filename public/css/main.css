@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Farro&family=Raleway:wght@500&display=swap");
 :root {
   --gradient:  linear-gradient(to top left, #00963f 20%, #018bd3 80%) !important;
   --gradientGreen:  linear-gradient(to top left, rgb(51, 51, 51) 20%, #018bd3 80%) !important;
@@ -14,7 +15,7 @@
 
 body {
   color: #333333;
-  font-family: "Lato", sans-serif;
+  font-family: 'Farro', sans-serif;
   background-image: url("../Images/leaves-pattern/leaves-pattern.png");
 }
 
@@ -463,6 +464,7 @@ body {
   display: block;
   position: fixed;
   top: 20px;
+  left: 20px;
 }
 
 .nameColumnResult .wiersz1 .kolumna2 .back_home i {
@@ -542,8 +544,6 @@ body {
 
 .nameColumnResult .wiersz1 .kolumna2 form button:hover {
   background: var(--gradient) !important;
-  background-clip: text !important;
-  -webkit-background-clip: none !important;
   -webkit-text-fill-color: #fff !important;
   -webkit-box-shadow: #222 1px 0 10px;
           box-shadow: #222 1px 0 10px;
@@ -691,8 +691,6 @@ body {
 
 .nameColumnResult .wiersz1 .kolumna2 .persons.green form button:hover {
   background: var(--gradientGreen) !important;
-  background-clip: text !important;
-  -webkit-background-clip: none !important;
   -webkit-text-fill-color: #fff !important;
   -webkit-box-shadow: #222 1px 0 10px;
           box-shadow: #222 1px 0 10px;

@@ -11,8 +11,6 @@
     transition: all 0s ease;
     &:hover {
         background: var(--gradient) !important;
-        background-clip: text !important;
-        -webkit-background-clip: none !important;
         -webkit-text-fill-color: #fff !important;
         box-shadow: #222 1px 0 10px;
     }
