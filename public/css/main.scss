@@ -114,7 +114,7 @@ body {
           .pobierz {
             margin: 15px 0 0 0;
             height: 50px;
-            width: -webkit-fill-available;
+            width: 100%;//...
           }
         }
         .jezyki {
@@ -176,6 +176,7 @@ body {
             height: 50px;
             line-height: 38px;
             @include buttonOnWhite;
+            background: var(--gradient) !important;
             box-shadow: #222 0 0 0;
             &:hover {
               line-height: 38px;
@@ -202,7 +203,9 @@ body {
             background-color: var(--gradient) !important;
             background-clip: text !important;
             -webkit-background-clip: text !important;
+            -moz-background-clip: text !important;
             -webkit-text-fill-color: $niebieski !important; //niebieski
+            -moz-text-fill-color: $niebieski !important;
             box-shadow: #222 1px 0 10px;
             transition: all 0s ease !important;
           }
@@ -234,9 +237,6 @@ body {
         @include persons;
         .dane {
           height: calc(100% - 50px);
-        }
-        .forms {
-          //margin-top: -42px;
         }
       }
       form {

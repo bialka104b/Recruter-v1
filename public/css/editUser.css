@@ -47,6 +47,8 @@
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: #018bd3 !important;
   -webkit-transition: all 0s ease !important;
+  -o-transition: all 0s ease !important;
+  -moz-transition: all 0s ease !important;
   transition: all 0s ease !important;
 }
 
@@ -57,5 +59,36 @@
   background-clip: text !important;
   -webkit-text-fill-color: #fafafa !important;
   border: 7px solid #fff !important;
+}
+
+#editUser .persons form button {
+  height: 50px;
+  color: white;
+  border-radius: 0;
+  font-size: medium;
+  background: var(--gradient) !important;
+  -webkit-background-clip: none !important;
+  -webkit-box-shadow: #222 1px 0 10px;
+          box-shadow: #222 1px 0 10px;
+  -webkit-transition: all 0s ease;
+  -o-transition: all 0s ease;
+  -moz-transition: all 0s ease;
+  transition: all 0s ease;
+  color: white;
+}
+
+#editUser .persons form button:hover {
+  color: #018bd3;
+  border: 5px solid;
+  border-image-slice: 1;
+  background: var(--gradient) !important;
+  background-clip: text !important;
+  -webkit-background-clip: text !important;
+  border-image-source: var(--gradient) !important;
+  text-decoration: none;
+}
+
+#editUser .persons form button:focus {
+  outline: 0;
 }
 /*# sourceMappingURL=editUser.css.map */

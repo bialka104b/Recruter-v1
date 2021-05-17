@@ -9,11 +9,12 @@
   border-radius: 0;
   font-size: medium;
   background: var(--gradient) !important;
-  background-clip: text !important;
   -webkit-background-clip: none !important;
   -webkit-box-shadow: #222 1px 0 10px;
           box-shadow: #222 1px 0 10px;
   -webkit-transition: all 0s ease;
+  -o-transition: all 0s ease;
+  -moz-transition: all 0s ease;
   transition: all 0s ease;
   color: white;
 }

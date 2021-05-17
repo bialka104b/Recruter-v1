@@ -8,8 +8,7 @@ const path = require("path");
 const helpers = require("./helpers");
 const process = require("process");
 const mongo = require("mongodb"); //import biblioteki mongo
-const client = new mongo.MongoClient("mongodb://51.195.103.100:27017", {
-  // mongodb://localhost:27017"
+const client = new mongo.MongoClient("mongodb://51.195.103.100:27017", {// "mongodb://localhost:27017",
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }); //bez tych opcji w klamerkach nie zadziała
