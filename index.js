@@ -261,7 +261,6 @@ app.get("/wyslijimie", (req, res) => {
       console.log("polaczenie udane z bazą strona główna");
 
       //FUNKCJA POTRZEBNA DO RENDEROWANIA INFORMACJI Z BAZY DANYCH NA STRONE
-
       function findInMongoDb(params) {
         //tablica posortowana będzie od A do Z po nazwiskach
         kandydaci
@@ -292,11 +291,55 @@ app.get("/wyslijimie", (req, res) => {
             }
           });
       }
-      technologie ? technologie : "";
+      
       //_________________________________________________________________________________________
       //TU MAMY PRZYPADKI GDZIE POLE TECHNOLOGIE JEST WPROWADZONE
-      console.time("poczatek");
-      if (technologie != "") {
+      //ZAUTOMATYZAWANA OBSŁUGA 128 IFÓW do wyświetlania danych
+      const tablicaAtrybutowPelnych = [technologie, specjalnosc, angielski, niemiecki, pozostalejezyki, nazwisko, miejscowosc];
+      let tablicaRegex = {};
+      const tablica = new Array();
+      const regex = {};
+      let mojObiekt;
+      for (let index = 0; index < tablicaAtrybutowPelnych.length; index++) {
+        if(tablicaAtrybutowPelnych[index] != "") {
+          if(index == 0) {
+            regex.Technologie = { $regex: technologie };
+            tablica.push(regex);
+          }
+          if(index == 1) {
+            regex.Specjalnosc = { $regex: specjalnosc };
+            tablica.push(regex);
+          }
+          if(index == 2) {
+            regex.Angielski = { $regex: angielski };
+            tablica.push(regex);
+          }
+          if(index == 3) {
+            regex.Niemiecki = { $regex: niemiecki };
+            tablica.push(regex);
+          }
+          if(index == 4) {
+            regex.Pozostale_Jezyki = { $regex: pozostalejezyki };
+            tablica.push(regex);
+          }
+          if(index == 5) {
+            regex.Nazwisko = { $regex: nazwisko };
+            tablica.push(regex);
+          }
+          if(index == 6) {
+            regex.Miejscowosc = { $regex: miejscowosc };
+            tablica.push(regex);
+          }
+          mojObiekt = tablica;
+        }
+      }
+      tablicaRegex = mojObiekt;
+      console.log(tablicaRegex[0], "tablica regexow nnnn");
+      findInMongoDb(JSON.parse(JSON.stringify(tablicaRegex[0])));
+
+      //ZAKOMENTOWANO do 2379
+      /*if (technologie != "") {
+        
         //NAZWISKO PUSTE
         if (specjalnosc == "") {
           if (angielski == "") {
@@ -1343,7 +1386,7 @@ app.get("/wyslijimie", (req, res) => {
           }
         }
       }
-      console.timeEnd("poczatek");
+      
 
       //_________________________________________________________________________________________
       //TECHNOLOGIE NIE SĄ WPROWADZONE
@@ -2319,7 +2362,7 @@ app.get("/wyslijimie", (req, res) => {
           }
         }
       }
-
+      */
       // kandydaci.find({}).toArray((err, data) => {
       //   if (err) console.log("błąd", err.message);
       //   else {
