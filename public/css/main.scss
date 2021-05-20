@@ -80,7 +80,7 @@ body {
         }
         .technologie {
           color: black;
-          @include inputs;
+          // @include inputs;
           select#technologie {
             font-weight: bold;
             margin: 0;

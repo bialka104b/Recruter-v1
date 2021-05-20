@@ -1,0 +1,2083 @@
+Adobe
+Agile
+Android
+Angular
+AWS
+Bash
+Bootstrap
+CSS
+
+C#
+C++
+C
+Delphi
+HTML
+IOS
+JAVA
+JavaScript
+jQuery
+
+Kanban
+Less
+Linux
+.NET
+Node.js
+
+Oracle
+Perl
+Photoshop
+PHP
+Powershell
+Python
+React
+Ruby
+Sass
+Scala
+Scrum
+Spring
+SQL/PLSQL/MySQL
+Scss
+Swift
+Vue
+VB/VBA
+Windows/Windows Server
+
+
+//ZAKOMENTOWANO do 2379
+      /*if (technologie != "") {
+        
+        //NAZWISKO PUSTE
+        if (specjalnosc == "") {
+          if (angielski == "") {
+            // 1 000 000  - pierwsza 8
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki == "" &&
+              pozostalejezyki == "" &&
+              nazwisko == "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({ Technologie: { $regex: technologie } });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki == "" &&
+              pozostalejezyki == "" &&
+              nazwisko == "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki == "" &&
+              pozostalejezyki == "" &&
+              nazwisko != "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Nazwisko: { $regex: nazwisko },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki == "" &&
+              pozostalejezyki == "" &&
+              nazwisko != "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Nazwisko: { $regex: nazwisko },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki == "" &&
+              pozostalejezyki != "" &&
+              nazwisko == "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki == "" &&
+              pozostalejezyki != "" &&
+              nazwisko == "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki == "" &&
+              pozostalejezyki != "" &&
+              nazwisko != "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Nazwisko: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki == "" &&
+              pozostalejezyki != "" &&
+              nazwisko != "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Nazwisko: { $regex: miejscowosc },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            //1 001 000 - druga 8
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki != "" &&
+              pozostalejezyki == "" &&
+              nazwisko == "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Niemiecki: { $regex: niemiecki },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki != "" &&
+              pozostalejezyki == "" &&
+              nazwisko == "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Niemiecki: { $regex: niemiecki },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki != "" &&
+              pozostalejezyki == "" &&
+              nazwisko != "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Niemiecki: { $regex: niemiecki },
+                Nazwisko: { $regex: nazwisko },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki != "" &&
+              pozostalejezyki == "" &&
+              nazwisko != "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Niemiecki: { $regex: niemiecki },
+                Nazwisko: { $regex: nazwisko },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki != "" &&
+              pozostalejezyki != "" &&
+              nazwisko == "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Niemiecki: { $regex: niemiecki },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki != "" &&
+              pozostalejezyki != "" &&
+              nazwisko == "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Niemiecki: { $regex: niemiecki },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki != "" &&
+              pozostalejezyki != "" &&
+              nazwisko != "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Niemiecki: { $regex: niemiecki },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Nazwisko: { $regex: nazwisko },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski == "" &&
+              niemiecki != "" &&
+              pozostalejezyki != "" &&
+              nazwisko != "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Niemiecki: { $regex: niemiecki },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Nazwisko: { $regex: nazwisko },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+          }
+
+          if (angielski != "") {
+            // 1 010 000  - trzecia 8
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki == "" &&
+              pozostalejezyki == "" &&
+              nazwisko == "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki == "" &&
+              pozostalejezyki == "" &&
+              nazwisko == "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki == "" &&
+              pozostalejezyki == "" &&
+              nazwisko != "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Nazwisko: { $regex: nazwisko },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki == "" &&
+              pozostalejezyki == "" &&
+              nazwisko != "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Nazwisko: { $regex: nazwisko },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki == "" &&
+              pozostalejezyki != "" &&
+              nazwisko == "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki == "" &&
+              pozostalejezyki != "" &&
+              nazwisko == "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki == "" &&
+              pozostalejezyki != "" &&
+              nazwisko != "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Nazwisko: { $regex: nazwisko },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki == "" &&
+              pozostalejezyki != "" &&
+              nazwisko != "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Nazwisko: { $regex: nazwisko },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+
+            //1 011 000 - czwarta 8
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki != "" &&
+              pozostalejezyki == "" &&
+              nazwisko == "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Niemiecki: { $regex: niemiecki },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki != "" &&
+              pozostalejezyki == "" &&
+              nazwisko == "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Niemiecki: { $regex: niemiecki },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki != "" &&
+              pozostalejezyki == "" &&
+              nazwisko != "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Niemiecki: { $regex: niemiecki },
+                Nazwisko: { $regex: nazwisko },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki != "" &&
+              pozostalejezyki == "" &&
+              nazwisko != "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Niemiecki: { $regex: niemiecki },
+                Nazwisko: { $regex: nazwisko },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki != "" &&
+              pozostalejezyki != "" &&
+              nazwisko == "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Niemiecki: { $regex: niemiecki },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki != "" &&
+              pozostalejezyki != "" &&
+              nazwisko == "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Niemiecki: { $regex: niemiecki },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki != "" &&
+              pozostalejezyki != "" &&
+              nazwisko != "" &&
+              miejscowosc == ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Niemiecki: { $regex: niemiecki },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Nazwisko: { $regex: nazwisko },
+              });
+            }
+            if (
+              technologie != "" &&
+              specjalnosc == "" &&
+              angielski != "" &&
+              niemiecki != "" &&
+              pozostalejezyki != "" &&
+              nazwisko != "" &&
+              miejscowosc != ""
+            ) {
+              findInMongoDb({
+                Technologie: { $regex: technologie },
+                Angielski: { $regex: angielski },
+                Niemiecki: { $regex: niemiecki },
+                Pozostale_Jezyki: { $regex: pozostalejezyki },
+                Nazwisko: { $regex: nazwisko },
+                Miejscowosc: { $regex: miejscowosc },
+              });
+            }
+          }
+        }
+
+        if (specjalnosc != "") {
+          // 1 100 000  - piata 8
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+
+          //1 101 000 - szosta 8
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+
+          // 1 110 000 - siodma 8
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+
+          //1 111 000 - osma 8
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie != "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Technologie: { $regex: technologie },
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+        }
+      }
+      
+
+      //_________________________________________________________________________________________
+      //TECHNOLOGIE NIE SĄ WPROWADZONE
+      if (technologie == "") {
+        if (specjalnosc == "") {
+          // 0 000 000  - pierwsza 8
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({});
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          //0 001 000 - druga 8
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Niemiecki: { $regex: niemiecki },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Niemiecki: { $regex: niemiecki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Niemiecki: { $regex: niemiecki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Niemiecki: { $regex: niemiecki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+
+          // 0 010 000  - trzecia 8
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({ Angielski: { $regex: angielski } });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({ Angielski: { $regex: angielski }, Nazwisko: { $regex: nazwisko } });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+
+          //0 011 000 - czwarta 8
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({ Angielski: { $regex: angielski }, Niemiecki: { $regex: niemiecki } });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc == "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+        }
+
+        if (specjalnosc != "") {
+          // 0 100 000  - piata 8
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+
+          //0 101 000 - szosta 8
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski == "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+
+          // 0 110 000 - siodma 8
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki == "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+
+          //0 111 000 - osma 8
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki == "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko == "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc == ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+            });
+          }
+          if (
+            technologie == "" &&
+            specjalnosc != "" &&
+            angielski != "" &&
+            niemiecki != "" &&
+            pozostalejezyki != "" &&
+            nazwisko != "" &&
+            miejscowosc != ""
+          ) {
+            findInMongoDb({
+              Specjalnosc: { $regex: specjalnosc },
+              Angielski: { $regex: angielski },
+              Niemiecki: { $regex: niemiecki },
+              Pozostale_Jezyki: { $regex: pozostalejezyki },
+              Nazwisko: { $regex: nazwisko },
+              Miejscowosc: { $regex: miejscowosc },
+            });
+          }
+        }
+      }
+
+      // kandydaci.find({}).toArray((err, data) => {
+      //   if (err) console.log("błąd", err.message);
+      //   else {
+      //     console.log("moje dane", data);
+      //     // let noweNazwisko = [];
+      //     // for (const key in data) {
+      //     //   console.log(data[key]);
+      //     //   noweNazwisko.push(Object.values(data[key])[2]);
+      //     //   //console.log("noweNazwisko", noweNazwisko);
+      //     // }
+      //   }
+      // });
