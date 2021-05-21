@@ -73,7 +73,7 @@ body {
   font-size: large;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input, .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie select {
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie input, .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie select, .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie textarea {
   display: block;
   margin: 0 auto;
   width: 50%;
@@ -92,6 +92,15 @@ body {
   -o-transition: all 0s ease !important;
   -moz-transition: all 0s ease !important;
   transition: all 0s ease !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie textarea {
+  max-width: 100%;
+  min-width: 100%;
+  margin: 0 auto;
+  height: 200px;
+  max-width: 100%;
+  resize: horizontal;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie .block {
@@ -255,7 +264,7 @@ body {
   font-size: large;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 form .jezyki input, .nameColumnResult .wiersz1 .kolumna1 form .jezyki select {
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki input, .nameColumnResult .wiersz1 .kolumna1 form .jezyki select, .nameColumnResult .wiersz1 .kolumna1 form .jezyki textarea {
   display: block;
   margin: 0 auto;
   width: 50%;
@@ -274,6 +283,15 @@ body {
   -o-transition: all 0s ease !important;
   -moz-transition: all 0s ease !important;
   transition: all 0s ease !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 form .jezyki textarea {
+  max-width: 100%;
+  min-width: 100%;
+  margin: 0 auto;
+  height: 200px;
+  max-width: 100%;
+  resize: horizontal;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .jezyki .block {
@@ -332,7 +350,7 @@ body {
   font-size: large;
 }
 
-.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload input, .nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload select {
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload input, .nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload select, .nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload textarea {
   display: block;
   margin: 0 auto;
   width: 50%;
@@ -351,6 +369,15 @@ body {
   -o-transition: all 0s ease !important;
   -moz-transition: all 0s ease !important;
   transition: all 0s ease !important;
+}
+
+.nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload textarea {
+  max-width: 100%;
+  min-width: 100%;
+  margin: 0 auto;
+  height: 200px;
+  max-width: 100%;
+  resize: horizontal;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload .fileUpload {

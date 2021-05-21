@@ -1,8 +1,9 @@
+@import "_webkitScrollbar.scss";
 @mixin inputs {
   label {
     font-size: large;
   }
-  input, select {
+  input, select, textarea {
     display: block;
     margin: 0 auto;
     width: 50%;
@@ -21,5 +22,14 @@
     -webkit-text-fill-color: $niebieski !important; //niebieski
 
     transition: all 0s ease !important;
+  }
+
+  textarea {
+    max-width: 100%;
+    min-width:100%;
+    margin:0 auto;
+    height:200px;
+    max-width: 100%;
+    resize:horizontal;
   }
 }

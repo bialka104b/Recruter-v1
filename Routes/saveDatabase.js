@@ -42,6 +42,7 @@ app.get('/', function (req, res) {
           const rozmowaTechniczna = req.query.rozmowaTechnicznaSave;
           const rozmowaNietechniczna = req.query.rozmowaNietechnicznaSave;
           const komentarze = req.query.komentarzeSave;
+          console.log(komentarze, "komentarze");
           kandydaci.updateOne(
             {_id: mongo.ObjectID(id)},
             { $set: 

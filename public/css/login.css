@@ -36,7 +36,7 @@ body {
   font-size: large;
 }
 
-#login > div form .loginAndPassword input, #login > div form .loginAndPassword select {
+#login > div form .loginAndPassword input, #login > div form .loginAndPassword select, #login > div form .loginAndPassword textarea {
   display: block;
   margin: 0 auto;
   width: 50%;
@@ -55,6 +55,15 @@ body {
   -o-transition: all 0s ease !important;
   -moz-transition: all 0s ease !important;
   transition: all 0s ease !important;
+}
+
+#login > div form .loginAndPassword textarea {
+  max-width: 100%;
+  min-width: 100%;
+  margin: 0 auto;
+  height: 200px;
+  max-width: 100%;
+  resize: horizontal;
 }
 
 #login > div form button {

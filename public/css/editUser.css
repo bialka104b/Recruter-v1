@@ -32,7 +32,7 @@
   font-size: large;
 }
 
-#editUser .persons form .opakowanie input, #editUser .persons form .opakowanie select {
+#editUser .persons form .opakowanie input, #editUser .persons form .opakowanie select, #editUser .persons form .opakowanie textarea {
   display: block;
   margin: 0 auto;
   width: 50%;
@@ -53,8 +53,19 @@
   transition: all 0s ease !important;
 }
 
+#editUser .persons form .opakowanie textarea {
+  max-width: 100%;
+  min-width: 100%;
+  margin: 0 auto;
+  height: 200px;
+  max-width: 100%;
+  resize: horizontal;
+}
+
 #editUser .persons form .opakowanie input:hover,
-#editUser .persons form .opakowanie input:focus {
+#editUser .persons form .opakowanie input:focus,
+#editUser .persons form .opakowanie textarea:focus,
+#editUser .persons form .opakowanie textarea:hover {
   -webkit-box-shadow: 0px 0px 7px #666 !important;
           box-shadow: 0px 0px 7px #666 !important;
   background-clip: text !important;
@@ -91,5 +102,23 @@
 
 #editUser .persons form button:focus {
   outline: 0;
+}
+
+#editUser .persons form ::-webkit-scrollbar {
+  width: 15px;
+  background-color: #333333;
+}
+
+#editUser .persons form ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+}
+
+#editUser .persons form ::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: rgba(1, 139, 211, 0.8);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
 }
 /*# sourceMappingURL=editUser.css.map */

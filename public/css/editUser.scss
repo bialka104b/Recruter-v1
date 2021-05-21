@@ -2,6 +2,7 @@
 @import "_input.scss";
 @import "_inputHoverFocus.scss";
 @import "_button";
+@import "_webkitScrollbar.scss";
 .nameColumnResult {
     h1, h4, h3 {
         text-align: center;
@@ -49,6 +50,7 @@
                 //     box-shadow: #222 1px 0 10px;
                 // }
             }
+            @include webkitScrollbar;
         }
     }
 }
