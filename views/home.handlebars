@@ -212,7 +212,7 @@
                                 {{!-- JJJJ --}}
                                 <div class="block">
                                     <div class="w-50">
-                                        <input type="checkbox" id="java" name="java" value="java"
+                                        <input type="checkbox" id="java" name="java" value="java,"
                                             defaultChecked="false">
                                         <label for="java">JAVA</label>
                                     </div>
@@ -434,7 +434,7 @@
             {{#each person}}
             <div class="persons col-sm-4">
                 <div class="dane">
-                    <div class="info name">{{Imie}} {{Nazwisko}}</div>
+                    <div class="info name">{{@index}}. {{Imie}} {{Nazwisko}}</div>
                     <div class="info">EMAIL: <p>{{Email}}</p>
                     </div>
                     <div class="info">TELEFON: <p>{{Telefon}}</p>

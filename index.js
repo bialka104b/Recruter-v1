@@ -30,7 +30,7 @@ var contactVantity = require("./moduly/contactVantityName"); //import modułu mo
 
 app.use(express.static("public"));
 
-//W tym miejscu zdefiniujmy lokalizację przechowywania naszych plików
+//W tym miejscu zdefiniujmy lokalizację przechowywania naszych plików wgrywanych na strone
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, `upload/`);
@@ -58,9 +58,6 @@ const readFileDataDir = fs.readdir(dirname, (err, files) => {
       console.log("bła", `Wystąpił błąd: ${err.message}`);
       throw err;
     }
-    // var lista = fs.createReadStream(data, {
-    //   encoding: "utf8"
-    // })
     //funkcja do zapisywania danych do innego pliku
     function storedata(data, path) {
       try {
@@ -96,11 +93,9 @@ const readFileDataDir = fs.readdir(dirname, (err, files) => {
   //       console.log('file', file[index].length);
   //     });
   //   })
-  //   console.log('sciezka', dirname);
 });
-//console.log(readFileDataDir);
 
-//obserwowanie pliku Lista.json i zapisywanie danych do pliku baza.json
+//obserwowanie pliku Lista.json i zapisywanie danych do mongoDB
 //działa tylko po zapisaniu pliku w edytorze
 //FUNKCJA DO PARSOWANIA
 function parsuj(data) {
@@ -111,9 +106,7 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
   fs.readFile(file(filename), function (err, data) {
     //JSON.parse()pobiera ciąg JSON i przekształca go w obiekt JavaScript.
     //JSON.stringify()pobiera obiekt JavaScript i przekształca go w ciąg JSON.
-    console.log("jaki typ1", typeof data);
     if (!err) {
-      let dane = data;
       //const hhh = JSON.parse(JSON.stringify(dane));
       // console.log("jaki typ", typeof dane);
       // console.log("hh techn", dane);
@@ -122,97 +115,115 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
       // const hhh = JSON.parse(dane.toString());
       //console.log("hhh: ", hhh);
 
-      const jsonText = parsuj(JSON.stringify(dane)); //.toString()
-      console.log("technologia typ", typeof jsonText);
-      console.log("technologia", jsonText.technologie);
+      const bazaJson = fs.readFileSync(file("Lista.json").toString());
+      const bazaJson1 = bazaJson.toString();
+      const bazaJsonObject = parsuj(bazaJson1);
+      console.log("bazaJsonObject", bazaJsonObject);
 
-      fs.readFile(file("baza.json"), "utf-8", (err, data) => {
-        if (!err) {
-          // console.log("data przed stringi", data);
-          // data = JSON.stringify(jsonText);
-          // console.log("data po stringi", jsonText);
-          // console.log("typ jsonText", typeof jsonText);
-
-          //odczytuje zawartośc Lista json
-          const zmienna = fs.readFileSync(file("Lista.json").toString());
-          const zmienna1 = zmienna.toString();
-          const listaJson = parsuj(zmienna1);
-          console.log("listaJson: ", listaJson);
-          //console.log("listaJson.lp", listaJson.lp); //w tym miejscu dostałam sie do obiektów tego jsona
-
-          //odczytajmy jeszcze dane z pliku baza.json aby połaczyć dane z obu plików
-          const bazaJson = fs.readFileSync(file("baza.json").toString());
-          const bazaJson1 = bazaJson.toString();
-          const bazaJsonObject = parsuj(bazaJson1);
-          console.log("bazaJsonObject", bazaJsonObject);
-
-          //tworze nazwy pusty obiekt ktory trafi docelowo do pliku baza.json
-          let polaczonyBazaILista = {};
-
-          //następuje tutaj zamiana obiektu bazaJsonObiekt na tablice
-          let arr = [];
-          for (let key in bazaJsonObject) {
-            //petle te iteruja od 0
-            //console.log("ile wynosi to key bazaJSONOBJECT? ", key);
-            arr.push(bazaJsonObject[key.toString()]);
-            //console.log("arr", arr[key]);
-          }
-          polaczonyBazaILista = arr; //przypisuje przetworzona tablice do tego co ma wylądowac w pliku baza.json
-          //console.log("polaczonyBazaILista po petli", polaczonyBazaILista);
-
-          //następuje tutaj zamiana obiektu listaJson na tablice
-          let arrayZmienna2 = [];
-          for (let key in listaJson) {
-            //petle te iteruja od 0
-            arrayZmienna2.push(listaJson[key.toString()]);
-            console.log("arr zmienna2", arrayZmienna2[key]);
-          }
-          console.log("arrayZmienna2[0]", arrayZmienna2[0]);
-          for (const key in arrayZmienna2) {
-            polaczonyBazaILista.push(arrayZmienna2[key]);
-          }
-          console.log("polaczonyBazaILista po push arrayzmienna2", polaczonyBazaILista);
-
-          //Tutaj mam kodowanie obiektu JS na buffer
-          const moje_dane = JSON.stringify(polaczonyBazaILista);
-          const buf1 = Buffer.from(moje_dane);
-          //console.log("odkodowane", buf1);
-
-          //tutaj następuje automatyczny zapis do pliku z odkodowanym bufferem,callback słuzy tylko do obsługi błędów
-          fs.writeFile(file("baza.json"), buf1, "utf-8", (err) => {
-            if (err) {
-              console.log("cos poszło nie tak przy zapisywaniu baza.json", err.message);
-            } else {
-              console.log("Plik zapisany pomyślnie\n");
-              // console.log("Napis ma następującą zawartość:");
-              // console.log(parsuj(fs.readFileSync(file("baza.json"), "utf8")));
+      client.connect((err) => {
+        if (err) {
+          console.log("błąd polaczenia /manySaveDatabase");
+          client.close();
+        } else {
+          console.log("niby działa");
+          const db = client.db("test"); //pobieram nazwe bazy danych test
+          const kandydaci = db.collection("kandydaci"); // nazwa naszej kolekcji
+          console.log("polaczenie udane z bazą /manySaveDatabase");
+          kandydaci.find({ Nazwisko: bazaJsonObject.Nazwisko }).toArray((err, dataFromMongo) => {
+            if(!err) {
+              if(bazaJsonObject.Nazwisko != dataFromMongo[0].Nazwisko) {
+                console.log("dziala ");
+                try {
+                  kandydaci.insertMany(bazaJsonObject);
+                  console.log("dodano uzytkowników", bazaJsonObject);
+                } catch (e) {
+                  console.log("wystapił błąd", e);
+                }
+              }
+              else {
+                console.log("nie dodaliśmy nic bo to już w bazie jest", dataFromMongo);
+              }
             }
           });
-        } else {
-          console.log(err.message);
-          return err.message;
+          
         }
       });
-      // if (!err) {
-      //   var dane = data;
-      //   console.log("dane ", dane);
-      //   const jsonText = parsuj(dane);
-      //   console.log("dane do zapisu", jsonText);
-      //   fs.writeFile(file("baza.json"), data, () => {
-      //       console.log("mamamamamam");
-      //   });
-      // }
-      // else {
-      //   console.log("mój error", err.message);
-      // }
-    }
 
-    // if (!err) {
-    //   fs.writeFile(file("baza.json"), data, () => {
-    //     console.log(data);
-    //   });
-    // }
-    //file(filename).close();
+      // fs.readFile(file("baza.json"), "utf-8", (err, data) => {
+      //   if (!err) {
+      //     // console.log("data przed stringi", data);
+      //     // data = JSON.stringify(jsonText);
+      //     // console.log("data po stringi", jsonText);
+      //     // console.log("typ jsonText", typeof jsonText);
+
+      //     //odczytuje zawartośc Lista json
+      //     // const zmienna = fs.readFileSync(file("Lista.json").toString());
+      //     // const zmienna1 = zmienna.toString();
+      //     // const listaJson = parsuj(zmienna1);
+      //     // console.log("listaJson: ", listaJson);
+      //     //console.log("listaJson.lp", listaJson.lp); //w tym miejscu dostałam sie do obiektów tego jsona
+
+      //     //odczytajmy jeszcze dane z pliku baza.json aby połaczyć dane z obu plików
+      //     // const bazaJson = fs.readFileSync(file("baza.json").toString());
+      //     // const bazaJson1 = bazaJson.toString();
+      //     // const bazaJsonObject = parsuj(bazaJson1);
+      //     // console.log("bazaJsonObject", bazaJsonObject);
+
+      //     //tworze nazwy pusty obiekt ktory trafi docelowo do pliku baza.json
+      //     let polaczonyBazaILista = {};
+
+      //     //następuje tutaj zamiana obiektu bazaJsonObiekt na tablice
+      //     let arr = [];
+      //     for (let key in bazaJsonObject) {
+      //       //petle te iteruja od 0
+      //       //console.log("ile wynosi to key bazaJSONOBJECT? ", key);
+      //       arr.push(bazaJsonObject[key.toString()]);
+      //       //console.log("arr", arr[key]);
+      //     }
+      //     polaczonyBazaILista = arr; //przypisuje przetworzona tablice do tego co ma wylądowac w pliku baza.json
+      //     //console.log("polaczonyBazaILista po petli", polaczonyBazaILista);
+
+      //     //następuje tutaj zamiana obiektu listaJson na tablice
+      //     let arrayZmienna2 = [];
+      //     for (let key in listaJson) {
+      //       //petle te iteruja od 0
+      //       arrayZmienna2.push(listaJson[key.toString()]);
+      //       console.log("arr zmienna2", arrayZmienna2[key]);
+      //     }
+      //     console.log("arrayZmienna2[0]", arrayZmienna2[0]);
+      //     for (const key in arrayZmienna2) {
+      //       polaczonyBazaILista.push(arrayZmienna2[key]);
+      //     }
+      //     console.log("polaczonyBazaILista po push arrayzmienna2", polaczonyBazaILista);
+
+      //     //Tutaj mam kodowanie obiektu JS na buffer
+      //     const moje_dane = JSON.stringify(polaczonyBazaILista);
+      //     const buf1 = Buffer.from(moje_dane);
+      //     //console.log("odkodowane", buf1);
+
+      //     //tutaj następuje automatyczny zapis do pliku z odkodowanym bufferem,callback słuzy tylko do obsługi błędów
+      //     // fs.writeFile(file("baza.json"), buf1, "utf-8", (err) => {
+      //     //   if (err) {
+      //     //     console.log("cos poszło nie tak przy zapisywaniu baza.json", err.message);
+      //     //   } else {
+      //     //     console.log("Plik zapisany pomyślnie\n");
+      //     //     // console.log("Napis ma następującą zawartość:");
+      //     //     // console.log(parsuj(fs.readFileSync(file("baza.json"), "utf8")));
+      //     //   }
+      //     // });
+      //   } else {
+      //     console.log(err.message);
+      //     return err.message;
+      //   }
+      // });
+      //   res.send(`
+      //       <div class="row finish">
+      //         <h1>POMOCNIK REKRUTERA</h1>
+      //         <h4>Aktualizacje zakończono pomyślnie</h4>
+      //         <a class="back_home" href="../downloadData">&#9194; Powróć do strony głównej</a>
+      //       </div>
+      //       `);
+    }
   });
 });
 
@@ -275,10 +286,7 @@ app.get("/wyslijimie", (req, res) => {
       const vue = req.query.vue;
       const vb = req.query.vb;
       const windows = req.query.windows;
-      console.log(csharp);
-      //const technologie = csharp;
-
-      const specjalnosc = req.query.specjalnosc; // narazie brak pola w bazie danych
+      const specjalnosc = req.query.specjalnosc;
       const nazwisko = req.query.nazwisko;
       const miejscowosc = req.query.miejscowosc;
 
@@ -341,14 +349,6 @@ app.get("/wyslijimie", (req, res) => {
       //TU MAMY PRZYPADKI GDZIE POLE TECHNOLOGIE JEST WPROWADZONE
       // Technologie są css, php i jquery. program ignoruje wielkośc liter
       // { $and: [{ Technologie: { $regex: "css", $options: 'i' }},{ Technologie: { $regex: "php", $options: 'i' }},{ Technologie: { $regex: "jquery", $options: 'i' }}]  }
-      //tak to wygląda z dodatkowym atrybutem imie
-      // { $and: [
-      //     { Technologie: { $regex: "css", $options: 'i' }},
-      //     { Technologie: { $regex: "php", $options: 'i' }},
-      //     { Technologie: { $regex: "jquery", $options: 'i' }},
-      //     {Imie: "Mateusz"}
-      //   ]
-      // }
       //ZAUTOMATYZAWANA OBSŁUGA 128 IFÓW do wyświetlania danych
       const tablicaAtrybutowPelnych = [
         specjalnosc,

@@ -100,7 +100,7 @@ body {
   margin: 0 auto;
   height: 200px;
   max-width: 100%;
-  resize: horizontal;
+  resize: vertical;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .dane_osobowe .opakowanie .block {
@@ -291,7 +291,7 @@ body {
   margin: 0 auto;
   height: 200px;
   max-width: 100%;
-  resize: horizontal;
+  resize: vertical;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 form .jezyki .block {
@@ -377,7 +377,7 @@ body {
   margin: 0 auto;
   height: 200px;
   max-width: 100%;
-  resize: horizontal;
+  resize: vertical;
 }
 
 .nameColumnResult .wiersz1 .kolumna1 .colDodajKandydata .upload .fileUpload {
