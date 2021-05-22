@@ -121,11 +121,9 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
       console.log("błąd polaczenia /manySaveDatabase");
       client.close();
     } else {
-      // const tablica = [];
-      // tablica.push(bazaJson1);
       console.log("niby działa");
-      const db = client.db("test"); //pobieram nazwe bazy danych test
-      const kandydaci = db.collection("kandydaci"); // nazwa naszej kolekcji
+      const db = client.db("test");
+      const kandydaci = db.collection("kandydaci");
       console.log("polaczenie udane z bazą /manySaveDatabase");
       try {
         if (array.length != 0) {
