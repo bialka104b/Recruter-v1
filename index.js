@@ -131,7 +131,7 @@ fs.watch(file("Lista.json"), function (eventType, filename) {
         }
       } catch (e) {
         console.log("wystąpil blad e: ", e);
-        e.getWriteErrors().forEach(function (err) {
+        e.getWriteErrors().forEach((err) => {
           if (err.code != 11000) {
             throw e;
           }
